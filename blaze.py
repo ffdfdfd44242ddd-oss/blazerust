@@ -1,39 +1,29 @@
 # -*- coding: utf-8 -*-
 """
 BLAZE RUST — Wiki сайт сервера (Flask, один файл)
-
-Локальный запуск:
-    pip install flask
-    python blaze.py
-
-На хостинге (RelaxDev / Render и т.п.):
-    gunicorn -b 0.0.0.0:$PORT blaze:app
-
-Сборка статики (для GitHub Pages, необязательно):
-    python blaze.py --build --base "/blazerust"
+Запуск на RelaxDev: gunicorn -b 0.0.0.0:$PORT app:app
 """
 
-import sys
 import os
-import shutil
 
 from flask import Flask, render_template_string, abort
 
 app = Flask(__name__)
-
-# Принудительно отдаём ответ как HTML-страницу,
-# иначе некоторые хостинги шлют text/plain и браузер показывает теги как текст
-@app.after_request
-def force_html(response):
-    if response.content_type.startswith("text/"):
-        response.headers["Content-Type"] = "text/html; charset=utf-8"
-    return response
 
 ONLINE = 6
 SERVER_IP = "46.174.48.219:28015"
 DISCORD = "https://discord.gg/blazerust"
 TELEGRAM_CHANNEL = "https://t.me/blazerust_tg"
 TELEGRAM_CHAT = "https://t.me/BlazeRust_Chat"
+
+
+# Принудительно отдаём HTML — чтобы браузер рисовал страницу, а не показывал теги
+@app.after_request
+def force_html(response):
+    if response.content_type.startswith("text/"):
+        response.headers["Content-Type"] = "text/html; charset=utf-8"
+    return response
+
 
 # ---------------------------------------------------------------------------
 # Структура навигации
@@ -460,7 +450,7 @@ HOME_HTML = '''
 ''' % SERVER_IP
 
 # ---------------------------------------------------------------------------
-# Шаблон сайта — ЧЁРНО-БИРЮЗОВЫЙ дизайн, анимации везде
+# Шаблон сайта — чёрно-бирюзовый дизайн с анимациями
 # ---------------------------------------------------------------------------
 BASE = '''
 <!doctype html>
@@ -798,34 +788,6 @@ function toggleSidebar(){ document.body.classList.toggle('nav-open'); }
 
 
 # ---------------------------------------------------------------------------
-# Сборка статического сайта (необязательно, для GitHub Pages)
-# ---------------------------------------------------------------------------
-def build_static(output_dir="_site", base="/"):
-    """Собирает статический сайт для GitHub Pages."""
-    if os.path.exists(output_dir):
-        shutil.rmtree(output_dir)
-
-    routes = [("/", "index.html")]
-    for slug in PAGES:
-        routes.append(("/page/%s" % slug, os.path.join("page", slug, "index.html")))
-
-    with app.test_client() as client:
-        for url, rel_path in routes:
-            html = client.get(url).get_data(as_text=True)
-            if base and base != "/":
-                html = html.replace('href="/', 'href="%s/' % base)
-                html = html.replace('src="/', 'src="%s/' % base)
-            full_path = os.path.join(output_dir, rel_path)
-            d = os.path.dirname(full_path)
-            if d:
-                os.makedirs(d, exist_ok=True)
-            with open(full_path, "w", encoding="utf-8") as f:
-                f.write(html)
-            print("OK: %s (%d байт)" % (rel_path, len(html)))
-    print("Статический сайт собран в папке %s (base=%s)" % (output_dir, base))
-
-
-# ---------------------------------------------------------------------------
 # Маршруты
 # ---------------------------------------------------------------------------
 @app.route("/")
@@ -860,12 +822,6 @@ def wiki(slug):
 
 
 if __name__ == "__main__":
-    if "--build" in sys.argv:
-        base = "/"
-        if "--base" in sys.argv:
-            base = sys.argv[sys.argv.index("--base") + 1]
-        build_static(base=base)
-    else:
-        port = int(os.environ.get("PORT", 5000))
-        print("BLAZE RUST Wiki запущен: http://0.0.0.0:%d" % port)
-        app.run(host="0.0.0.0", port=port, debug=False)
+    port = int(os.environ.get("PORT", 5000))
+    print("BLAZE RUST Wiki запущен: http://0.0.0.0:%d" % port)
+    app.run(host="0.0.0.0", port=port, debug=False)
