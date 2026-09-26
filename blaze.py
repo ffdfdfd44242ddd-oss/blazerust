@@ -6,7 +6,10 @@ BLAZE RUST — Wiki сайт сервера (Flask, один файл)
     pip install flask
     python blaze.py
 
-Сборка статики для GitHub Pages:
+На хостинге (RelaxDev / Render и т.п.):
+    gunicorn -b 0.0.0.0:$PORT blaze:app
+
+Сборка статики (для GitHub Pages, необязательно):
     python blaze.py --build --base "/blazerust"
 """
 
@@ -480,7 +483,6 @@ body{font-family:'Manrope',sans-serif;background:var(--bg0);color:var(--text);mi
 a{color:var(--cyan)}
 code{font-family:'JetBrains Mono',monospace;color:var(--aqua);background:rgba(34,211,238,.09);padding:2px 7px;border-radius:7px;border:1px solid var(--line2);font-size:.92em}
 
-/* ---------- фон: чёрный + аврора + звёзды + виньетка ---------- */
 .bg-fx{position:fixed;inset:0;z-index:-4;background:
   radial-gradient(1100px 600px at 78% -8%,rgba(6,182,212,.16),transparent 60%),
   radial-gradient(900px 520px at 2% 28%,rgba(20,184,166,.1),transparent 55%),
@@ -497,7 +499,6 @@ code{font-family:'JetBrains Mono',monospace;color:var(--aqua);background:rgba(34
 @keyframes twinkle{0%,100%{opacity:0;transform:scale(.6)}50%{opacity:1;transform:scale(1.15)}}
 .vignette{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 50%,rgba(0,0,0,.6))}
 
-/* ---------- шапка ---------- */
 .topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:14px;padding:13px 22px;background:rgba(1,7,12,.8);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
 .burger{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;border:1px solid var(--line2);background:rgba(6,26,36,.5);color:var(--aqua);font-size:18px;cursor:pointer;transition:.25s}
 .burger:hover{background:rgba(34,211,238,.13);border-color:var(--cyan);transform:rotate(90deg)}
@@ -512,7 +513,6 @@ code{font-family:'JetBrains Mono',monospace;color:var(--aqua);background:rgba(34
 .online-badge i{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.7);animation:ping 1.6s infinite}
 @keyframes ping{0%{box-shadow:0 0 0 0 rgba(52,211,153,.7)}70%{box-shadow:0 0 0 9px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
 
-/* ---------- сайдбар ---------- */
 .sidebar{position:fixed;top:0;left:0;bottom:0;width:274px;padding:86px 16px 24px;background:rgba(1,7,12,.94);backdrop-filter:blur(20px);border-right:1px solid var(--line);transform:translateX(-100%);transition:transform .38s cubic-bezier(.22,1,.36,1);z-index:60;overflow-y:auto}
 body.nav-open .sidebar{transform:translateX(0)}
 @media(min-width:1024px){.sidebar{transform:none}}
@@ -530,11 +530,9 @@ body.nav-open .overlay{opacity:1;pointer-events:auto}
 .nav-item.active{color:#02121a;background:var(--grad-hot);border-color:transparent;box-shadow:0 8px 26px rgba(34,211,238,.35)}
 .nav-item.active::before{opacity:0}
 
-/* ---------- контент ---------- */
 .content{margin-left:0;padding:34px 20px 60px;max-width:1120px;width:100%}
 @media(min-width:1024px){.content{margin-left:274px;padding:46px 54px 84px}}
 
-/* ---------- кнопки ---------- */
 .btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 26px;border-radius:14px;font-weight:800;font-size:14px;letter-spacing:.3px;text-decoration:none;cursor:pointer;border:none;transition:transform .25s,box-shadow .25s;font-family:inherit}
 .btn-primary{background:var(--grad-hot);color:#02121a;box-shadow:0 10px 32px rgba(34,211,238,.35)}
 .btn-primary:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 18px 44px rgba(34,211,238,.55)}
@@ -546,7 +544,6 @@ body.nav-open .overlay{opacity:1;pointer-events:auto}
 .ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.4);transform:scale(0);animation:rip .65s ease-out forwards;pointer-events:none}
 @keyframes rip{to{transform:scale(1);opacity:0}}
 
-/* ---------- hero ---------- */
 .hero{position:relative;text-align:center;padding:60px 10px 30px;animation:fadeUp .8s ease both}
 .hero-badge{display:inline-flex;align-items:center;gap:9px;padding:8px 18px;border-radius:999px;border:1px solid var(--line2);background:rgba(6,26,36,.55);font-size:13px;font-weight:700;color:var(--aqua);margin-bottom:24px;backdrop-filter:blur(8px)}
 .pulse-dot{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.7);animation:ping 1.6s infinite}
@@ -564,7 +561,6 @@ body.nav-open .overlay{opacity:1;pointer-events:auto}
 .stat b{display:block;font-family:'Unbounded',sans-serif;font-size:32px;color:var(--aqua);text-shadow:0 0 18px rgba(127,240,245,.45)}
 .stat small{color:var(--muted);font-size:12px;letter-spacing:1px;text-transform:uppercase}
 
-/* ---------- Telegram ---------- */
 .telegram-block{max-width:780px;margin:0 auto}
 .tg-card{display:flex;gap:18px;align-items:flex-start;padding:30px;border-radius:24px;border:1px solid rgba(34,197,94,.3);background:linear-gradient(135deg,rgba(4,18,14,.9),rgba(6,30,22,.75));backdrop-filter:blur(14px);animation:fadeUp .7s ease both;transition:.3s}
 .tg-card:hover{border-color:rgba(34,197,94,.55);box-shadow:0 0 44px rgba(34,197,94,.18);transform:translateY(-3px)}
@@ -576,7 +572,6 @@ body.nav-open .overlay{opacity:1;pointer-events:auto}
 .tg-link{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:14px;color:#4ade80;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.32);padding:8px 14px;border-radius:12px;text-decoration:none;margin:6px 0 12px;transition:.25s}
 .tg-link:hover{background:rgba(34,197,94,.2);box-shadow:0 0 20px rgba(34,197,94,.3)}
 
-/* ---------- секции и карточки ---------- */
 .section{padding:36px 0}
 .section-title{font-family:'Unbounded',sans-serif;font-size:clamp(22px,3.4vw,34px);margin-bottom:8px;background:linear-gradient(120deg,#cff8fe,#7ff0f5);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% auto;animation:gradShift 8s linear infinite}
 .section-sub{color:var(--muted);margin-bottom:28px}
@@ -595,7 +590,6 @@ body.nav-open .overlay{opacity:1;pointer-events:auto}
 .card h3{font-size:18px;margin-bottom:8px}
 .card p{color:var(--muted);font-size:14px}
 
-/* ---------- шаги ---------- */
 .steps{display:grid;gap:16px}
 .step{display:flex;gap:18px;padding:22px;border-radius:var(--radius);border:1px solid var(--line);background:linear-gradient(160deg,rgba(5,18,26,.85),rgba(2,9,14,.9));backdrop-filter:blur(10px);transition:.3s}
 .step:hover{border-color:var(--line2);transform:translateX(8px);box-shadow:0 14px 36px rgba(0,0,0,.55)}
@@ -603,7 +597,6 @@ body.nav-open .overlay{opacity:1;pointer-events:auto}
 .step h3{font-size:17px;margin-bottom:4px}
 .step p{color:var(--muted);font-size:14px}
 
-/* ---------- callout ---------- */
 .callout{padding:18px 22px;border-radius:14px;border:1px solid;margin:24px 0;display:flex;gap:14px;align-items:flex-start;animation:fadeUp .6s ease both;background:rgba(3,14,22,.7)}
 .callout b{display:block;margin-bottom:2px}
 .callout p{font-size:14px;opacity:.92;margin:0}
@@ -616,7 +609,6 @@ body.nav-open .overlay{opacity:1;pointer-events:auto}
 .callout.danger{border-color:rgba(248,113,113,.4)}
 .callout.danger b{color:#fca5a5}
 
-/* ---------- статья ---------- */
 .article{animation:fadeUp .7s ease both}
 .crumbs{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;color:var(--muted);margin-bottom:14px}
 .crumbs a{color:var(--cyan);text-decoration:none;transition:.2s}
@@ -628,7 +620,6 @@ body.nav-open .overlay{opacity:1;pointer-events:auto}
 .article h3{font-size:18px;margin:22px 0 10px;color:var(--aqua)}
 .article p{color:#bde4ee;margin-bottom:12px}
 
-/* ---------- список-карточки ---------- */
 .list{display:grid;gap:14px;margin:18px 0}
 .li{display:flex;gap:16px;padding:18px 20px;border-radius:14px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(5,18,26,.8),rgba(2,9,14,.88));transition:.3s}
 .li:hover{border-color:var(--line2);transform:translateX(7px);box-shadow:0 10px 28px rgba(0,0,0,.5)}
@@ -636,7 +627,6 @@ body.nav-open .overlay{opacity:1;pointer-events:auto}
 .li strong{display:block;margin-bottom:2px}
 .li p{color:var(--muted);font-size:14px;margin:0}
 
-/* ---------- таблицы ---------- */
 .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:linear-gradient(160deg,rgba(5,18,26,.8),rgba(2,9,14,.88));backdrop-filter:blur(10px);margin:20px 0}
 table{width:100%;border-collapse:collapse;min-width:520px}
 th{font-family:'Unbounded',sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;text-align:left;padding:16px 20px;color:var(--aqua);background:rgba(34,211,238,.07);border-bottom:1px solid var(--line2)}
@@ -650,14 +640,12 @@ tbody tr:last-child td{border-bottom:none}
 .tag.ok{background:rgba(45,212,191,.1);color:#5eead4;border:1px solid rgba(45,212,191,.3)}
 .cmd-mini{display:inline-block;padding:3px 10px;border-radius:8px;background:rgba(34,211,238,.08);border:1px solid var(--line2);font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--aqua)}
 
-/* ---------- команды / код (клик = копирование) ---------- */
 .cmd{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 18px;border-radius:12px;border:1px solid var(--line);background:rgba(1,8,13,.85);font-family:'JetBrains Mono',monospace;font-size:14px;color:#67e8f9;margin:10px 0;transition:.25s}
 .cmd:hover{border-color:var(--cyan);box-shadow:0 0 18px rgba(34,211,238,.22);transform:translateX(4px)}
 .codeblock{cursor:pointer;user-select:all;background:rgba(1,8,13,.92);border:1px solid var(--line2);border-radius:14px;padding:16px 18px;font-family:'JetBrains Mono',monospace;font-size:14px;color:#67e8f9;margin:14px 0;overflow-x:auto;transition:.25s;position:relative}
 .codeblock:hover{border-color:var(--cyan);box-shadow:0 0 20px rgba(34,211,238,.25)}
 .codeblock::after{content:"📋 клик — скопировать";position:absolute;right:12px;top:10px;font-family:'Manrope',sans-serif;font-size:11px;color:var(--muted);opacity:.8}
 
-/* ---------- прайс-карточки ---------- */
 .price-card{position:relative;padding:28px 24px;border-radius:20px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(5,18,26,.85),rgba(2,9,14,.9));backdrop-filter:blur(12px);text-align:center;transition:.35s;overflow:hidden}
 .price-card:hover{transform:translateY(-11px);border-color:var(--line2);box-shadow:0 26px 64px rgba(0,0,0,.75)}
 .price-card.hot{border-color:rgba(34,211,238,.5);box-shadow:0 0 44px rgba(34,211,238,.18)}
@@ -666,7 +654,6 @@ tbody tr:last-child td{border-bottom:none}
 .price-card li{font-size:13.5px;color:var(--muted);display:flex;gap:8px;align-items:flex-start}
 .price-card li::before{content:"✔";color:var(--teal);font-weight:800}
 
-/* ---------- pager ---------- */
 .pager{display:flex;justify-content:space-between;gap:14px;margin-top:44px;flex-wrap:wrap}
 .pager-btn{flex:1;min-width:220px;padding:18px 22px;border-radius:16px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(5,18,26,.85),rgba(2,9,14,.9));text-decoration:none;color:var(--muted);transition:.3s;display:block}
 .pager-btn:hover{border-color:var(--cyan);transform:translateY(-5px);box-shadow:0 16px 38px rgba(0,0,0,.6);color:var(--text)}
@@ -674,7 +661,6 @@ tbody tr:last-child td{border-bottom:none}
 .pager-btn strong{color:var(--aqua);font-size:15px}
 .pager-btn.next{text-align:right}
 
-/* ---------- похожие статьи ---------- */
 .related{margin-top:44px;padding-top:26px;border-top:1px solid var(--line)}
 .related h3{font-family:'Unbounded',sans-serif;font-size:16px;color:var(--aqua);margin-bottom:14px;letter-spacing:1px}
 .related-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
@@ -682,7 +668,6 @@ tbody tr:last-child td{border-bottom:none}
 .related-card:hover{border-color:var(--cyan);transform:translateY(-6px);box-shadow:0 16px 34px rgba(0,0,0,.6)}
 .related-card small{display:block;color:var(--cyan);font-size:12px;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
 
-/* ---------- FAQ ---------- */
 .faq details{background:linear-gradient(160deg,rgba(5,18,26,.85),rgba(2,9,14,.9));border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin-bottom:12px;transition:.3s}
 .faq details[open]{border-color:var(--cyan);box-shadow:0 12px 34px rgba(0,0,0,.55)}
 .faq summary{cursor:pointer;font-weight:800;font-size:15.5px;display:flex;justify-content:space-between;align-items:center;gap:12px;list-style:none}
@@ -691,7 +676,6 @@ tbody tr:last-child td{border-bottom:none}
 .faq details[open] summary::after{transform:rotate(45deg)}
 .faq p{color:var(--muted);font-size:14px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
 
-/* ---------- футер и анимации ---------- */
 .footer{margin-left:0;padding:30px 24px 40px;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line);background:rgba(0,5,9,.8)}
 @media(min-width:1024px){.footer{margin-left:274px}}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
@@ -740,7 +724,6 @@ tbody tr:last-child td{border-bottom:none}
 <footer class="footer">© 2026 BLAZE RUST. Все права защищены. · Пиратский сервер Rust · <a href="/page/rules-intro">Правила</a> · <a href="/page/donate">Магазин</a></footer>
 
 <script>
-// звёзды на фоне
 (function(){
   var wrap=document.createElement('div');wrap.className='stars';
   for(var i=0;i<80;i++){
@@ -754,8 +737,6 @@ tbody tr:last-child td{border-bottom:none}
   }
   document.body.appendChild(wrap);
 })();
-
-// появление при скролле
 var revs=document.querySelectorAll('.reveal');
 if('IntersectionObserver' in window){
   var io=new IntersectionObserver(function(es){
@@ -763,8 +744,6 @@ if('IntersectionObserver' in window){
   },{threshold:.12});
   revs.forEach(function(r){ io.observe(r); });
 }else{ revs.forEach(function(r){ r.classList.add('visible'); }); }
-
-// анимированные счётчики
 var counts=document.querySelectorAll('.count');
 var cio=new IntersectionObserver(function(es){
   es.forEach(function(e){
@@ -775,8 +754,6 @@ var cio=new IntersectionObserver(function(es){
   });
 },{threshold:.5});
 counts.forEach(function(c){ cio.observe(c); });
-
-// 3D-наклон карточек
 document.querySelectorAll('.tilt').forEach(function(card){
   card.addEventListener('mousemove',function(e){
     var r=card.getBoundingClientRect();
@@ -786,8 +763,6 @@ document.querySelectorAll('.tilt').forEach(function(card){
   });
   card.addEventListener('mouseleave',function(){ card.style.transform=''; });
 });
-
-// волна-клик по кнопкам
 document.addEventListener('click',function(e){
   var b=e.target.closest('.btn');
   if(!b) return;
@@ -799,8 +774,6 @@ document.addEventListener('click',function(e){
   b.appendChild(s);
   setTimeout(function(){ s.remove(); },650);
 });
-
-// клик по блоку кода = копирование
 document.querySelectorAll('.codeblock').forEach(function(b){
   b.addEventListener('click',function(){
     var txt=b.innerText.replace('📋 клик — скопировать','').trim();
@@ -809,8 +782,6 @@ document.querySelectorAll('.codeblock').forEach(function(b){
     else{ var ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done(); }
   });
 });
-
-// мобильное меню
 function toggleSidebar(){ document.body.classList.toggle('nav-open'); }
 </script>
 </body>
@@ -819,7 +790,7 @@ function toggleSidebar(){ document.body.classList.toggle('nav-open'); }
 
 
 # ---------------------------------------------------------------------------
-# Сборка статического сайта (для GitHub Pages)
+# Сборка статического сайта (необязательно, для GitHub Pages)
 # ---------------------------------------------------------------------------
 def build_static(output_dir="_site", base="/"):
     """Собирает статический сайт для GitHub Pages."""
@@ -887,5 +858,6 @@ if __name__ == "__main__":
             base = sys.argv[sys.argv.index("--base") + 1]
         build_static(base=base)
     else:
-        print("BLAZE RUST Wiki запущен: http://127.0.0.1:5000")
-        app.run(host="0.0.0.0", port=5000, debug=True)
+        port = int(os.environ.get("PORT", 5000))
+        print("BLAZE RUST Wiki запущен: http://0.0.0.0:%d" % port)
+        app.run(host="0.0.0.0", port=port, debug=False)
