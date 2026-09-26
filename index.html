@@ -7,15 +7,15 @@
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   :root{
-    --bg:#0d0d0f;
-    --panel:#141417;
-    --card:#19191d;
-    --line:#26262b;
-    --text:#ececee;
-    --muted:#9a9aa1;
-    --orange:#ff6b35;
-    --orange-d:#e4551f;
-    --green:#3fb950;
+    --bg:#0b0b0d;
+    --panel:#121214;
+    --card:#17171a;
+    --line:#232327;
+    --text:#f0efe9;
+    --muted:#a09f9a;
+    --orange:#ff6b2b;
+    --orange-d:#e04e12;
+    --green:#46c45a;
   }
   html{scroll-behavior:smooth}
   body{
@@ -24,239 +24,182 @@
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
     font-size:16px;line-height:1.6;
     overflow-x:hidden;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
   }
   a{color:var(--orange);text-decoration:none}
   a:hover{color:var(--orange-d)}
 
-  /* ---------- Шапка ---------- */
+  /* Шапка */
   header{
-    background:rgba(13,13,15,.88);
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
+    background:rgba(11,11,13,.9);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
     position:sticky;top:0;z-index:100;
   }
-  .nav{
-    max-width:1140px;margin:0 auto;padding:0 18px;height:62px;
-    display:flex;align-items:center;justify-content:space-between;gap:16px;
-  }
-  .logo{font-weight:900;font-size:21px;letter-spacing:.5px;color:var(--text);white-space:nowrap}
+  .nav{max-width:1160px;margin:0 auto;padding:0 18px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .logo{font-weight:900;font-size:22px;letter-spacing:1px;color:var(--text);white-space:nowrap;text-transform:uppercase}
   .logo span{color:var(--orange)}
   .menu{display:flex;align-items:center;gap:2px;flex-wrap:wrap}
-  .menu a{color:var(--muted);font-size:14px;padding:8px 12px;border-radius:4px;transition:color .15s,background .15s}
-  .menu a:hover{color:var(--text);background:#202024}
+  .menu a{color:var(--muted);font-size:13px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;padding:9px 12px;border-radius:3px;transition:color .15s,background .15s}
+  .menu a:hover{color:var(--text);background:#1d1d21}
   .nav-right{display:flex;align-items:center;gap:10px}
-  .btn-shop{
-    background:var(--orange);color:#141417;font-weight:700;font-size:14px;
-    padding:9px 18px;border-radius:4px;white-space:nowrap;transition:background .15s,transform .15s;
-  }
-  .btn-shop:hover{background:var(--orange-d);color:#141417;transform:translateY(-1px)}
-  .burger{
-    display:none;background:none;border:1px solid var(--line);color:var(--text);
-    font-size:20px;padding:2px 10px;border-radius:4px;cursor:pointer;
-  }
+  .btn-shop{background:var(--orange);color:#121212;font-weight:800;font-size:13px;letter-spacing:.4px;text-transform:uppercase;padding:10px 18px;border-radius:3px;white-space:nowrap;transition:background .15s,transform .15s}
+  .btn-shop:hover{background:var(--orange-d);color:#121212;transform:translateY(-1px)}
+  .burger{display:none;background:none;border:1px solid var(--line);color:var(--text);font-size:20px;padding:2px 10px;border-radius:3px;cursor:pointer}
 
-  /* ---------- Герой ---------- */
-  .hero{
-    position:relative;min-height:92vh;
-    display:flex;align-items:center;justify-content:center;text-align:center;
-    padding:90px 18px;overflow:hidden;
-    border-bottom:1px solid var(--line);
-  }
-  .hero-bg{
-    position:absolute;inset:-24px;
-    background:url('https://i.ibb.co/Wvrfjy4x/image.png') center/cover no-repeat;
-    filter:blur(5px) saturate(.85) brightness(.5);
-    transform:scale(1.07);
-    will-change:transform;
-  }
-  .hero-bg::after{
-    content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg,rgba(13,13,15,.55) 0%,rgba(13,13,15,.7) 70%,var(--bg) 100%);
-  }
-  .hero-inner{position:relative;z-index:2;max-width:780px}
-  .hero h1{font-size:50px;font-weight:900;letter-spacing:2px;line-height:1.08;margin-bottom:10px}
+  /* Герой */
+  .hero{position:relative;min-height:94vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 18px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero-bg{position:absolute;inset:0;background:url('https://i.ibb.co/Wvrfjy4x/image.png') center/cover no-repeat;filter:brightness(.5) saturate(.9);transform:scale(1.03);will-change:transform}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,13,.6) 0%,rgba(11,11,13,.55) 60%,var(--bg) 100%)}
+  .hero-inner{position:relative;z-index:2;max-width:820px}
+  .hero h1{font-size:56px;font-weight:900;letter-spacing:3px;line-height:1.05;text-transform:uppercase;margin-bottom:12px}
   .hero h1 span{color:var(--orange)}
-  .hero .sub{color:#d2d2d7;font-size:17px;margin-bottom:20px;letter-spacing:.3px}
-  .badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:28px}
-  .badge{
-    background:rgba(20,20,24,.82);border:1px solid rgba(255,255,255,.14);
-    color:var(--orange);font-weight:700;font-size:13px;letter-spacing:.4px;
-    padding:6px 15px;border-radius:20px;
-  }
-  .ip-row{
-    display:inline-flex;align-items:center;gap:10px;
-    background:rgba(20,20,24,.88);border:1px solid var(--line);border-radius:6px;
-    padding:11px 15px;margin-bottom:22px;
-  }
-  .ip-row code{color:var(--text);font-size:17px;font-weight:700;font-family:Consolas,Monaco,monospace}
-  .copy-btn{
-    background:none;border:1px solid var(--line);color:var(--muted);border-radius:4px;
-    padding:6px 12px;cursor:pointer;font-size:13px;transition:all .15s;
-  }
+  .hero .sub{color:#d8d6cf;font-size:17px;letter-spacing:1px;margin-bottom:22px;text-transform:uppercase;font-weight:600}
+  .badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:30px}
+  .badge{background:rgba(18,18,20,.82);border:1px solid rgba(255,255,255,.16);color:var(--orange);font-weight:800;font-size:12px;letter-spacing:.6px;padding:6px 16px;border-radius:2px;text-transform:uppercase}
+  .ip-row{display:inline-flex;align-items:center;gap:10px;background:rgba(18,18,20,.9);border:1px solid var(--line);border-radius:3px;padding:12px 16px;margin-bottom:24px}
+  .ip-row code{color:var(--text);font-size:18px;font-weight:700;font-family:Consolas,Monaco,monospace}
+  .copy-btn{background:none;border:1px solid var(--line);color:var(--muted);border-radius:3px;padding:7px 13px;cursor:pointer;font-size:12px;text-transform:uppercase;font-weight:700;letter-spacing:.4px;transition:all .15s}
   .copy-btn:hover{color:var(--text);border-color:var(--orange)}
   .hero-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-  .btn{
-    display:inline-block;background:var(--orange);color:#141417;font-weight:700;font-size:15px;
-    padding:13px 28px;border-radius:4px;transition:background .15s,transform .15s;
-  }
-  .btn:hover{background:var(--orange-d);color:#141417;transform:translateY(-1px)}
-  .btn.dark{background:#26262b;color:var(--text)}
-  .btn.dark:hover{background:#333338;color:var(--text)}
-  .hero-note{margin-top:16px;font-size:13px;color:#b5b5bb}
+  .btn{display:inline-block;background:var(--orange);color:#121212;font-weight:800;font-size:14px;letter-spacing:.5px;text-transform:uppercase;padding:14px 30px;border-radius:3px;transition:background .15s,transform .15s}
+  .btn:hover{background:var(--orange-d);color:#121212;transform:translateY(-1px)}
+  .btn.dark{background:#232327;color:var(--text)}
+  .btn.dark:hover{background:#2e2e33;color:var(--text)}
+  .hero-note{margin-top:18px;font-size:13px;color:#b4b3ad}
 
-  /* ---------- Контейнер ---------- */
-  .wrap{max-width:1140px;margin:0 auto;padding:60px 18px 80px}
+  /* Контейнер */
+  .wrap{max-width:1160px;margin:0 auto;padding:60px 18px 80px}
   section{margin-bottom:70px}
-  h2{font-size:28px;font-weight:800;margin-bottom:8px;letter-spacing:.3px}
-  .sub{color:var(--muted);margin-bottom:26px;font-size:15px}
+  .sec-head{margin-bottom:28px;border-bottom:2px solid var(--line);padding-bottom:14px}
+  h2{font-size:30px;font-weight:900;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+  .sub{color:var(--muted);font-size:15px}
 
-  /* ---------- Фоновые секции с кадрами ---------- */
-  .bg-sec{
-    position:relative;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-    padding:90px 0;
-  }
-  .bg-sec .bgimg{
-    position:absolute;inset:0;background-size:cover;background-position:center;
-    background-attachment:fixed;
-    filter:blur(3px) brightness(.32) saturate(.8);
-    transform:scale(1.05);
-  }
-  .bg-sec .content{position:relative;z-index:2;max-width:1140px;margin:0 auto;padding:0 18px;text-align:center}
-  .bg-sec .content h2{color:var(--text)}
-  .bg-sec .content .sub{color:#c5c5cb}
-  .bg-sec .content p{color:#cfcfd5;max-width:760px;margin:0 auto 14px}
-
-  /* ---------- Сервер ---------- */
-  .server-card{
-    background:linear-gradient(180deg,#1b1b1f,#141417);
-    border:1px solid var(--line);border-radius:10px;padding:30px;
-    display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;
-  }
-  .server-info .status{
-    display:inline-flex;align-items:center;gap:7px;color:var(--green);
-    font-size:13px;font-weight:600;margin-bottom:10px;
-  }
-  .server-info .status::before{
-    content:"";width:8px;height:8px;border-radius:50%;background:var(--green);
-    animation:pulse 2s infinite;
-  }
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-  .server-info h3{font-size:20px;font-weight:800}
+  /* Сервер-баннер */
+  .server-card{background:linear-gradient(180deg,#1a1a1e,#121214);border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:4px;padding:30px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
+  .server-info .status{display:inline-flex;align-items:center;gap:8px;color:var(--green);font-size:13px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;margin-bottom:10px}
+  .server-info .status::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .server-info h3{font-size:21px;font-weight:800;letter-spacing:.3px}
   .server-info .online-line{color:var(--muted);font-size:14px;margin-top:6px}
-  .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-  .tag{background:#222226;border:1px solid var(--line);color:var(--orange);font-size:12px;font-weight:700;letter-spacing:.4px;padding:4px 12px;border-radius:20px}
-  .connect-block{text-align:right;min-width:300px}
-  .connect-block .ip-row{background:#222226;border:1px solid var(--line);border-radius:6px;padding:9px 11px;margin:0}
+  .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .tag{background:#1d1d21;border:1px solid var(--line);color:var(--orange);font-size:11px;font-weight:800;letter-spacing:.5px;padding:4px 12px;border-radius:2px;text-transform:uppercase}
+  .connect-block{text-align:right;min-width:310px}
+  .connect-block .ip-row{background:#1d1d21;border:1px solid var(--line);border-radius:3px;padding:10px 12px;margin:0}
   .connect-btns{margin-top:12px;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
 
-  /* ---------- Шаги ---------- */
-  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-  .step{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:24px;transition:border-color .2s,transform .2s}
-  .step:hover{border-color:var(--orange);transform:translateY(-2px)}
-  .step .num{font-size:13px;font-weight:800;color:var(--orange);letter-spacing:1px;margin-bottom:8px}
-  .step .t{font-weight:700;margin-bottom:6px}
+  /* Галерея */
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+  .shot{position:relative;border-radius:4px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/10;background:#141416}
+  .shot img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+  .shot:hover img{transform:scale(1.06)}
+  .shot .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 10px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.82));font-size:13px;font-weight:700;letter-spacing:.3px;color:#fff}
+
+  /* Шаги */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:26px;position:relative;transition:border-color .2s,transform .2s}
+  .step:hover{border-color:var(--orange);transform:translateY(-3px)}
+  .step .num{font-size:34px;font-weight:900;color:var(--orange);opacity:.85;line-height:1;margin-bottom:14px}
+  .step .t{font-weight:800;font-size:16px;margin-bottom:8px;text-transform:uppercase;letter-spacing:.3px}
   .step p{color:var(--muted);font-size:14px}
 
-  /* ---------- Преимущества ---------- */
-  .feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-  .feat{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:22px;transition:border-color .2s,transform .2s}
-  .feat:hover{border-color:var(--orange);transform:translateY(-2px)}
-  .feat .t{font-weight:700;margin-bottom:6px;font-size:16px}
-  .feat p{color:var(--muted);font-size:14px}
+  /* Фоновые секции */
+  .bg-sec{position:relative;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:100px 0}
+  .bg-sec .bgimg{position:absolute;inset:0;background-size:cover;background-position:center;background-attachment:fixed;filter:brightness(.3) saturate(.85)}
+  .bg-sec .content{position:relative;z-index:2;max-width:1160px;margin:0 auto;padding:0 18px;text-align:center}
+  .bg-sec .content h2{color:var(--text)}
+  .bg-sec .content .sub{color:#c6c5bf}
+  .bg-sec .content p{color:#d4d3cd;max-width:780px;margin:0 auto 14px}
 
-  /* ---------- Привилегии ---------- */
-  .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:20px}
-  .plan{
-    background:var(--card);border:1px solid var(--line);border-radius:8px;padding:22px;
-    display:flex;flex-direction:column;transition:border-color .2s,transform .2s;
-  }
-  .plan:hover{border-color:var(--orange);transform:translateY(-2px)}
+  /* Фичи */
+  .feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;text-align:left}
+  .feat{background:rgba(18,18,20,.85);border:1px solid var(--line);border-radius:4px;padding:24px;transition:border-color .2s,transform .2s}
+  .feat:hover{border-color:var(--orange);transform:translateY(-3px)}
+  .feat .t{font-weight:800;font-size:16px;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px;color:var(--text)}
+  .feat p{color:var(--muted);font-size:14px;margin:0}
+
+  /* Привилегии */
+  .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:22px}
+  .plan{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:26px;display:flex;flex-direction:column;position:relative;transition:border-color .2s,transform .2s}
+  .plan:hover{border-color:var(--orange);transform:translateY(-3px)}
   .plan.hot{border-color:var(--orange)}
-  .plan .t{font-weight:800;font-size:19px;margin-bottom:6px}
-  .plan .price{color:var(--orange);font-weight:800;font-size:16px;margin-bottom:12px}
-  .plan .buy{
-    margin-top:auto;display:inline-block;background:var(--orange);color:#141417;
-    font-weight:700;font-size:14px;padding:9px 16px;border-radius:4px;text-align:center;
-    transition:background .15s;
-  }
-  .plan .buy:hover{background:var(--orange-d);color:#141417}
+  .plan .t{font-weight:900;font-size:20px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:4px}
+  .plan .price{color:var(--orange);font-weight:800;font-size:17px;margin-bottom:16px}
+  .plan .buy{margin-top:auto;display:block;background:var(--orange);color:#121212;font-weight:800;font-size:13px;letter-spacing:.4px;text-transform:uppercase;padding:11px 16px;border-radius:3px;text-align:center;transition:background .15s}
+  .plan .buy:hover{background:var(--orange-d);color:#121212}
 
-  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:14px;margin:12px 0}
-  th{background:#202024;color:var(--text);text-align:left;padding:11px 15px;border-bottom:1px solid var(--line);font-weight:700}
-  td{padding:11px 15px;border-bottom:1px solid var(--line);color:var(--muted);vertical-align:top}
+  /* Услуги */
+  .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+  .serv{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;transition:border-color .2s,transform .2s}
+  .serv:hover{border-color:var(--orange);transform:translateY(-3px)}
+  .serv .name{font-weight:700;font-size:15px}
+  .serv .name small{display:block;color:var(--muted);font-weight:400;font-size:13px;margin-top:2px}
+  .serv .price{color:var(--orange);font-weight:800;font-size:16px;white-space:nowrap}
+
+  /* Таблицы (для наказаний и пр.) */
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);font-size:14px;margin:14px 0}
+  th{background:#1b1b1f;color:var(--text);text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);font-weight:800;letter-spacing:.3px;text-transform:uppercase;font-size:12px}
+  td{padding:12px 16px;border-bottom:1px solid var(--line);color:var(--muted);vertical-align:top}
   tr:last-child td{border-bottom:none}
-  tr:hover td{background:#202024}
-  td.price-cell{color:var(--orange);font-weight:700;white-space:nowrap;text-align:right}
+  tr:hover td{background:#1b1b1f}
+  code{background:#1d1d21;border:1px solid var(--line);padding:2px 8px;border-radius:3px;font-size:13px;color:var(--orange);font-family:Consolas,Monaco,monospace}
 
-  code{background:#222226;border:1px solid var(--line);padding:2px 8px;border-radius:4px;font-size:13px;color:var(--orange);font-family:Consolas,Monaco,monospace}
-
-  /* ---------- FAQ ---------- */
-  details{background:var(--card);border:1px solid var(--line);border-radius:8px;margin-bottom:10px;overflow:hidden}
-  summary{cursor:pointer;padding:16px 20px;font-weight:600;font-size:15px;list-style:none;position:relative;padding-right:44px;transition:background .15s}
-  summary:hover{background:#202024}
-  summary::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);color:var(--orange);font-size:22px;font-weight:700}
+  /* FAQ */
+  details{background:var(--card);border:1px solid var(--line);border-radius:4px;margin-bottom:10px;overflow:hidden}
+  summary{cursor:pointer;padding:17px 22px;font-weight:700;font-size:15px;list-style:none;position:relative;padding-right:44px;transition:background .15s}
+  summary:hover{background:#1d1d21}
+  summary::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);color:var(--orange);font-size:22px;font-weight:700}
   details[open] summary::after{content:"–"}
-  details .faq-body{padding:0 20px 18px;color:var(--muted);font-size:14px}
+  details .faq-body{padding:0 22px 20px;color:var(--muted);font-size:14px}
 
-  /* ---------- Wiki ---------- */
-  .wiki-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
-  .wiki-item{
-    display:block;background:var(--card);border:1px solid var(--line);border-radius:8px;
-    padding:22px;color:var(--text);transition:border-color .2s,transform .2s;
-  }
-  .wiki-item:hover{border-color:var(--orange);transform:translateY(-2px);color:var(--text)}
-  .wiki-item .num{font-size:12px;font-weight:800;color:var(--orange);letter-spacing:1px}
-  .wiki-item .t{font-weight:700;margin:7px 0 5px}
+  /* Wiki */
+  .wiki-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+  .wiki-item{display:block;background:var(--card);border:1px solid var(--line);border-radius:4px;padding:24px;color:var(--text);transition:border-color .2s,transform .2s}
+  .wiki-item:hover{border-color:var(--orange);transform:translateY(-3px);color:var(--text)}
+  .wiki-item .num{font-size:12px;font-weight:900;color:var(--orange);letter-spacing:1px;text-transform:uppercase}
+  .wiki-item .t{font-weight:800;font-size:16px;margin:8px 0 6px;text-transform:uppercase;letter-spacing:.3px}
   .wiki-item p{color:var(--muted);font-size:13px;margin:0}
 
-  .wiki-section{
-    background:var(--panel);border:1px solid var(--line);border-radius:10px;
-    padding:30px;margin-bottom:24px;scroll-margin-top:80px;
-  }
-  .wiki-section h3{font-size:21px;font-weight:800;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--line)}
-  .wiki-section h4{font-size:16px;margin:20px 0 10px}
+  .wiki-section{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:4px;padding:32px;margin-bottom:26px;scroll-margin-top:80px}
+  .wiki-section h3{font-size:22px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+  .wiki-section h4{font-size:16px;font-weight:800;margin:22px 0 10px;text-transform:uppercase;letter-spacing:.3px}
   .wiki-section p{color:var(--muted);margin-bottom:10px;font-size:15px}
   .wiki-section ul,.wiki-section ol{padding-left:22px;color:var(--muted);margin-bottom:10px;font-size:15px}
-  .wiki-section li{margin-bottom:6px}
+  .wiki-section li{margin-bottom:8px}
   .wiki-section strong{color:var(--text)}
-  .back-top{display:inline-block;margin-top:8px;font-size:13px}
+  .back-top{display:inline-block;margin-top:10px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.4px}
 
-  .steps-num{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:16px 0}
-  .stepn{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px}
-  .stepn .num{font-size:13px;font-weight:800;color:var(--orange);letter-spacing:1px;margin-bottom:8px}
-  .stepn .t{font-weight:700;margin-bottom:6px}
+  .steps-num{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:18px 0}
+  .stepn{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:22px}
+  .stepn .num{font-size:13px;font-weight:900;color:var(--orange);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+  .stepn .t{font-weight:800;margin-bottom:6px;text-transform:uppercase;letter-spacing:.3px;font-size:14px}
   .stepn p{color:var(--muted);font-size:14px}
 
-  .note{border-left:3px solid var(--orange);background:#1d1d21;padding:12px 16px;margin:14px 0;color:var(--muted);font-size:14px;border-radius:0 6px 6px 0}
+  .note{border-left:3px solid var(--orange);background:#1c1c20;padding:14px 18px;margin:16px 0;color:var(--muted);font-size:14px;border-radius:0 4px 4px 0}
   .warn{border-left-color:#e5a13a}
   .danger{border-left-color:#d64545}
 
-  /* ---------- Сообщество ---------- */
-  .socials{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
-  .social{
-    display:flex;align-items:center;justify-content:space-between;gap:12px;
-    background:var(--card);border:1px solid var(--line);border-radius:8px;
-    padding:20px 22px;color:var(--text);transition:border-color .2s,transform .2s;
-  }
-  .social:hover{border-color:var(--orange);transform:translateY(-2px);color:var(--text)}
-  .social .t{font-weight:700}
+  /* Сообщество */
+  .socials{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+  .social{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:4px;padding:22px 24px;color:var(--text);transition:border-color .2s,transform .2s}
+  .social:hover{border-color:var(--orange);transform:translateY(-3px);color:var(--text)}
+  .social .t{font-weight:800;text-transform:uppercase;letter-spacing:.3px;font-size:15px}
   .social small{color:var(--muted);display:block;font-size:13px}
 
-  /* ---------- Reveal ---------- */
-  .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
   .reveal.visible{opacity:1;transform:none}
 
-  footer{border-top:1px solid var(--line);padding:28px 18px;text-align:center;color:var(--muted);font-size:13px}
+  footer{border-top:1px solid var(--line);padding:30px 18px;text-align:center;color:var(--muted);font-size:13px}
   footer a{color:var(--muted);text-decoration:underline}
   footer a:hover{color:var(--orange)}
 
-  @media(max-width:860px){
+  @media(max-width:880px){
     .menu{display:none;width:100%;flex-direction:column;background:var(--panel);padding:10px 0;border-top:1px solid var(--line)}
     .menu.open{display:flex}
     .nav{flex-wrap:wrap;height:auto;padding:10px 16px}
     .burger{display:block}
-    .hero h1{font-size:32px}
+    .hero h1{font-size:34px}
     .connect-block{text-align:left;min-width:100%}
     .connect-btns{justify-content:flex-start}
     .server-card{padding:22px}
@@ -268,16 +211,17 @@
 
 <header>
   <div class="nav">
-    <div class="logo">BLAZE<span>RUST</span></div>
+    <div class="logo">Blaze<span>Rust</span></div>
     <button class="burger" onclick="document.querySelector('.menu').classList.toggle('open')">☰</button>
     <nav class="menu">
       <a href="#servers">Сервера</a>
+      <a href="#gallery">Кадры</a>
       <a href="#start">Как начать</a>
-      <a href="#why">Преимущества</a>
-      <a href="#plans">Магазин</a>
+      <a href="#why">О нас</a>
+      <a href="#shop">Магазин</a>
       <a href="#faq">Вопросы</a>
       <a href="#wiki">Wiki</a>
-      <a href="#community">Сообщество</a>
+      <a href="#community">Контакты</a>
     </nav>
     <div class="nav-right">
       <a class="btn-shop" href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">Магазин</a>
@@ -289,7 +233,7 @@
 <div class="hero">
   <div class="hero-bg" id="heroBg"></div>
   <div class="hero-inner">
-    <h1>BLAZE <span>RUST</span></h1>
+    <h1>Blaze <span>Rust</span></h1>
     <div class="sub">X10/X50 · NOLIMIT · CLANS · LOOT+</div>
     <div class="badges">
       <span class="badge">X10/X50</span>
@@ -311,15 +255,17 @@
 
 <div class="wrap">
 
-  <!-- СЕРВЕРА -->
+  <!-- СЕРВЕР -->
   <section id="servers">
-    <h2>Наши сервера</h2>
-    <p class="sub">Скопируй коннект и заходи в игру через консоль (F1)</p>
+    <div class="sec-head">
+      <h2>Наши сервера</h2>
+      <div class="sub">Скопируй коннект и заходи в игру через консоль (F1)</div>
+    </div>
     <div class="server-card reveal">
       <div class="server-info">
         <span class="status">Сервер работает</span>
         <h3>BLAZE RUST #1 [ X10/X50 | NOLIMIT | CLANS | LOOT+ ]</h3>
-        <div class="online-line">Без лимитов · Кланы · Улучшенный лут</div>
+        <div class="online-line">Без лимитов · Кланы · Улучшенный лут · Плагины</div>
         <div class="tags">
           <span class="tag">X10/X50</span>
           <span class="tag">NOLIMIT</span>
@@ -340,10 +286,28 @@
     </div>
   </section>
 
+  <!-- ГАЛЕРЕЯ -->
+  <section id="gallery">
+    <div class="sec-head">
+      <h2>Кадры с сервера</h2>
+      <div class="sub">Так выглядит игра на BLAZE RUST</div>
+    </div>
+    <div class="gallery">
+      <div class="shot reveal"><img src="https://www.goha.ru/s/A:BC/4S/uV8Z0XBuvZ.jpg" alt="Игровой кадр"><div class="cap">BLAZE RUST #1</div></div>
+      <div class="shot reveal"><img src="https://i.ibb.co/Wvrfjy4x/image.png" alt="Игровой кадр"><div class="cap">Базы и кланы</div></div>
+      <div class="shot reveal"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwq97KaMwKSNNtLdXz6LzGLwDdry1fz_Mysnlokir1HzktIVeh9eNKIZc&s=10" alt="Игровой кадр"><div class="cap">Рейды</div></div>
+      <div class="shot reveal"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA4t9Dzqk7NMafZUzft4ud3QuGaRVoxDcHiy1TGSSN9cXXD9ydhOXwqA0o&s=10" alt="Игровой кадр"><div class="cap">Замесы</div></div>
+      <div class="shot reveal"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPFaw9Qg3g6Hn7uDHK6NSZ9SbUKfsB8DMPHuuQgRz2c8Xp7U4GSBRO8gA&s=10" alt="Игровой кадр"><div class="cap">Добыча</div></div>
+      <div class="shot reveal"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwOn00tWY9Y6ERPESg90DdWipuneePRNvDN_3B1cXPjK5pxKHGshx0QGo&s=10" alt="Игровой кадр"><div class="cap">События</div></div>
+    </div>
+  </section>
+
   <!-- КАК НАЧАТЬ -->
   <section id="start">
-    <h2>Как начать играть</h2>
-    <p class="sub">Три простых шага — и ты в игре</p>
+    <div class="sec-head">
+      <h2>Как начать играть</h2>
+      <div class="sub">Три простых шага — и ты в игре</div>
+    </div>
     <div class="steps">
       <div class="step reveal"><div class="num">01</div><div class="t">Скопируй IP</div><p>Нажми кнопку копирования рядом с сервером выше.</p></div>
       <div class="step reveal"><div class="num">02</div><div class="t">Открой консоль</div><p>В Rust нажми F1, вставь команду <code>connect 46.174.48.219:28015</code> и нажми Enter.</p></div>
@@ -353,13 +317,15 @@
 
 </div>
 
-<!-- ФОН С КАДРОМ RUST -->
+<!-- ФОН: ПОЧЕМУ BLAZE RUST -->
 <div class="bg-sec">
-  <div class="bgimg" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwq97KaMwKSNNtLdXz6LzGLwDdry1fz_Mysnlokir1HzktIVeh9eNKIZc&s=10')"></div>
+  <div class="bgimg" style="background-image:url('https://www.goha.ru/s/A:BC/4S/uV8Z0XBuvZ.jpg')"></div>
   <div class="content">
-    <h2>Почему BLAZE RUST</h2>
-    <p class="sub" style="margin-bottom:16px">Стабильный проект с честной игрой и живым сообществом</p>
-    <div class="feats" style="text-align:left">
+    <div class="sec-head" style="text-align:center;border-color:rgba(255,255,255,.15)">
+      <h2>Почему Blaze Rust</h2>
+      <div class="sub" style="color:#c6c5bf">Стабильный проект с честной игрой и живым сообществом</div>
+    </div>
+    <div class="feats">
       <div class="feat reveal"><div class="t">Рейты X10/X50</div><p>Быстрая добыча ресурсов — прокачиваешься быстро и без скучного фарма.</p></div>
       <div class="feat reveal"><div class="t">NOLIMIT</div><p>Нет лимитов на строительство и количество игроков в клане.</p></div>
       <div class="feat reveal"><div class="t">Кланы</div><p>Полноценная система кланов: теги, союзники, враги, свои базы.</p></div>
@@ -372,10 +338,14 @@
 
 <div class="wrap">
 
-  <!-- МАГАЗИН / ПРИВИЛЕГИИ -->
-  <section id="plans">
-    <h2>Магазин</h2>
-    <p class="sub">Привилегии и товары покупаются в официальном магазине сервера — <a href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">shopblaze.gamestores.app</a></p>
+  <!-- МАГАЗИН -->
+  <section id="shop">
+    <div class="sec-head">
+      <h2>Магазин</h2>
+      <div class="sub">Привилегии и услуги покупаются в официальном магазине — <a href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">shopblaze.gamestores.app</a></div>
+    </div>
+
+    <h2 style="font-size:20px;margin-bottom:16px">Привилегии</h2>
     <div class="plans">
       <div class="plan reveal"><div class="t">VIP</div><div class="price">от 189 ₽</div><a class="buy" href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">Купить</a></div>
       <div class="plan reveal"><div class="t">HERO</div><div class="price">от 290 ₽</div><a class="buy" href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">Купить</a></div>
@@ -384,47 +354,36 @@
       <div class="plan reveal"><div class="t">MIRAGE</div><div class="price">от 890 ₽</div><a class="buy" href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">Купить</a></div>
     </div>
 
-    <h2 style="font-size:22px;margin-top:34px">Товары</h2>
-    <p class="sub">Популярные товары магазина — полный список на сайте магазина</p>
-    <table class="reveal">
-      <tr><th>Товар</th><th>Цена</th></tr>
-      <tr><td>Набор пулемётчика</td><td class="price-cell">120 ₽</td></tr>
-      <tr><td>Набор штурмовика</td><td class="price-cell">80 ₽</td></tr>
-      <tr><td>Набор МП5-ЧИКА</td><td class="price-cell">65 ₽</td></tr>
-      <tr><td>Набор берданщика</td><td class="price-cell">30 ₽</td></tr>
-      <tr><td>СУПЕР ЧАЙ</td><td class="price-cell">150 ₽</td></tr>
-      <tr><td>Timed Explosive Charge x25</td><td class="price-cell">60 ₽</td></tr>
-      <tr><td>Rocket x25</td><td class="price-cell">50 ₽</td></tr>
-      <tr><td>High Velocity Rocket x25</td><td class="price-cell">40 ₽</td></tr>
-      <tr><td>High Quality Metal x10000</td><td class="price-cell">100 ₽</td></tr>
-      <tr><td>Metal Fragments x500000</td><td class="price-cell">75 ₽</td></tr>
-      <tr><td>Sulfur x250000</td><td class="price-cell">73 ₽</td></tr>
-      <tr><td>Gun Powder x100000</td><td class="price-cell">75 ₽</td></tr>
-      <tr><td>Wood x750000</td><td class="price-cell">50 ₽</td></tr>
-      <tr><td>Low Grade Fuel x25000</td><td class="price-cell">50 ₽</td></tr>
-      <tr><td>Auto Turret</td><td class="price-cell">8 ₽</td></tr>
-      <tr><td>Pure Max Health Tea x10</td><td class="price-cell">50 ₽</td></tr>
-      <tr><td>Pure Ore Tea</td><td class="price-cell">30 ₽</td></tr>
-      <tr><td>Medical Syringe x50</td><td class="price-cell">5 ₽</td></tr>
-      <tr><td>Blueberries x50</td><td class="price-cell">10 ₽</td></tr>
-      <tr><td>SAM Site</td><td class="price-cell">10 ₽</td></tr>
-      <tr><td>Test Generator</td><td class="price-cell">30 ₽</td></tr>
-      <tr><td>Вечная прочность предметов</td><td class="price-cell">150 ₽</td></tr>
-      <tr><td>СКАН 30 ДНЕЙ</td><td class="price-cell">750 ₽</td></tr>
-      <tr><td>Разбан | UNBAN</td><td class="price-cell">500 ₽</td></tr>
-    </table>
-    <div class="note warn"><strong>Внимание:</strong> все вопросы по донату, покупкам и возврату средств решаются через тикет в Discord. Чат Telegram — только для общения игроков.</div>
+    <h2 style="font-size:20px;margin-bottom:16px">Услуги</h2>
+    <div class="services">
+      <div class="serv reveal"><div class="name">Разбан | UNBAN<small>Снятие блокировки с аккаунта</small></div><div class="price">500 ₽</div></div>
+      <div class="serv reveal"><div class="name">СКАН 30 ДНЕЙ<small>Проверка аккаунта на читы</small></div><div class="price">750 ₽</div></div>
+      <div class="serv reveal"><div class="name">Вечная прочность предметов<small>Предметы не ломаются</small></div><div class="price">150 ₽</div></div>
+      <div class="serv reveal"><div class="name">СУПЕР ЧАЙ<small>Максимальный буст</small></div><div class="price">150 ₽</div></div>
+    </div>
+
+    <h2 style="font-size:20px;margin:30px 0 16px">Наборы</h2>
+    <div class="services">
+      <div class="serv reveal"><div class="name">Набор пулемётчика<small>Готовый комплект для боя</small></div><div class="price">120 ₽</div></div>
+      <div class="serv reveal"><div class="name">Набор штурмовика<small>Готовый комплект для боя</small></div><div class="price">80 ₽</div></div>
+      <div class="serv reveal"><div class="name">Набор МП5-ЧИКА<small>Комплект с МП5</small></div><div class="price">65 ₽</div></div>
+      <div class="serv reveal"><div class="name">Набор берданщика<small>Комплект для охоты</small></div><div class="price">30 ₽</div></div>
+    </div>
+
+    <div class="note warn"><strong>Внимание:</strong> все вопросы по донату, покупкам и возврату средств решаются <strong>только через тикет в Discord</strong>. Чат Telegram — исключительно для общения игроков.</div>
   </section>
 
 </div>
 
-<!-- ФОН С КАДРОМ RUST -->
+<!-- ФОН: ВОПРОСЫ -->
 <div class="bg-sec">
-  <div class="bgimg" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA4t9Dzqk7NMafZUzft4ud3QuGaRVoxDcHiy1TGSSN9cXXD9ydhOXwqA0o&s=10')"></div>
+  <div class="bgimg" style="background-image:url('https://i.ibb.co/Wvrfjy4x/image.png')"></div>
   <div class="content">
-    <h2>Вопросы и ответы</h2>
-    <p class="sub" style="margin-bottom:20px">Ответы на вопросы, которые задают чаще всего</p>
-    <div style="text-align:left;max-width:820px;margin:0 auto">
+    <div class="sec-head" style="text-align:center;border-color:rgba(255,255,255,.15)">
+      <h2>Вопросы и ответы</h2>
+      <div class="sub" style="color:#c6c5bf">Ответы на вопросы, которые задают чаще всего</div>
+    </div>
+    <div style="text-align:left;max-width:840px;margin:0 auto">
       <details>
         <summary>Как подключиться к серверу?</summary>
         <div class="faq-body">Скопируй IP <code>46.174.48.219:28015</code>, запусти Rust, нажми <code>F1</code>, введи <code>connect 46.174.48.219:28015</code> и нажми Enter. Либо нажми кнопку «Подключиться» на сайте — игра откроется сама.</div>
@@ -447,7 +406,7 @@
       </details>
       <details>
         <summary>Не заходит на сервер / ошибка Timed Out?</summary>
-        <div class="faq-body">Пройтись по решениям можно в разделе Wiki → «Ошибка Timed Out». Если не помогло — создай тикет в Discord и опиши проблему.</div>
+        <div class="faq-body">Решения есть в Wiki → «Ошибка Timed Out». Если не помогло — создай тикет в Discord и опиши проблему.</div>
       </details>
     </div>
   </div>
@@ -457,18 +416,20 @@
 
   <!-- WIKI -->
   <section id="wiki">
-    <h2>Wiki BLAZE RUST</h2>
-    <p class="sub">Всё о проекте в одном месте: правила, наказания, донат и инструкции</p>
+    <div class="sec-head">
+      <h2>Wiki Blaze Rust</h2>
+      <div class="sub">Всё о проекте в одном месте: правила, наказания, донат и инструкции</div>
+    </div>
     <div class="wiki-grid">
       <a class="wiki-item reveal" href="#intro"><div class="num">01</div><div class="t">Вводные правила</div><p>Базовые положения проекта — прочитай до первого захода.</p></a>
       <a class="wiki-item reveal" href="#main-rules"><div class="num">02</div><div class="t">Основные правила</div><p>Свод правил поведения на сервере.</p></a>
       <a class="wiki-item reveal" href="#donate"><div class="num">03</div><div class="t">Соглашение на донат</div><p>Условия пополнения счёта и возврата средств.</p></a>
       <a class="wiki-item reveal" href="#punish"><div class="num">04</div><div class="t">Наказания</div><p>Таблица наказаний за нарушение правил.</p></a>
       <a class="wiki-item reveal" href="#complaints"><div class="num">05</div><div class="t">Как подать жалобу</div><p>Жалобы на читеров — через тикет в Discord.</p></a>
-      <a class="wiki-item reveal" href="#connect"><div class="num">06</div><div class="t">Подключение через connect</div><p>Быстрый способ зайти на сервер через консоль F1.</p></a>
+      <a class="wiki-item reveal" href="#connect"><div class="num">06</div><div class="t">Подключение connect</div><p>Быстрый способ зайти на сервер через консоль F1.</p></a>
       <a class="wiki-item reveal" href="#fps"><div class="num">07</div><div class="t">Не запускается / FPS</div><p>Вылеты, ошибки EAC, чёрный экран, DLL и низкий FPS.</p></a>
       <a class="wiki-item reveal" href="#timeout"><div class="num">08</div><div class="t">Ошибка Timed Out</div><p>Как исправить Authentication Timed Out и Steam Auth Failed.</p></a>
-      <a class="wiki-item reveal" href="#reconnect"><div class="num">09</div><div class="t">Повторный вход</div><p>Как быстро вернуться на сервер после вылета или вайпа.</p></a>
+      <a class="wiki-item reveal" href="#reconnect"><div class="num">09</div><div class="t">Повторный вход</div><p>Как быстро вернуться после вылета или вайпа.</p></a>
     </div>
   </section>
 
@@ -571,12 +532,14 @@
 
 </div>
 
-<!-- ФОН С КАДРОМ RUST -->
+<!-- ФОН: ПОДКЛЮЧЕНИЕ -->
 <div class="bg-sec">
-  <div class="bgimg" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPFaw9Qg3g6Hn7uDHK6NSZ9SbUKfsB8DMPHuuQgRz2c8Xp7U4GSBRO8gA&s=10')"></div>
+  <div class="bgimg" style="background-image:url('https://www.goha.ru/s/A:BC/4S/uV8Z0XBuvZ.jpg')"></div>
   <div class="content">
-    <h2>Подключение и инструкции</h2>
-    <p class="sub" style="margin-bottom:16px">Все гайды по подключению и решению проблем — в Wiki ниже</p>
+    <div class="sec-head" style="text-align:center;border-color:rgba(255,255,255,.15)">
+      <h2>Подключение и инструкции</h2>
+      <div class="sub" style="color:#c6c5bf">Все гайды по подключению и решению проблем — в Wiki ниже</div>
+    </div>
     <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
       <a class="btn" href="#connect">Подключение через connect</a>
       <a class="btn dark" href="#timeout">Ошибка Timed Out</a>
@@ -699,8 +662,10 @@
 
   <!-- СООБЩЕСТВО -->
   <section id="community">
-    <h2>Наше сообщество</h2>
-    <p class="sub">Присоединяйся к игрокам BLAZE RUST</p>
+    <div class="sec-head">
+      <h2>Наше сообщество</h2>
+      <div class="sub">Присоединяйся к игрокам BLAZE RUST</div>
+    </div>
     <div class="socials">
       <a class="social reveal" href="https://discord.gg/blazerust" target="_blank" rel="noopener">
         <div><div class="t">Discord</div><small>Тикеты, жалобы, поддержка</small></div>
@@ -715,7 +680,7 @@
         <span>→</span>
       </a>
       <a class="social reveal" href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">
-        <div><div class="t">Магазин</div><small>Привилегии и товары</small></div>
+        <div><div class="t">Магазин</div><small>Привилегии и услуги</small></div>
         <span>→</span>
       </a>
     </div>
@@ -753,18 +718,18 @@
   window.addEventListener('scroll', function(){
     var y = window.pageYOffset;
     if (y < window.innerHeight * 1.3) {
-      heroBg.style.transform = 'translateY(' + (y * 0.25) + 'px) scale(1.07)';
+      heroBg.style.transform = 'translateY(' + (y * 0.2) + 'px) scale(1.03)';
     }
   }, {passive:true});
 
-  // Плавное появление при скролле
+  // Появление при скролле
   var items = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
       });
-    }, {threshold: .1});
+    }, {threshold: .08});
     items.forEach(function(el){ io.observe(el); });
   } else {
     items.forEach(function(el){ el.classList.add('visible'); });
