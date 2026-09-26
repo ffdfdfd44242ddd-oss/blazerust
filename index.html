@@ -5,38 +5,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BLAZE RUST — X10/X50 | NOLIMIT | CLANS | LOOT+</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   :root{
-    --bg:#0a0a0c;
-    --metal:#141416;
-    --metal2:#1a1a1e;
-    --line:#2c2c31;
-    --text:#ede9dd;
-    --muted:#a39f92;
-    --rust:#f0a33a;
-    --rust-d:#d17f1e;
-    --green:#7bbf4a;
+    --bg:#0b0c0e;
+    --panel:rgba(19,20,23,.72);
+    --panel-solid:#15161a;
+    --card:rgba(25,26,30,.66);
+    --line:rgba(255,255,255,.09);
+    --text:#f1efe9;
+    --muted:#a7a399;
+    --accent:#ff7a33;
+    --accent-h:#ff9557;
+    --green:#5cc86a;
+    --radius:14px;
   }
   html{scroll-behavior:smooth}
   body{
     background:var(--bg);
     color:var(--text);
-    font-family:"Oswald",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-    font-size:16px;line-height:1.55;
+    font-family:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    font-size:16px;line-height:1.6;
     overflow-x:hidden;
-    letter-spacing:.2px;
+    -webkit-font-smoothing:antialiased;
   }
-  a{color:var(--rust);text-decoration:none}
-  a:hover{color:#ffc35e}
+  a{color:var(--accent);text-decoration:none;transition:color .15s}
+  a:hover{color:var(--accent-h)}
 
-  /* --- Анимированный фон: кадры Rust на весь сайт --- */
+  /* ===== Фон: анимированные кадры на весь сайт ===== */
   .bg-slideshow{position:fixed;inset:0;z-index:-3;overflow:hidden}
   .bg-slideshow .slide{
     position:absolute;inset:0;
     background-size:cover;background-position:center;
-    opacity:0;filter:brightness(.45) saturate(.9);
+    opacity:0;filter:brightness(.42) saturate(.95);
     animation:bgFade 42s infinite;
   }
   .bg-slideshow .slide:nth-child(1){background-image:url('https://i.ibb.co/Wvrfjy4x/image.png');animation-delay:0s}
@@ -48,207 +51,236 @@
   @keyframes bgFade{
     0%{opacity:0}
     4%{opacity:1}
-    14%{opacity:1}
-    18%{opacity:0}
+    13%{opacity:1}
+    17%{opacity:0}
     100%{opacity:0}
   }
-  .bg-overlay{position:fixed;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(8,8,10,.55),rgba(8,8,10,.75) 55%,rgba(8,8,10,.9));pointer-events:none}
-  .grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .bg-overlay{
+    position:fixed;inset:0;z-index:-2;
+    background:radial-gradient(1200px 700px at 70% -10%,rgba(255,122,51,.10),transparent 60%),
+               linear-gradient(180deg,rgba(8,9,11,.55),rgba(8,9,11,.8) 60%,rgba(8,9,11,.92));
+    pointer-events:none;
+  }
+  .grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-  /* --- Металлическая шапка с заклёпками --- */
+  /* ===== Шапка ===== */
   header{
     position:sticky;top:0;z-index:100;
-    background:linear-gradient(180deg,#19191c,#111114);
-    border-bottom:2px solid #3a3a40;
-    box-shadow:0 2px 14px rgba(0,0,0,.6);
+    background:rgba(11,12,14,.7);
+    backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--line);
   }
-  .header-inner{max-width:1160px;margin:0 auto;padding:0 18px;height:66px;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
-  .logo{font-family:"Russo One",sans-serif;font-size:22px;letter-spacing:1.5px;color:var(--text);white-space:nowrap;text-transform:uppercase}
-  .logo span{color:var(--rust)}
-  .menu{display:flex;align-items:center;gap:2px;flex-wrap:wrap}
+  .nav{max-width:1180px;margin:0 auto;padding:0 20px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .logo{font-family:"Russo One",sans-serif;font-size:21px;letter-spacing:1px;color:var(--text);white-space:nowrap;text-transform:uppercase}
+  .logo span{color:var(--accent)}
+  .menu{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
   .menu a{
-    color:var(--muted);font-size:13px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;
-    padding:8px 12px;border:1px solid transparent;transition:all .15s;
+    color:var(--muted);font-size:13px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;
+    padding:8px 13px;border-radius:9px;transition:all .15s;
   }
-  .menu a:hover{color:var(--text);border-color:#3a3a40;background:#1d1d21}
+  .menu a:hover{color:var(--text);background:rgba(255,255,255,.07)}
   .nav-right{display:flex;align-items:center;gap:10px}
   .btn-shop{
-    font-family:"Russo One",sans-serif;font-size:13px;letter-spacing:.8px;text-transform:uppercase;
-    background:linear-gradient(180deg,#f5a53a,#d17f1e);color:#141414;
-    padding:10px 20px;border:1px solid #a86a14;box-shadow:0 2px 0 #7a4d0e;
-    transition:all .15s;
+    font-family:"Russo One",sans-serif;font-size:13px;letter-spacing:.6px;text-transform:uppercase;
+    background:linear-gradient(135deg,var(--accent),#e9631c);color:#16130e;
+    padding:10px 20px;border-radius:10px;white-space:nowrap;
+    box-shadow:0 6px 18px rgba(255,122,51,.25);
+    transition:transform .15s,box-shadow .15s;
   }
-  .btn-shop:hover{background:linear-gradient(180deg,#ffb64d,#e08b24);color:#141414}
-  .burger{display:none;background:none;border:1px solid #3a3a40;color:var(--text);font-size:20px;padding:2px 10px;cursor:pointer}
+  .btn-shop:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(255,122,51,.35);color:#16130e}
+  .burger{display:none;background:none;border:1px solid var(--line);color:var(--text);font-size:20px;padding:4px 12px;border-radius:9px;cursor:pointer}
 
-  /* --- Герой --- */
-  .hero{position:relative;min-height:92vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 18px}
+  /* ===== Герой ===== */
+  .hero{position:relative;min-height:90vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:110px 20px 80px}
   .hero-inner{max-width:840px;position:relative;z-index:2}
-  .hero h1{font-family:"Russo One",sans-serif;font-size:60px;font-weight:400;letter-spacing:3px;line-height:1.02;text-transform:uppercase;margin-bottom:12px;text-shadow:0 3px 0 rgba(0,0,0,.6),0 0 30px rgba(240,163,58,.25)}
-  .hero h1 span{color:var(--rust)}
-  .hero .sub{color:#e8e2d2;font-size:17px;letter-spacing:2px;margin-bottom:24px;text-transform:uppercase;font-weight:500;text-shadow:0 1px 8px rgba(0,0,0,.8)}
+  .hero h1{font-family:"Russo One",sans-serif;font-size:58px;letter-spacing:2px;line-height:1.04;text-transform:uppercase;margin-bottom:14px;text-shadow:0 4px 30px rgba(0,0,0,.55)}
+  .hero h1 span{color:var(--accent)}
+  .hero .sub{color:#e6e2d8;font-size:16px;letter-spacing:1.4px;margin-bottom:26px;text-transform:uppercase;font-weight:600;text-shadow:0 2px 14px rgba(0,0,0,.7)}
   .badges{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:32px}
   .badge{
-    font-family:"Russo One",sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase;
-    background:rgba(16,16,18,.85);border:1px solid #4a4a50;color:var(--rust);padding:7px 16px;
+    font-family:"Russo One",sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;
+    background:rgba(15,16,19,.7);border:1px solid var(--line);backdrop-filter:blur(8px);
+    color:var(--accent);padding:8px 16px;border-radius:999px;
   }
-  .ip-row{display:inline-flex;align-items:center;gap:12px;background:rgba(14,14,16,.92);border:1px solid #4a4a50;border-left:4px solid var(--rust);padding:13px 16px;margin-bottom:26px}
-  .ip-row code{color:var(--text);font-size:18px;font-weight:600;font-family:Consolas,Monaco,monospace;letter-spacing:.5px}
-  .copy-btn{background:none;border:1px solid #4a4a50;color:var(--muted);padding:7px 14px;cursor:pointer;font-family:"Russo One",sans-serif;font-size:11px;letter-spacing:.8px;text-transform:uppercase;transition:all .15s}
-  .copy-btn:hover{color:var(--text);border-color:var(--rust)}
+  .ip-row{
+    display:inline-flex;align-items:center;gap:12px;
+    background:rgba(15,16,19,.75);border:1px solid var(--line);backdrop-filter:blur(10px);
+    border-radius:12px;padding:12px 16px;margin-bottom:26px;
+  }
+  .ip-row code{color:var(--text);font-size:17px;font-weight:600;font-family:Consolas,Monaco,monospace;letter-spacing:.4px}
+  .copy-btn{
+    background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--muted);border-radius:8px;
+    padding:7px 14px;cursor:pointer;font-family:"Russo One",sans-serif;font-size:11px;letter-spacing:.6px;text-transform:uppercase;
+    transition:all .15s;
+  }
+  .copy-btn:hover{color:var(--text);border-color:var(--accent);background:rgba(255,122,51,.12)}
   .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
   .btn{
-    font-family:"Russo One",sans-serif;font-size:14px;letter-spacing:.8px;text-transform:uppercase;
-    background:linear-gradient(180deg,#f5a53a,#d17f1e);color:#141414;
-    padding:14px 30px;border:1px solid #a86a14;box-shadow:0 3px 0 #7a4d0e;transition:all .15s;
+    display:inline-block;font-family:"Russo One",sans-serif;font-size:14px;letter-spacing:.6px;text-transform:uppercase;
+    background:linear-gradient(135deg,var(--accent),#e9631c);color:#16130e;
+    padding:14px 30px;border-radius:11px;
+    box-shadow:0 8px 24px rgba(255,122,51,.3);
+    transition:transform .15s,box-shadow .15s;
   }
-  .btn:hover{background:linear-gradient(180deg,#ffb64d,#e08b24);color:#141414}
-  .btn.dark{background:linear-gradient(180deg,#26262b,#19191c);color:var(--text);border-color:#3a3a40;box-shadow:0 3px 0 #101012}
-  .btn.dark:hover{background:linear-gradient(180deg,#303036,#202024);color:var(--text)}
-  .hero-note{margin-top:20px;font-size:13px;color:#c2bdb0;letter-spacing:.5px;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.8)}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,122,51,.4);color:#16130e}
+  .btn.dark{background:rgba(255,255,255,.08);color:var(--text);border:1px solid var(--line);box-shadow:none;backdrop-filter:blur(8px)}
+  .btn.dark:hover{background:rgba(255,255,255,.14);color:var(--text);box-shadow:none}
+  .hero-note{margin-top:22px;font-size:13px;color:#bdb8ad;letter-spacing:.5px;text-transform:uppercase;text-shadow:0 1px 8px rgba(0,0,0,.8)}
 
-  /* --- Контейнер и панели из металла --- */
-  .wrap{max-width:1160px;margin:0 auto;padding:40px 18px 80px;position:relative;z-index:2}
+  /* ===== Контейнер ===== */
+  .wrap{max-width:1180px;margin:0 auto;padding:36px 20px 80px;position:relative;z-index:2}
+  section{margin-bottom:26px}
   .panel{
-    background:linear-gradient(180deg,rgba(22,22,25,.93),rgba(15,15,17,.95));
-    border:1px solid #333338;border-top:3px solid var(--rust);
-    box-shadow:0 4px 18px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.04);
-    padding:34px;margin-bottom:28px;position:relative;
+    background:var(--panel);
+    backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:34px;margin-bottom:26px;
+    box-shadow:0 10px 40px rgba(0,0,0,.35);
   }
-  .panel::before{
-    content:"";position:absolute;top:8px;left:8px;width:10px;height:10px;
-    background:radial-gradient(circle,#3a3a40 40%,#202024 60%);border-radius:50%;
-    box-shadow:0 0 0 2px #18181b;
-  }
-  .panel::after{
-    content:"";position:absolute;top:8px;right:8px;width:10px;height:10px;
-    background:radial-gradient(circle,#3a3a40 40%,#202024 60%);border-radius:50%;
-    box-shadow:0 0 0 2px #18181b;
-  }
-  .sec-head{margin-bottom:24px;border-bottom:1px solid #333338;padding-bottom:14px;position:relative}
-  .sec-head::after{content:"";position:absolute;left:0;bottom:-1px;width:80px;height:2px;background:var(--rust)}
-  h2{font-family:"Russo One",sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
-  .sub{color:var(--muted);font-size:15px;letter-spacing:.3px}
+  .sec-head{margin-bottom:26px}
+  h2{font-family:"Russo One",sans-serif;font-size:26px;font-weight:400;letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px}
+  .sec-head .bar{width:56px;height:3px;background:linear-gradient(90deg,var(--accent),transparent);border-radius:3px;margin-bottom:12px}
+  .sub{color:var(--muted);font-size:15px}
 
   /* Сервер */
-  .server-card{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
-  .server-info .status{display:inline-flex;align-items:center;gap:8px;color:var(--green);font-size:13px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;margin-bottom:10px}
+  .server-card{display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between}
+  .server-info .status{display:inline-flex;align-items:center;gap:8px;color:var(--green);font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:10px}
   .server-info .status::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-  .server-info h3{font-family:"Russo One",sans-serif;font-size:19px;font-weight:400;letter-spacing:.5px}
+  .server-info h3{font-family:"Russo One",sans-serif;font-size:18px;font-weight:400;letter-spacing:.4px}
   .server-info .online-line{color:var(--muted);font-size:14px;margin-top:6px}
   .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-  .tag{background:#1d1d21;border:1px solid #3a3a40;color:var(--rust);font-family:"Russo One",sans-serif;font-size:11px;letter-spacing:.8px;padding:4px 12px;text-transform:uppercase}
+  .tag{background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--accent);font-family:"Russo One",sans-serif;font-size:10px;letter-spacing:.8px;padding:5px 12px;border-radius:999px;text-transform:uppercase}
   .connect-block{text-align:right;min-width:310px}
-  .connect-block .ip-row{background:#1d1d21;border:1px solid #3a3a40;border-left:3px solid var(--rust);padding:10px 12px;margin:0}
+  .connect-block .ip-row{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:0}
   .connect-btns{margin-top:12px;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+  .connect-btns .btn{padding:10px 20px;font-size:12px}
 
-  /* Шаги */
-  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-  .step{background:#17171a;border:1px solid #2c2c31;border-bottom:3px solid var(--rust);padding:24px;position:relative;transition:transform .2s}
-  .step:hover{transform:translateY(-3px)}
-  .step .num{font-family:"Russo One",sans-serif;font-size:32px;color:var(--rust);line-height:1;margin-bottom:12px}
-  .step .t{font-family:"Russo One",sans-serif;font-size:15px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
+  /* Сетки */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;backdrop-filter:blur(10px);transition:transform .2s,border-color .2s}
+  .step:hover{transform:translateY(-4px);border-color:rgba(255,122,51,.45)}
+  .step .num{font-family:"Russo One",sans-serif;font-size:30px;color:var(--accent);line-height:1;margin-bottom:14px}
+  .step .t{font-weight:800;font-size:16px;margin-bottom:8px}
   .step p{color:var(--muted);font-size:14px}
 
-  /* Фичи */
-  .feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
-  .feat{background:#17171a;border:1px solid #2c2c31;border-left:3px solid var(--rust);padding:22px;transition:transform .2s}
-  .feat:hover{transform:translateY(-3px)}
-  .feat .t{font-family:"Russo One",sans-serif;font-size:15px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
+  .feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .feat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;backdrop-filter:blur(10px);transition:transform .2s,border-color .2s}
+  .feat:hover{transform:translateY(-4px);border-color:rgba(255,122,51,.45)}
+  .feat .t{font-weight:800;font-size:16px;margin-bottom:8px}
   .feat p{color:var(--muted);font-size:14px;margin:0}
 
   /* Привилегии */
-  .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:26px}
-  .plan{background:#17171a;border:1px solid #2c2c31;border-bottom:3px solid var(--rust);padding:24px;display:flex;flex-direction:column;transition:transform .2s}
-  .plan:hover{transform:translateY(-3px)}
-  .plan.hot{border-color:var(--rust)}
-  .plan .t{font-family:"Russo One",sans-serif;font-size:19px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:4px}
-  .plan .price{color:var(--rust);font-weight:600;font-size:17px;margin-bottom:16px}
-  .plan .buy{margin-top:auto;display:block;background:linear-gradient(180deg,#f5a53a,#d17f1e);color:#141414;font-family:"Russo One",sans-serif;font-size:12px;letter-spacing:.8px;text-transform:uppercase;padding:11px 16px;text-align:center;border:1px solid #a86a14;transition:all .15s}
-  .plan .buy:hover{background:linear-gradient(180deg,#ffb64d,#e08b24)}
+  .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-bottom:28px}
+  .plan{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;backdrop-filter:blur(10px);transition:transform .2s,border-color .2s}
+  .plan:hover{transform:translateY(-4px);border-color:rgba(255,122,51,.5)}
+  .plan.hot{border-color:var(--accent);background:linear-gradient(180deg,rgba(255,122,51,.12),var(--card))}
+  .plan .t{font-family:"Russo One",sans-serif;font-size:19px;letter-spacing:.4px;text-transform:uppercase;margin-bottom:4px}
+  .plan .price{color:var(--accent);font-weight:800;font-size:17px;margin-bottom:18px}
+  .plan .buy{margin-top:auto;display:block;background:linear-gradient(135deg,var(--accent),#e9631c);color:#16130e;font-family:"Russo One",sans-serif;font-size:12px;letter-spacing:.6px;text-transform:uppercase;padding:12px 16px;border-radius:10px;text-align:center;box-shadow:0 6px 16px rgba(255,122,51,.25);transition:transform .15s,box-shadow .15s}
+  .plan .buy:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(255,122,51,.35);color:#16130e}
 
-  /* Услуги и наборы */
-  .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-bottom:26px}
-  .serv{background:#17171a;border:1px solid #2c2c31;padding:20px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px;transition:transform .2s}
-  .serv:hover{transform:translateY(-3px)}
-  .serv .name{font-weight:600;font-size:15px;text-transform:uppercase;letter-spacing:.3px}
-  .serv .name small{display:block;color:var(--muted);font-weight:400;font-size:13px;text-transform:none;margin-top:2px}
-  .serv .price{color:var(--rust);font-weight:700;font-size:16px;white-space:nowrap}
+  /* Услуги */
+  .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:28px}
+  .serv{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px;backdrop-filter:blur(10px);transition:transform .2s,border-color .2s}
+  .serv:hover{transform:translateY(-4px);border-color:rgba(255,122,51,.45)}
+  .serv .name{font-weight:700;font-size:15px}
+  .serv .name small{display:block;color:var(--muted);font-weight:500;font-size:13px;margin-top:2px}
+  .serv .price{color:var(--accent);font-weight:800;font-size:16px;white-space:nowrap}
 
   /* Таблицы */
-  table{width:100%;border-collapse:collapse;background:#17171a;border:1px solid #2c2c31;font-size:14px;margin:14px 0}
-  th{background:#1d1d21;color:var(--text);text-align:left;padding:12px 16px;border-bottom:1px solid #333338;font-family:"Russo One",sans-serif;font-size:12px;letter-spacing:.8px;text-transform:uppercase;font-weight:400}
-  td{padding:12px 16px;border-bottom:1px solid #2c2c31;color:var(--muted);vertical-align:top}
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--radius);border:1px solid var(--line);background:rgba(255,255,255,.03)}
+  table{width:100%;border-collapse:collapse;font-size:14px;min-width:520px}
+  th{color:var(--text);text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);font-weight:700;letter-spacing:.3px;font-size:12px;text-transform:uppercase;background:rgba(255,255,255,.04)}
+  td{padding:13px 16px;border-bottom:1px solid var(--line);color:var(--muted);vertical-align:top}
   tr:last-child td{border-bottom:none}
-  tr:hover td{background:#1d1d21}
-  code{background:#1d1d21;border:1px solid #3a3a40;padding:2px 8px;font-size:13px;color:var(--rust);font-family:Consolas,Monaco,monospace}
+  tr:hover td{background:rgba(255,255,255,.03)}
+  code{background:rgba(255,255,255,.07);border:1px solid var(--line);padding:2px 8px;border-radius:7px;font-size:13px;color:var(--accent);font-family:Consolas,Monaco,monospace}
 
   /* FAQ */
-  details{background:#17171a;border:1px solid #2c2c31;margin-bottom:10px;border-left:3px solid var(--rust)}
-  summary{cursor:pointer;padding:16px 20px;font-weight:600;font-size:15px;letter-spacing:.3px;list-style:none;position:relative;padding-right:44px;transition:background .15s}
-  summary:hover{background:#1d1d21}
-  summary::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);color:var(--rust);font-size:22px;font-weight:700}
+  details{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:10px;overflow:hidden;backdrop-filter:blur(10px);transition:border-color .2s}
+  details[open]{border-color:rgba(255,122,51,.4)}
+  summary{cursor:pointer;padding:18px 22px;font-weight:700;font-size:15px;list-style:none;position:relative;padding-right:46px;transition:background .15s}
+  summary:hover{background:rgba(255,255,255,.04)}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);color:var(--accent);font-size:22px;font-weight:400}
   details[open] summary::after{content:"–"}
-  details .faq-body{padding:0 20px 18px;color:var(--muted);font-size:14px}
+  details .faq-body{padding:0 22px 20px;color:var(--muted);font-size:14px}
 
   /* Wiki */
-  .wiki-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-  .wiki-item{display:block;background:#17171a;border:1px solid #2c2c31;border-bottom:3px solid var(--rust);padding:22px;color:var(--text);transition:transform .2s}
-  .wiki-item:hover{transform:translateY(-3px);color:var(--text);border-color:var(--rust)}
-  .wiki-item .num{font-family:"Russo One",sans-serif;font-size:12px;color:var(--rust);letter-spacing:1px;text-transform:uppercase}
-  .wiki-item .t{font-family:"Russo One",sans-serif;font-size:15px;margin:8px 0 6px;letter-spacing:.5px;text-transform:uppercase}
+  .wiki-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+  .wiki-item{display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;color:var(--text);backdrop-filter:blur(10px);transition:transform .2s,border-color .2s}
+  .wiki-item:hover{transform:translateY(-4px);border-color:rgba(255,122,51,.5);color:var(--text)}
+  .wiki-item .num{font-family:"Russo One",sans-serif;font-size:11px;color:var(--accent);letter-spacing:1px;text-transform:uppercase}
+  .wiki-item .t{font-weight:800;font-size:16px;margin:8px 0 6px}
   .wiki-item p{color:var(--muted);font-size:13px;margin:0}
 
-  .wiki-section{border-left:4px solid var(--rust);margin-bottom:22px}
-  .wiki-section h3{font-family:"Russo One",sans-serif;font-size:21px;font-weight:400;letter-spacing:.8px;text-transform:uppercase;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #333338}
-  .wiki-section h4{font-family:"Russo One",sans-serif;font-size:15px;font-weight:400;letter-spacing:.5px;margin:22px 0 10px;text-transform:uppercase}
+  .wiki-section{margin-bottom:22px}
+  .wiki-section h3{font-family:"Russo One",sans-serif;font-size:21px;font-weight:400;letter-spacing:.6px;text-transform:uppercase;margin-bottom:16px}
+  .wiki-section h4{font-weight:800;font-size:16px;margin:24px 0 10px;letter-spacing:.2px}
   .wiki-section p{color:var(--muted);margin-bottom:10px;font-size:15px}
   .wiki-section ul,.wiki-section ol{padding-left:22px;color:var(--muted);margin-bottom:10px;font-size:15px}
   .wiki-section li{margin-bottom:8px}
   .wiki-section strong{color:var(--text)}
-  .back-top{display:inline-block;margin-top:10px;font-family:"Russo One",sans-serif;font-size:12px;letter-spacing:.8px;text-transform:uppercase}
+  .back-top{display:inline-block;margin-top:10px;font-family:"Russo One",sans-serif;font-size:12px;letter-spacing:.6px;text-transform:uppercase}
 
-  .steps-num{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:18px 0}
-  .stepn{background:#17171a;border:1px solid #2c2c31;border-top:3px solid var(--rust);padding:20px}
-  .stepn .num{font-family:"Russo One",sans-serif;font-size:12px;color:var(--rust);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
-  .stepn .t{font-family:"Russo One",sans-serif;font-size:14px;letter-spacing:.4px;text-transform:uppercase;margin-bottom:6px}
+  .steps-num{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:18px 0}
+  .stepn{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;backdrop-filter:blur(10px)}
+  .stepn .num{font-family:"Russo One",sans-serif;font-size:12px;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+  .stepn .t{font-weight:800;margin-bottom:6px;font-size:15px}
   .stepn p{color:var(--muted);font-size:14px}
 
-  .note{border-left:4px solid var(--rust);background:#1b1b1f;padding:14px 18px;margin:16px 0;color:var(--muted);font-size:14px}
+  .note{border-left:4px solid var(--accent);background:rgba(255,255,255,.04);padding:14px 18px;margin:16px 0;color:var(--muted);font-size:14px;border-radius:0 var(--radius) var(--radius) 0}
   .warn{border-left-color:#e5a13a}
-  .danger{border-left-color:#d64545}
+  .danger{border-left-color:#e05656}
 
   /* Сообщество */
-  .socials{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
-  .social{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#17171a;border:1px solid #2c2c31;border-bottom:3px solid var(--rust);padding:20px 22px;color:var(--text);transition:transform .2s}
-  .social:hover{transform:translateY(-3px);color:var(--text);border-color:var(--rust)}
-  .social .t{font-family:"Russo One",sans-serif;font-size:15px;letter-spacing:.5px;text-transform:uppercase}
+  .socials{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .social{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;color:var(--text);backdrop-filter:blur(10px);transition:transform .2s,border-color .2s}
+  .social:hover{transform:translateY(-4px);border-color:rgba(255,122,51,.5);color:var(--text)}
+  .social .t{font-weight:800;font-size:15px;letter-spacing:.3px}
   .social small{color:var(--muted);display:block;font-size:13px}
 
-  .reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
   .reveal.visible{opacity:1;transform:none}
 
-  footer{padding:34px 18px;text-align:center;color:var(--muted);font-size:13px;position:relative;z-index:2;border-top:2px solid #2c2c31;letter-spacing:.4px}
+  footer{padding:36px 20px;text-align:center;color:var(--muted);font-size:13px;position:relative;z-index:2;border-top:1px solid var(--line);letter-spacing:.3px}
   footer a{color:var(--muted);text-decoration:underline}
-  footer a:hover{color:var(--rust)}
+  footer a:hover{color:var(--accent)}
 
+  /* ===== Адаптация ===== */
+  @media(max-width:1024px){
+    .hero h1{font-size:46px}
+  }
   @media(max-width:880px){
-    .menu{display:none;width:100%;flex-direction:column;background:#151518;padding:10px 0;border-top:1px solid #2c2c31}
+    .menu{display:none;width:100%;flex-direction:column;background:rgba(13,14,16,.96);padding:12px 0;border-top:1px solid var(--line);border-radius:0 0 var(--radius) var(--radius)}
     .menu.open{display:flex}
-    .header-inner{flex-wrap:wrap;height:auto;padding:10px 16px}
+    .menu a{padding:12px 20px;border-radius:10px}
+    .nav{flex-wrap:wrap;height:auto;padding:12px 16px;gap:8px}
     .burger{display:block}
     .hero h1{font-size:36px}
+    .hero{min-height:auto;padding:80px 20px 60px}
     .connect-block{text-align:left;min-width:100%}
     .connect-btns{justify-content:flex-start}
     .panel{padding:24px}
     .server-card{flex-direction:column;align-items:flex-start}
+    .ip-row{flex-wrap:wrap;justify-content:center}
+  }
+  @media(max-width:480px){
+    .hero h1{font-size:30px;letter-spacing:1px}
+    .hero .sub{font-size:13px;letter-spacing:1px}
+    .badges{gap:6px}
+    .badge{font-size:10px;padding:6px 12px}
+    .ip-row code{font-size:14px}
+    .panel{padding:20px}
+    h2{font-size:21px}
+    .btn{padding:12px 22px;font-size:13px}
   }
 </style>
 </head>
 <body>
 
-<!-- Анимированный фон на весь сайт -->
+<!-- Фон: кадры Rust на весь сайт -->
 <div class="bg-slideshow">
   <div class="slide"></div><div class="slide"></div><div class="slide"></div>
   <div class="slide"></div><div class="slide"></div><div class="slide"></div>
@@ -257,9 +289,9 @@
 <div class="grain"></div>
 
 <header>
-  <div class="header-inner">
+  <div class="nav">
     <div class="logo">Blaze<span>Rust</span></div>
-    <button class="burger" onclick="document.querySelector('.menu').classList.toggle('open')">☰</button>
+    <button class="burger" onclick="document.querySelector('.menu').classList.toggle('open')" aria-label="Меню">☰</button>
     <nav class="menu">
       <a href="#servers">Сервера</a>
       <a href="#start">Как начать</a>
@@ -305,6 +337,7 @@
   <section id="servers" class="panel reveal">
     <div class="sec-head">
       <h2>Наши сервера</h2>
+      <div class="bar"></div>
       <div class="sub">Скопируй коннект и заходи в игру через консоль (F1)</div>
     </div>
     <div class="server-card">
@@ -336,6 +369,7 @@
   <section id="start" class="panel reveal">
     <div class="sec-head">
       <h2>Как начать играть</h2>
+      <div class="bar"></div>
       <div class="sub">Три простых шага — и ты в игре</div>
     </div>
     <div class="steps">
@@ -349,6 +383,7 @@
   <section id="why" class="panel reveal">
     <div class="sec-head">
       <h2>Почему Blaze Rust</h2>
+      <div class="bar"></div>
       <div class="sub">Стабильный проект с честной игрой и живым сообществом</div>
     </div>
     <div class="feats">
@@ -365,10 +400,11 @@
   <section id="shop" class="panel reveal">
     <div class="sec-head">
       <h2>Магазин</h2>
+      <div class="bar"></div>
       <div class="sub">Привилегии и услуги покупаются в официальном магазине — <a href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">shopblaze.gamestores.app</a></div>
     </div>
 
-    <h2 style="font-size:18px;margin-bottom:16px">Привилегии</h2>
+    <h2 style="font-size:17px;margin-bottom:16px">Привилегии</h2>
     <div class="plans">
       <div class="plan"><div class="t">VIP</div><div class="price">от 189 ₽</div><a class="buy" href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">Купить</a></div>
       <div class="plan"><div class="t">HERO</div><div class="price">от 290 ₽</div><a class="buy" href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">Купить</a></div>
@@ -377,7 +413,7 @@
       <div class="plan"><div class="t">MIRAGE</div><div class="price">от 890 ₽</div><a class="buy" href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">Купить</a></div>
     </div>
 
-    <h2 style="font-size:18px;margin-bottom:16px">Услуги</h2>
+    <h2 style="font-size:17px;margin-bottom:16px">Услуги</h2>
     <div class="services">
       <div class="serv"><div class="name">Разбан | UNBAN<small>Снятие блокировки с аккаунта</small></div><div class="price">500 ₽</div></div>
       <div class="serv"><div class="name">СКАН 30 ДНЕЙ<small>Проверка аккаунта на читы</small></div><div class="price">750 ₽</div></div>
@@ -385,7 +421,7 @@
       <div class="serv"><div class="name">СУПЕР ЧАЙ<small>Максимальный буст</small></div><div class="price">150 ₽</div></div>
     </div>
 
-    <h2 style="font-size:18px;margin-bottom:16px">Наборы</h2>
+    <h2 style="font-size:17px;margin-bottom:16px">Наборы</h2>
     <div class="services">
       <div class="serv"><div class="name">Набор пулемётчика<small>Готовый комплект для боя</small></div><div class="price">120 ₽</div></div>
       <div class="serv"><div class="name">Набор штурмовика<small>Готовый комплект для боя</small></div><div class="price">80 ₽</div></div>
@@ -400,6 +436,7 @@
   <section id="faq" class="panel reveal">
     <div class="sec-head">
       <h2>Вопросы и ответы</h2>
+      <div class="bar"></div>
       <div class="sub">Ответы на вопросы, которые задают чаще всего</div>
     </div>
     <details>
@@ -432,6 +469,7 @@
   <section id="wiki" class="panel reveal">
     <div class="sec-head">
       <h2>Wiki Blaze Rust</h2>
+      <div class="bar"></div>
       <div class="sub">Всё о проекте в одном месте: правила, наказания, донат и инструкции</div>
     </div>
     <div class="wiki-grid">
@@ -512,14 +550,16 @@
   <div id="punish" class="panel wiki-section reveal">
     <h3>Наказания</h3>
     <p>Ориентировочная таблица наказаний за нарушение правил. Окончательная мера определяется администрацией с учётом тяжести и повторности.</p>
-    <table>
-      <tr><th>Нарушение</th><th>Первое</th><th>Повторное</th></tr>
-      <tr><td>Использование читов</td><td>Бан навсегда</td><td>Бан навсегда</td></tr>
-      <tr><td>Использование багов / эксплойтов</td><td>Бан 7 дней</td><td>Бан навсегда</td></tr>
-      <tr><td>Оскорбления в чате</td><td>Мут 1 час</td><td>Мут 24 часа</td></tr>
-      <tr><td>Спам / реклама</td><td>Предупреждение</td><td>Мут 12 часов</td></tr>
-      <tr><td>Обман администрации</td><td>Бан 3 дня</td><td>Бан навсегда</td></tr>
-    </table>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Нарушение</th><th>Первое</th><th>Повторное</th></tr>
+        <tr><td>Использование читов</td><td>Бан навсегда</td><td>Бан навсегда</td></tr>
+        <tr><td>Использование багов / эксплойтов</td><td>Бан 7 дней</td><td>Бан навсегда</td></tr>
+        <tr><td>Оскорбления в чате</td><td>Мут 1 час</td><td>Мут 24 часа</td></tr>
+        <tr><td>Спам / реклама</td><td>Предупреждение</td><td>Мут 12 часов</td></tr>
+        <tr><td>Обман администрации</td><td>Бан 3 дня</td><td>Бан навсегда</td></tr>
+      </table>
+    </div>
     <div class="note warn"><strong>Сроки ориентировочны.</strong> Конкретная мера остаётся на усмотрение администрации и может быть строже при отягчающих обстоятельствах. Бан за читы обжалованию и возврату доната не подлежит.</div>
     <a class="back-top" href="#wiki">↑ Наверх</a>
   </div>
@@ -549,10 +589,12 @@
     <h3>Подключение через connect</h3>
     <p>Самый быстрый способ зайти на BLAZE RUST — через игровую консоль командой connect.</p>
     <h4>Команда нашего сервера</h4>
-    <table>
-      <tr><th>Сервер</th><th>Команда</th></tr>
-      <tr><td>BLAZE RUST #1 — X10/X50</td><td><code>connect 46.174.48.219:28015</code></td></tr>
-    </table>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Сервер</th><th>Команда</th></tr>
+        <tr><td>BLAZE RUST #1 — X10/X50</td><td><code>connect 46.174.48.219:28015</code></td></tr>
+      </table>
+    </div>
     <h4>Пошаговое подключение</h4>
     <div class="steps-num">
       <div class="stepn"><div class="num">1</div><div class="t">Запустите Rust</div><p>Запустите игру и дождитесь полной загрузки в главное меню.</p></div>
@@ -658,6 +700,7 @@
   <section id="community" class="panel reveal">
     <div class="sec-head">
       <h2>Наше сообщество</h2>
+      <div class="bar"></div>
       <div class="sub">Присоединяйся к игрокам BLAZE RUST</div>
     </div>
     <div class="socials">
