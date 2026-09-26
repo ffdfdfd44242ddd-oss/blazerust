@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BLAZE RUST — X50 | NOLIMIT | CLANS | LOOT+</title>
+<title>BLAZE RUST — X10/X50 | NOLIMIT | CLANS | LOOT+</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   :root{
-    --bg:#0e0e10;
-    --panel:#151518;
-    --card:#1a1a1e;
+    --bg:#0d0d0f;
+    --panel:#141417;
+    --card:#19191d;
     --line:#26262b;
     --text:#ececee;
     --muted:#9a9aa1;
@@ -22,7 +22,7 @@
     background:var(--bg);
     color:var(--text);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-    font-size:16px;line-height:1.55;
+    font-size:16px;line-height:1.6;
     overflow-x:hidden;
   }
   a{color:var(--orange);text-decoration:none}
@@ -30,67 +30,64 @@
 
   /* ---------- Шапка ---------- */
   header{
-    background:rgba(14,14,16,.9);
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
+    background:rgba(13,13,15,.88);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
     border-bottom:1px solid var(--line);
     position:sticky;top:0;z-index:100;
   }
   .nav{
-    max-width:1120px;margin:0 auto;padding:0 18px;height:60px;
+    max-width:1140px;margin:0 auto;padding:0 18px;height:62px;
     display:flex;align-items:center;justify-content:space-between;gap:16px;
   }
-  .logo{font-weight:800;font-size:20px;letter-spacing:.5px;color:var(--text);white-space:nowrap}
+  .logo{font-weight:900;font-size:21px;letter-spacing:.5px;color:var(--text);white-space:nowrap}
   .logo span{color:var(--orange)}
   .menu{display:flex;align-items:center;gap:2px;flex-wrap:wrap}
   .menu a{color:var(--muted);font-size:14px;padding:8px 12px;border-radius:4px;transition:color .15s,background .15s}
   .menu a:hover{color:var(--text);background:#202024}
   .nav-right{display:flex;align-items:center;gap:10px}
   .btn-shop{
-    background:var(--orange);color:#161618;font-weight:700;font-size:14px;
-    padding:9px 18px;border-radius:4px;white-space:nowrap;transition:background .15s;
+    background:var(--orange);color:#141417;font-weight:700;font-size:14px;
+    padding:9px 18px;border-radius:4px;white-space:nowrap;transition:background .15s,transform .15s;
   }
-  .btn-shop:hover{background:var(--orange-d);color:#161618}
+  .btn-shop:hover{background:var(--orange-d);color:#141417;transform:translateY(-1px)}
   .burger{
     display:none;background:none;border:1px solid var(--line);color:var(--text);
     font-size:20px;padding:2px 10px;border-radius:4px;cursor:pointer;
   }
 
-  /* ---------- Герой с фоновой картинкой ---------- */
+  /* ---------- Герой ---------- */
   .hero{
-    position:relative;
-    min-height:88vh;
-    display:flex;align-items:center;justify-content:center;
-    text-align:center;
-    padding:80px 18px;
-    overflow:hidden;
+    position:relative;min-height:92vh;
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    padding:90px 18px;overflow:hidden;
     border-bottom:1px solid var(--line);
   }
   .hero-bg{
-    position:absolute;inset:-20px;
-    background:url('https://discord-webhook.com/uploads/6973455c08600fdbe66af634e51a1690.png') center/cover no-repeat;
-    filter:blur(6px) saturate(.85) brightness(.55);
-    transform:scale(1.06);
+    position:absolute;inset:-24px;
+    background:url('https://i.ibb.co/Wvrfjy4x/image.png') center/cover no-repeat;
+    filter:blur(5px) saturate(.85) brightness(.5);
+    transform:scale(1.07);
     will-change:transform;
   }
   .hero-bg::after{
     content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg,rgba(14,14,16,.55) 0%,rgba(14,14,16,.72) 70%,var(--bg) 100%);
+    background:linear-gradient(180deg,rgba(13,13,15,.55) 0%,rgba(13,13,15,.7) 70%,var(--bg) 100%);
   }
-  .hero-inner{position:relative;z-index:2;max-width:760px}
-  .hero h1{font-size:46px;font-weight:900;letter-spacing:2px;line-height:1.1;margin-bottom:10px}
+  .hero-inner{position:relative;z-index:2;max-width:780px}
+  .hero h1{font-size:50px;font-weight:900;letter-spacing:2px;line-height:1.08;margin-bottom:10px}
   .hero h1 span{color:var(--orange)}
-  .hero .sub{color:#cfcfd4;font-size:17px;margin-bottom:18px}
-  .badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:26px}
+  .hero .sub{color:#d2d2d7;font-size:17px;margin-bottom:20px;letter-spacing:.3px}
+  .badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:28px}
   .badge{
-    background:rgba(20,20,24,.8);border:1px solid rgba(255,255,255,.14);
+    background:rgba(20,20,24,.82);border:1px solid rgba(255,255,255,.14);
     color:var(--orange);font-weight:700;font-size:13px;letter-spacing:.4px;
-    padding:6px 14px;border-radius:20px;
+    padding:6px 15px;border-radius:20px;
   }
   .ip-row{
     display:inline-flex;align-items:center;gap:10px;
-    background:rgba(20,20,24,.85);border:1px solid var(--line);border-radius:6px;
-    padding:10px 14px;margin-bottom:20px;
+    background:rgba(20,20,24,.88);border:1px solid var(--line);border-radius:6px;
+    padding:11px 15px;margin-bottom:22px;
   }
   .ip-row code{color:var(--text);font-size:17px;font-weight:700;font-family:Consolas,Monaco,monospace}
   .copy-btn{
@@ -100,24 +97,40 @@
   .copy-btn:hover{color:var(--text);border-color:var(--orange)}
   .hero-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
   .btn{
-    display:inline-block;background:var(--orange);color:#161618;font-weight:700;font-size:15px;
-    padding:12px 26px;border-radius:4px;transition:background .15s,transform .15s;
+    display:inline-block;background:var(--orange);color:#141417;font-weight:700;font-size:15px;
+    padding:13px 28px;border-radius:4px;transition:background .15s,transform .15s;
   }
-  .btn:hover{background:var(--orange-d);color:#161618;transform:translateY(-1px)}
+  .btn:hover{background:var(--orange-d);color:#141417;transform:translateY(-1px)}
   .btn.dark{background:#26262b;color:var(--text)}
   .btn.dark:hover{background:#333338;color:var(--text)}
-  .hero-note{margin-top:16px;font-size:13px;color:#b9b9bf}
+  .hero-note{margin-top:16px;font-size:13px;color:#b5b5bb}
 
   /* ---------- Контейнер ---------- */
-  .wrap{max-width:1120px;margin:0 auto;padding:56px 18px 70px}
-  section{margin-bottom:64px}
-  h2{font-size:27px;font-weight:800;margin-bottom:8px;letter-spacing:.3px}
-  .sub{color:var(--muted);margin-bottom:24px;font-size:15px}
+  .wrap{max-width:1140px;margin:0 auto;padding:60px 18px 80px}
+  section{margin-bottom:70px}
+  h2{font-size:28px;font-weight:800;margin-bottom:8px;letter-spacing:.3px}
+  .sub{color:var(--muted);margin-bottom:26px;font-size:15px}
+
+  /* ---------- Фоновые секции с кадрами ---------- */
+  .bg-sec{
+    position:relative;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:90px 0;
+  }
+  .bg-sec .bgimg{
+    position:absolute;inset:0;background-size:cover;background-position:center;
+    background-attachment:fixed;
+    filter:blur(3px) brightness(.32) saturate(.8);
+    transform:scale(1.05);
+  }
+  .bg-sec .content{position:relative;z-index:2;max-width:1140px;margin:0 auto;padding:0 18px;text-align:center}
+  .bg-sec .content h2{color:var(--text)}
+  .bg-sec .content .sub{color:#c5c5cb}
+  .bg-sec .content p{color:#cfcfd5;max-width:760px;margin:0 auto 14px}
 
   /* ---------- Сервер ---------- */
   .server-card{
-    background:linear-gradient(180deg,#1c1c20,#151517);
-    border:1px solid var(--line);border-radius:10px;padding:28px;
+    background:linear-gradient(180deg,#1b1b1f,#141417);
+    border:1px solid var(--line);border-radius:10px;padding:30px;
     display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;
   }
   .server-info .status{
@@ -130,117 +143,124 @@
   }
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
   .server-info h3{font-size:20px;font-weight:800}
+  .server-info .online-line{color:var(--muted);font-size:14px;margin-top:6px}
   .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
   .tag{background:#222226;border:1px solid var(--line);color:var(--orange);font-size:12px;font-weight:700;letter-spacing:.4px;padding:4px 12px;border-radius:20px}
-  .connect-block{text-align:right;min-width:290px}
-  .connect-block .ip-row{background:#222226;border:1px solid var(--line);border-radius:6px;padding:8px 10px;margin:0}
+  .connect-block{text-align:right;min-width:300px}
+  .connect-block .ip-row{background:#222226;border:1px solid var(--line);border-radius:6px;padding:9px 11px;margin:0}
   .connect-btns{margin-top:12px;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
 
   /* ---------- Шаги ---------- */
   .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-  .step{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:22px}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:24px;transition:border-color .2s,transform .2s}
+  .step:hover{border-color:var(--orange);transform:translateY(-2px)}
   .step .num{font-size:13px;font-weight:800;color:var(--orange);letter-spacing:1px;margin-bottom:8px}
   .step .t{font-weight:700;margin-bottom:6px}
   .step p{color:var(--muted);font-size:14px}
 
   /* ---------- Преимущества ---------- */
   .feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-  .feat{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px;transition:border-color .2s,transform .2s}
+  .feat{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:22px;transition:border-color .2s,transform .2s}
   .feat:hover{border-color:var(--orange);transform:translateY(-2px)}
   .feat .t{font-weight:700;margin-bottom:6px;font-size:16px}
   .feat p{color:var(--muted);font-size:14px}
 
-  /* ---------- Галерея кадров ---------- */
-  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
-  .shot{
-    position:relative;border-radius:8px;overflow:hidden;
-    border:1px solid var(--line);aspect-ratio:16/9;
-    background:#17171a;
-  }
-  .shot img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease,filter .6s ease}
-  .shot:hover img{transform:scale(1.05)}
-  .shot .cap{
-    position:absolute;left:0;right:0;bottom:0;padding:22px 14px 10px;
-    background:linear-gradient(180deg,transparent,rgba(0,0,0,.78));
-    font-size:13px;font-weight:600;color:#fff;
-  }
-
   /* ---------- Привилегии ---------- */
-  .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-bottom:18px}
-  .plan{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px}
+  .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:20px}
+  .plan{
+    background:var(--card);border:1px solid var(--line);border-radius:8px;padding:22px;
+    display:flex;flex-direction:column;transition:border-color .2s,transform .2s;
+  }
+  .plan:hover{border-color:var(--orange);transform:translateY(-2px)}
   .plan.hot{border-color:var(--orange)}
-  .plan .t{font-weight:800;font-size:18px;margin-bottom:8px}
-  .plan ul{list-style:none;padding:0}
-  .plan li{color:var(--muted);font-size:14px;padding:4px 0 4px 18px;position:relative}
-  .plan li::before{content:"—";position:absolute;left:0;color:var(--orange)}
+  .plan .t{font-weight:800;font-size:19px;margin-bottom:6px}
+  .plan .price{color:var(--orange);font-weight:800;font-size:16px;margin-bottom:12px}
+  .plan .buy{
+    margin-top:auto;display:inline-block;background:var(--orange);color:#141417;
+    font-weight:700;font-size:14px;padding:9px 16px;border-radius:4px;text-align:center;
+    transition:background .15s;
+  }
+  .plan .buy:hover{background:var(--orange-d);color:#141417}
+
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:14px;margin:12px 0}
+  th{background:#202024;color:var(--text);text-align:left;padding:11px 15px;border-bottom:1px solid var(--line);font-weight:700}
+  td{padding:11px 15px;border-bottom:1px solid var(--line);color:var(--muted);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:#202024}
+  td.price-cell{color:var(--orange);font-weight:700;white-space:nowrap;text-align:right}
+
+  code{background:#222226;border:1px solid var(--line);padding:2px 8px;border-radius:4px;font-size:13px;color:var(--orange);font-family:Consolas,Monaco,monospace}
 
   /* ---------- FAQ ---------- */
   details{background:var(--card);border:1px solid var(--line);border-radius:8px;margin-bottom:10px;overflow:hidden}
-  summary{cursor:pointer;padding:15px 18px;font-weight:600;font-size:15px;list-style:none;position:relative;padding-right:40px;transition:background .15s}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;font-size:15px;list-style:none;position:relative;padding-right:44px;transition:background .15s}
   summary:hover{background:#202024}
-  summary::after{content:"+";position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--orange);font-size:20px;font-weight:700}
+  summary::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);color:var(--orange);font-size:22px;font-weight:700}
   details[open] summary::after{content:"–"}
-  details .faq-body{padding:0 18px 16px;color:var(--muted);font-size:14px}
+  details .faq-body{padding:0 20px 18px;color:var(--muted);font-size:14px}
 
   /* ---------- Wiki ---------- */
-  .wiki-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .wiki-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
   .wiki-item{
     display:block;background:var(--card);border:1px solid var(--line);border-radius:8px;
-    padding:20px;color:var(--text);transition:border-color .2s,transform .2s;
+    padding:22px;color:var(--text);transition:border-color .2s,transform .2s;
   }
   .wiki-item:hover{border-color:var(--orange);transform:translateY(-2px);color:var(--text)}
   .wiki-item .num{font-size:12px;font-weight:800;color:var(--orange);letter-spacing:1px}
-  .wiki-item .t{font-weight:700;margin:6px 0 4px}
+  .wiki-item .t{font-weight:700;margin:7px 0 5px}
   .wiki-item p{color:var(--muted);font-size:13px;margin:0}
 
-  .wiki-section{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:26px;margin-bottom:22px;scroll-margin-top:80px}
-  .wiki-section h3{font-size:20px;font-weight:800;margin-bottom:12px}
-  .wiki-section h4{font-size:15px;margin:16px 0 8px}
+  .wiki-section{
+    background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    padding:30px;margin-bottom:24px;scroll-margin-top:80px;
+  }
+  .wiki-section h3{font-size:21px;font-weight:800;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .wiki-section h4{font-size:16px;margin:20px 0 10px}
   .wiki-section p{color:var(--muted);margin-bottom:10px;font-size:15px}
   .wiki-section ul,.wiki-section ol{padding-left:22px;color:var(--muted);margin-bottom:10px;font-size:15px}
-  .wiki-section li{margin-bottom:4px}
+  .wiki-section li{margin-bottom:6px}
   .wiki-section strong{color:var(--text)}
-  .back-top{display:inline-block;margin-top:6px;font-size:13px}
+  .back-top{display:inline-block;margin-top:8px;font-size:13px}
 
-  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;font-size:14px;margin:10px 0}
-  th{background:#202024;color:var(--text);text-align:left;padding:10px 14px;border-bottom:1px solid var(--line)}
-  td{padding:10px 14px;border-bottom:1px solid var(--line);color:var(--muted);vertical-align:top}
-  tr:last-child td{border-bottom:none}
-  tr:hover td{background:#202024}
-  code{background:#222226;border:1px solid var(--line);padding:2px 7px;border-radius:4px;font-size:13px;color:var(--orange);font-family:Consolas,Monaco,monospace}
-  .note{border-left:3px solid var(--orange);background:#1e1e21;padding:11px 15px;margin:12px 0;color:var(--muted);font-size:14px;border-radius:0 6px 6px 0}
+  .steps-num{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:16px 0}
+  .stepn{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px}
+  .stepn .num{font-size:13px;font-weight:800;color:var(--orange);letter-spacing:1px;margin-bottom:8px}
+  .stepn .t{font-weight:700;margin-bottom:6px}
+  .stepn p{color:var(--muted);font-size:14px}
+
+  .note{border-left:3px solid var(--orange);background:#1d1d21;padding:12px 16px;margin:14px 0;color:var(--muted);font-size:14px;border-radius:0 6px 6px 0}
   .warn{border-left-color:#e5a13a}
   .danger{border-left-color:#d64545}
 
   /* ---------- Сообщество ---------- */
-  .socials{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .socials{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
   .social{
     display:flex;align-items:center;justify-content:space-between;gap:12px;
     background:var(--card);border:1px solid var(--line);border-radius:8px;
-    padding:18px 20px;color:var(--text);transition:border-color .2s,transform .2s;
+    padding:20px 22px;color:var(--text);transition:border-color .2s,transform .2s;
   }
   .social:hover{border-color:var(--orange);transform:translateY(-2px);color:var(--text)}
   .social .t{font-weight:700}
-  .social small{color:var(--muted);display:block}
+  .social small{color:var(--muted);display:block;font-size:13px}
 
-  /* ---------- Появление при скролле ---------- */
-  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  /* ---------- Reveal ---------- */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
   .reveal.visible{opacity:1;transform:none}
 
-  /* ---------- Футер ---------- */
-  footer{border-top:1px solid var(--line);padding:26px 18px;text-align:center;color:var(--muted);font-size:13px}
+  footer{border-top:1px solid var(--line);padding:28px 18px;text-align:center;color:var(--muted);font-size:13px}
   footer a{color:var(--muted);text-decoration:underline}
   footer a:hover{color:var(--orange)}
 
-  @media(max-width:820px){
+  @media(max-width:860px){
     .menu{display:none;width:100%;flex-direction:column;background:var(--panel);padding:10px 0;border-top:1px solid var(--line)}
     .menu.open{display:flex}
     .nav{flex-wrap:wrap;height:auto;padding:10px 16px}
     .burger{display:block}
-    .hero h1{font-size:30px}
+    .hero h1{font-size:32px}
     .connect-block{text-align:left;min-width:100%}
     .connect-btns{justify-content:flex-start}
-    .server-card{padding:20px}
+    .server-card{padding:22px}
+    .bg-sec .bgimg{background-attachment:scroll}
   }
 </style>
 </head>
@@ -254,8 +274,7 @@
       <a href="#servers">Сервера</a>
       <a href="#start">Как начать</a>
       <a href="#why">Преимущества</a>
-      <a href="#gallery">Кадры</a>
-      <a href="#plans">Привилегии</a>
+      <a href="#plans">Магазин</a>
       <a href="#faq">Вопросы</a>
       <a href="#wiki">Wiki</a>
       <a href="#community">Сообщество</a>
@@ -271,9 +290,9 @@
   <div class="hero-bg" id="heroBg"></div>
   <div class="hero-inner">
     <h1>BLAZE <span>RUST</span></h1>
-    <div class="sub">X50 · NOLIMIT · CLANS · LOOT+</div>
+    <div class="sub">X10/X50 · NOLIMIT · CLANS · LOOT+</div>
     <div class="badges">
-      <span class="badge">X50</span>
+      <span class="badge">X10/X50</span>
       <span class="badge">NOLIMIT</span>
       <span class="badge">CLANS</span>
       <span class="badge">LOOT+</span>
@@ -295,17 +314,17 @@
   <!-- СЕРВЕРА -->
   <section id="servers">
     <h2>Наши сервера</h2>
-    <p class="sub">Выбери сервер и заходи — без лишних телодвижений</p>
+    <p class="sub">Скопируй коннект и заходи в игру через консоль (F1)</p>
     <div class="server-card reveal">
       <div class="server-info">
         <span class="status">Сервер работает</span>
-        <h3>BLAZE RUST (X50 | NOLIMIT | CLANS | LOOT+)</h3>
+        <h3>BLAZE RUST #1 [ X10/X50 | NOLIMIT | CLANS | LOOT+ ]</h3>
+        <div class="online-line">Без лимитов · Кланы · Улучшенный лут</div>
         <div class="tags">
-          <span class="tag">X50</span>
+          <span class="tag">X10/X50</span>
           <span class="tag">NOLIMIT</span>
           <span class="tag">CLANS</span>
           <span class="tag">LOOT+</span>
-          <span class="tag">ПЛАГИНЫ</span>
         </div>
       </div>
       <div class="connect-block">
@@ -332,221 +351,349 @@
     </div>
   </section>
 
-  <!-- ПРЕИМУЩЕСТВА -->
-  <section id="why">
+</div>
+
+<!-- ФОН С КАДРОМ RUST -->
+<div class="bg-sec">
+  <div class="bgimg" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwq97KaMwKSNNtLdXz6LzGLwDdry1fz_Mysnlokir1HzktIVeh9eNKIZc&s=10')"></div>
+  <div class="content">
     <h2>Почему BLAZE RUST</h2>
-    <p class="sub">Стабильный проект с честной игрой и живым сообществом</p>
-    <div class="feats">
-      <div class="feat reveal"><div class="t">Рейты X50</div><p>Быстрая добыча ресурсов — прокачиваешься за вечер, а не за месяц.</p></div>
+    <p class="sub" style="margin-bottom:16px">Стабильный проект с честной игрой и живым сообществом</p>
+    <div class="feats" style="text-align:left">
+      <div class="feat reveal"><div class="t">Рейты X10/X50</div><p>Быстрая добыча ресурсов — прокачиваешься быстро и без скучного фарма.</p></div>
       <div class="feat reveal"><div class="t">NOLIMIT</div><p>Нет лимитов на строительство и количество игроков в клане.</p></div>
       <div class="feat reveal"><div class="t">Кланы</div><p>Полноценная система кланов: теги, союзники, враги, свои базы.</p></div>
       <div class="feat reveal"><div class="t">LOOT+</div><p>Улучшенный лут в ящиках, зданиях и на событиях.</p></div>
       <div class="feat reveal"><div class="t">Плагины</div><p>Меню сервера, магазин, крафт без верстака, коптер, ТП/трейд/апгрейд, FPS+.</p></div>
-      <div class="feat reveal"><div class="t">Живая поддержка</div><p>Активные админы в Discord и Telegram. Помощь игрокам в любое время.</p></div>
+      <div class="feat reveal"><div class="t">Живая поддержка</div><p>Активные админы в Discord. Помощь игрокам в любое время.</p></div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- КАДРЫ -->
-  <section id="gallery">
-    <h2>Кадры с сервера</h2>
-    <p class="sub">Так выглядит игра на BLAZE RUST</p>
-    <div class="gallery">
-      <div class="shot reveal"><img src="https://discord-webhook.com/uploads/6973455c08600fdbe66af634e51a1690.png" alt="Игровой кадр"><div class="cap">Сервер BLAZE RUST</div></div>
-      <div class="shot reveal"><img src="https://discord-webhook.com/uploads/6973455c08600fdbe66af634e51a1690.png" alt="Игровой кадр" style="object-position:left top"><div class="cap">Базы и кланы</div></div>
-      <div class="shot reveal"><img src="https://discord-webhook.com/uploads/6973455c08600fdbe66af634e51a1690.png" alt="Игровой кадр" style="object-position:right bottom"><div class="cap">Рейды и замесы</div></div>
-    </div>
-    <p class="sub" style="margin-top:14px;font-size:13px">Скрины в галерее — заглушки. Чтобы поставить свои кадры, замени ссылки <code>src</code> у картинок ниже на реальные скрины с сервера (см. инструкцию после кода).</p>
-  </section>
+<div class="wrap">
 
-  <!-- ПРИВИЛЕГИИ -->
+  <!-- МАГАЗИН / ПРИВИЛЕГИИ -->
   <section id="plans">
-    <h2>Привилегии</h2>
-    <p class="sub">Все привилегии покупаются в официальном магазине сервера</p>
+    <h2>Магазин</h2>
+    <p class="sub">Привилегии и товары покупаются в официальном магазине сервера — <a href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">shopblaze.gamestores.app</a></p>
     <div class="plans">
-      <div class="plan reveal"><div class="t">VIP</div><ul><li>Кит VIP</li><li>Приоритетная очередь</li><li>Цветной ник</li></ul></div>
-      <div class="plan hot reveal"><div class="t">PREMIUM</div><ul><li>Всё из VIP</li><li>Расширенный кит</li><li>Личные варпы</li></ul></div>
-      <div class="plan reveal"><div class="t">LEGEND</div><ul><li>Всё из PREMIUM</li><li>Макси-кит</li><li>Особый префикс</li></ul></div>
+      <div class="plan reveal"><div class="t">VIP</div><div class="price">от 189 ₽</div><a class="buy" href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">Купить</a></div>
+      <div class="plan reveal"><div class="t">HERO</div><div class="price">от 290 ₽</div><a class="buy" href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">Купить</a></div>
+      <div class="plan reveal"><div class="t">ELITE</div><div class="price">от 439 ₽</div><a class="buy" href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">Купить</a></div>
+      <div class="plan hot reveal"><div class="t">KRAKEN</div><div class="price">от 590 ₽</div><a class="buy" href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">Купить</a></div>
+      <div class="plan reveal"><div class="t">MIRAGE</div><div class="price">от 890 ₽</div><a class="buy" href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">Купить</a></div>
     </div>
-    <a class="btn" href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">Перейти в магазин</a>
-    <div class="note warn" style="margin-top:16px"><strong>Внимание:</strong> после покупки привилегия выдаётся автоматически. Если что-то не пришло — пиши в <a href="https://t.me/BlazeRust_Chat" target="_blank" rel="noopener">чат</a>, укажи SteamID и скрин чека.</div>
+
+    <h2 style="font-size:22px;margin-top:34px">Товары</h2>
+    <p class="sub">Популярные товары магазина — полный список на сайте магазина</p>
+    <table class="reveal">
+      <tr><th>Товар</th><th>Цена</th></tr>
+      <tr><td>Набор пулемётчика</td><td class="price-cell">120 ₽</td></tr>
+      <tr><td>Набор штурмовика</td><td class="price-cell">80 ₽</td></tr>
+      <tr><td>Набор МП5-ЧИКА</td><td class="price-cell">65 ₽</td></tr>
+      <tr><td>Набор берданщика</td><td class="price-cell">30 ₽</td></tr>
+      <tr><td>СУПЕР ЧАЙ</td><td class="price-cell">150 ₽</td></tr>
+      <tr><td>Timed Explosive Charge x25</td><td class="price-cell">60 ₽</td></tr>
+      <tr><td>Rocket x25</td><td class="price-cell">50 ₽</td></tr>
+      <tr><td>High Velocity Rocket x25</td><td class="price-cell">40 ₽</td></tr>
+      <tr><td>High Quality Metal x10000</td><td class="price-cell">100 ₽</td></tr>
+      <tr><td>Metal Fragments x500000</td><td class="price-cell">75 ₽</td></tr>
+      <tr><td>Sulfur x250000</td><td class="price-cell">73 ₽</td></tr>
+      <tr><td>Gun Powder x100000</td><td class="price-cell">75 ₽</td></tr>
+      <tr><td>Wood x750000</td><td class="price-cell">50 ₽</td></tr>
+      <tr><td>Low Grade Fuel x25000</td><td class="price-cell">50 ₽</td></tr>
+      <tr><td>Auto Turret</td><td class="price-cell">8 ₽</td></tr>
+      <tr><td>Pure Max Health Tea x10</td><td class="price-cell">50 ₽</td></tr>
+      <tr><td>Pure Ore Tea</td><td class="price-cell">30 ₽</td></tr>
+      <tr><td>Medical Syringe x50</td><td class="price-cell">5 ₽</td></tr>
+      <tr><td>Blueberries x50</td><td class="price-cell">10 ₽</td></tr>
+      <tr><td>SAM Site</td><td class="price-cell">10 ₽</td></tr>
+      <tr><td>Test Generator</td><td class="price-cell">30 ₽</td></tr>
+      <tr><td>Вечная прочность предметов</td><td class="price-cell">150 ₽</td></tr>
+      <tr><td>СКАН 30 ДНЕЙ</td><td class="price-cell">750 ₽</td></tr>
+      <tr><td>Разбан | UNBAN</td><td class="price-cell">500 ₽</td></tr>
+    </table>
+    <div class="note warn"><strong>Внимание:</strong> все вопросы по донату, покупкам и возврату средств решаются через тикет в Discord. Чат Telegram — только для общения игроков.</div>
   </section>
 
-  <!-- FAQ -->
-  <section id="faq">
-    <h2>Частые вопросы</h2>
-    <p class="sub">Ответы на вопросы, которые задают чаще всего</p>
-    <div class="reveal">
+</div>
+
+<!-- ФОН С КАДРОМ RUST -->
+<div class="bg-sec">
+  <div class="bgimg" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA4t9Dzqk7NMafZUzft4ud3QuGaRVoxDcHiy1TGSSN9cXXD9ydhOXwqA0o&s=10')"></div>
+  <div class="content">
+    <h2>Вопросы и ответы</h2>
+    <p class="sub" style="margin-bottom:20px">Ответы на вопросы, которые задают чаще всего</p>
+    <div style="text-align:left;max-width:820px;margin:0 auto">
       <details>
         <summary>Как подключиться к серверу?</summary>
         <div class="faq-body">Скопируй IP <code>46.174.48.219:28015</code>, запусти Rust, нажми <code>F1</code>, введи <code>connect 46.174.48.219:28015</code> и нажми Enter. Либо нажми кнопку «Подключиться» на сайте — игра откроется сама.</div>
       </details>
       <details>
         <summary>Какие рейты на сервере?</summary>
-        <div class="faq-body">Рейты X50, лимитов нет (NOLIMIT), улучшенный лут (LOOT+), кланы без ограничений по составу.</div>
+        <div class="faq-body">Рейты X10/X50, лимитов нет (NOLIMIT), улучшенный лут (LOOT+), кланы без ограничений по составу.</div>
       </details>
       <details>
-        <summary>Как получить привилегию?</summary>
-        <div class="faq-body">Привилегии покупаются в магазине: <a href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">shopblaze.gamestores.app</a>. После оплаты привилегия выдаётся автоматически на указанный SteamID.</div>
+        <summary>Как купить привилегию?</summary>
+        <div class="faq-body">Привилегии и товары покупаются в магазине: <a href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">shopblaze.gamestores.app</a>. Все вопросы по покупке решаются через тикет в Discord.</div>
       </details>
       <details>
-        <summary>Какие команды есть на сервере?</summary>
-        <div class="faq-body">Основные: <code>/menu</code>, <code>/shop</code>, <code>/kit</code>, <code>/clan</code>, <code>/home</code>, <code>/sethome</code>, <code>/tpr</code>, <code>/tpa</code>, <code>/trade</code>, <code>/upgrade</code>, <code>/craft</code>, <code>/copter</code>, <code>/report</code>. Полный список — в разделе «Команды» ниже.</div>
-      </details>
-      <details>
-        <summary>Как подать жалобу на игрока?</summary>
-        <div class="faq-body">Сделай скриншот или видео нарушения, укажи ник и время, отправь в <a href="https://t.me/BlazeRust_Chat" target="_blank" rel="noopener">чат</a>. Жалобы без доказательств не рассматриваются. Подробнее — в разделе «Жалобы».</div>
+        <summary>Как подать жалобу на читера или нарушителя?</summary>
+        <div class="faq-body">Жалобы рассматриваются только через тикет в Discord — <a href="https://discord.gg/blazerust" target="_blank" rel="noopener">discord.gg/blazerust</a>. Приложи ник, SteamID нарушителя и видео-доказательство. Без доказательств жалоба не рассматривается.</div>
       </details>
       <details>
         <summary>Где узнать свой SteamID?</summary>
-        <div class="faq-body">Открой профиль Steam в браузере — в конце ссылки будет <code>7656119...</code>, это и есть SteamID64. Подробнее — в разделе «SteamID» ниже.</div>
+        <div class="faq-body">Открой профиль Steam в браузере — в конце ссылки будет <code>7656119...</code>, это и есть SteamID64.</div>
+      </details>
+      <details>
+        <summary>Не заходит на сервер / ошибка Timed Out?</summary>
+        <div class="faq-body">Пройтись по решениям можно в разделе Wiki → «Ошибка Timed Out». Если не помогло — создай тикет в Discord и опиши проблему.</div>
       </details>
     </div>
-  </section>
+  </div>
+</div>
+
+<div class="wrap">
 
   <!-- WIKI -->
   <section id="wiki">
     <h2>Wiki BLAZE RUST</h2>
-    <p class="sub">Всё о проекте в одном месте: правила, команды и инструкции</p>
+    <p class="sub">Всё о проекте в одном месте: правила, наказания, донат и инструкции</p>
     <div class="wiki-grid">
-      <a class="wiki-item reveal" href="#rules"><div class="num">01</div><div class="t">Правила</div><p>Что можно и нельзя на сервере. Прочитай перед игрой.</p></a>
-      <a class="wiki-item reveal" href="#donate"><div class="num">02</div><div class="t">Донат</div><p>Привилегии, киты и условия покупки.</p></a>
-      <a class="wiki-item reveal" href="#punish"><div class="num">03</div><div class="t">Наказания</div><p>Таблица наказаний за нарушения правил.</p></a>
-      <a class="wiki-item reveal" href="#complaints"><div class="num">04</div><div class="t">Жалобы</div><p>Как и куда подавать жалобу на игрока или админа.</p></a>
-      <a class="wiki-item reveal" href="#commands"><div class="num">05</div><div class="t">Команды</div><p>Полный список команд сервера.</p></a>
-      <a class="wiki-item reveal" href="#clans"><div class="num">06</div><div class="t">Кланы</div><p>Создание клана и команды управления.</p></a>
-      <a class="wiki-item reveal" href="#steamid"><div class="num">07</div><div class="t">SteamID</div><p>Как узнать свой SteamID64.</p></a>
-      <a class="wiki-item reveal" href="#connect"><div class="num">08</div><div class="t">Подключение</div><p>Все способы зайти на сервер по IP.</p></a>
+      <a class="wiki-item reveal" href="#intro"><div class="num">01</div><div class="t">Вводные правила</div><p>Базовые положения проекта — прочитай до первого захода.</p></a>
+      <a class="wiki-item reveal" href="#main-rules"><div class="num">02</div><div class="t">Основные правила</div><p>Свод правил поведения на сервере.</p></a>
+      <a class="wiki-item reveal" href="#donate"><div class="num">03</div><div class="t">Соглашение на донат</div><p>Условия пополнения счёта и возврата средств.</p></a>
+      <a class="wiki-item reveal" href="#punish"><div class="num">04</div><div class="t">Наказания</div><p>Таблица наказаний за нарушение правил.</p></a>
+      <a class="wiki-item reveal" href="#complaints"><div class="num">05</div><div class="t">Как подать жалобу</div><p>Жалобы на читеров — через тикет в Discord.</p></a>
+      <a class="wiki-item reveal" href="#connect"><div class="num">06</div><div class="t">Подключение через connect</div><p>Быстрый способ зайти на сервер через консоль F1.</p></a>
+      <a class="wiki-item reveal" href="#fps"><div class="num">07</div><div class="t">Не запускается / FPS</div><p>Вылеты, ошибки EAC, чёрный экран, DLL и низкий FPS.</p></a>
+      <a class="wiki-item reveal" href="#timeout"><div class="num">08</div><div class="t">Ошибка Timed Out</div><p>Как исправить Authentication Timed Out и Steam Auth Failed.</p></a>
+      <a class="wiki-item reveal" href="#reconnect"><div class="num">09</div><div class="t">Повторный вход</div><p>Как быстро вернуться на сервер после вылета или вайпа.</p></a>
     </div>
   </section>
 
-  <!-- WIKI-КОНТЕНТ -->
-  <div id="rules" class="wiki-section reveal">
-    <h3>Правила</h3>
-    <p>Играя на сервере, ты автоматически соглашаешься с правилами. Незнание правил не освобождает от ответственности.</p>
-    <h4>1. Общие правила</h4>
+  <!-- ВВОДНЫЕ ПРАВИЛА -->
+  <div id="intro" class="wiki-section reveal">
+    <h3>Вводные правила</h3>
+    <p>Базовые положения проекта BLAZE RUST. Прочитай их до первого захода — это поможет избежать недопониманий и спорных ситуаций.</p>
+    <h4>Общие положения</h4>
     <ul>
-      <li>Запрещено использование читов, макросов и стороннего ПО, дающего преимущество.</li>
-      <li>Запрещена эксплуатация багов сервера. Найденный баг — сообщи администрации.</li>
-      <li>Запрещено оскорбление игроков и администрации, спам, флуд, реклама.</li>
-      <li>Запрещено выдавать себя за администрацию.</li>
-      <li>Запрещена продажа игровых ценностей за реальные деньги (RMT).</li>
+      <li><strong>Незнание правил не освобождает от ответственности.</strong> Заходя на сервер BLAZE RUST, вы автоматически соглашаетесь с правилами проекта в полном объёме.</li>
+      <li><strong>Решение администрации окончательно.</strong> В спорных ситуациях окончательное решение остаётся за администрацией проекта.</li>
+      <li><strong>Правила могут изменяться.</strong> Администрация вправе дополнять и изменять правила без отдельного оповещения.</li>
+      <li><strong>Все обращения — через Discord.</strong> Жалобы, споры и вопросы решаются через создание тикета в Discord. Чат Telegram предназначен только для общения игроков.</li>
     </ul>
-    <h4>2. Игровой процесс</h4>
-    <ul>
-      <li>Запрещён абуз привилегий и возможностей плагинов.</li>
-      <li>Запрещено намеренное гриферство.</li>
-      <li>Запрещено блокировать спавн и точки возрождения.</li>
-      <li>Запрещено строить в зонах событий с целью помешать их проведению.</li>
-    </ul>
-    <div class="note danger"><strong>Важно:</strong> решение администрации по спорным ситуациям является окончательным.</div>
+    <div class="note">После вводных правил обязательно прочитай основные правила — именно за их нарушение выдаются блокировки.</div>
     <a class="back-top" href="#wiki">↑ Наверх</a>
   </div>
 
+  <!-- ОСНОВНЫЕ ПРАВИЛА -->
+  <div id="main-rules" class="wiki-section reveal">
+    <h3>Основные правила</h3>
+    <p>Свод правил поведения на сервере BLAZE RUST. За их нарушение администрация вправе выдать предупреждение, мут или блокировку без возврата средств.</p>
+    <h4>Поведение и честная игра</h4>
+    <ul>
+      <li><strong>Читы и стороннее ПО запрещены.</strong> Использование читов, макросов, скриптов и любого ПО, дающего преимущество, — перманентный бан без возможности обжалования и возврата доната.</li>
+      <li><strong>Эксплойты и баги.</strong> Использование игровых багов и эксплойтов (дюп, проход сквозь текстуры и т.п.) запрещено. О найденных багах сообщайте администрации через Discord.</li>
+      <li><strong>Обман администрации.</strong> Попытка ввести администрацию в заблуждение, поддельные доказательства и обман при разборе жалоб караются блокировкой.</li>
+    </ul>
+    <h4>Общение и чат</h4>
+    <ul>
+      <li><strong>Уважение к игрокам.</strong> Оскорбления, разжигание межнациональной розни, угрозы и травля в чате и голосовых каналах запрещены.</li>
+      <li><strong>Спам и реклама.</strong> Флуд, спам, капс и реклама сторонних проектов и услуг в чате запрещены.</li>
+      <li><strong>Никнейм.</strong> Запрещены оскорбительные, провокационные и вводящие в заблуждение никнеймы (в т.ч. имитация администрации).</li>
+    </ul>
+    <div class="note"><strong>Важно:</strong> игровые действия (рейды, обманы внутри игры, союзы и предательства) — это часть Rust и не являются нарушением. Правила выше касаются поведения вне игровой механики.</div>
+    <a class="back-top" href="#wiki">↑ Наверх</a>
+  </div>
+
+  <!-- СОГЛАШЕНИЕ НА ДОНАТ -->
   <div id="donate" class="wiki-section reveal">
-    <h3>Донат</h3>
-    <p>Привилегии покупаются в официальном магазине сервера. Средства идут на оплату хостинга и развитие проекта.</p>
+    <h3>Соглашение на донат</h3>
+    <p>Условия пополнения донат-счёта и возврата средств в магазине BLAZE RUST. Принимаются автоматически при пополнении баланса.</p>
+    <div class="note"><strong>Автоматическое соглашение.</strong> Пополняя свой баланс в магазине <a href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">shopblaze.gamestores.app</a>, вы автоматически принимаете условия этого раздела в полном объёме.</div>
+    <h4>Глава 1. Пополнение счёта</h4>
     <ul>
-      <li><strong>VIP</strong> — кит VIP, приоритетная очередь, цветной ник.</li>
-      <li><strong>PREMIUM</strong> — всё из VIP + расширенный кит, личные варпы.</li>
-      <li><strong>LEGEND</strong> — всё из PREMIUM + макси-кит, особый префикс.</li>
+      <li>Пополняя донат-счёт в нашем магазине, вы принимаете все правила проекта и соглашаетесь с ними в полном объёме.</li>
+      <li>В случае возникновения проблем с купленными предметами мы обязаны решить все ваши проблемы, связанные с ними. Компенсация выдаётся по усмотрению администратора.</li>
+      <li>При утере данных от аккаунта гарантия восстановления средств не предоставляется.</li>
+      <li>При попытке обмануть администрацию ваш счёт будет заморожен и аннулирован.</li>
+      <li>За нарушение правил проекта администрация вправе лишить вас купленного доната.</li>
+      <li>Если вы купили что-то по ошибке, но ещё не забрали из корзины (/store) — мы поможем восстановить баланс и заберём товар. Для этого достаточно создать тикет в Discord.</li>
     </ul>
-    <p>Актуальный прайс и состав китов — в магазине: <a href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">shopblaze.gamestores.app</a></p>
-    <div class="note warn"><strong>Внимание:</strong> донат — добровольное пожертвование. Возврат средств не производится, если привилегия не была использована с нарушениями правил.</div>
+    <h4>Глава 2. Возврат средств</h4>
+    <ul>
+      <li>Средства возвращаются на банковский счёт по усмотрению администратора. В основном же их можно вернуть на донат-счёт и воспользоваться повторно для покупки товаров.</li>
+      <li><strong>Что считается браком:</strong> брак — это дефект, из-за которого продукция не может быть использована по своему назначению. Вы можете потребовать возврат, если у товара имеется брак.</li>
+      <li>Если у купленного товара возникает брак с новой функцией, добавленной на сервера в течение недели, — возврат не оформляется, а мы занимаемся исправлением. Если по истечении времени проблема осталась, возврат возможен.</li>
+      <li>Чтобы получить возврат на счёт, нужна видео-фиксация, на которой по порядку видно: момент пополнения счёта; момент покупки товара; момент взятия товара из корзины; сам «брак» товара. Видео должно быть цельным и не отредактированным.</li>
+      <li>Если видео-фиксация есть — создайте тикет в Discord, обратитесь к администратору и договоритесь, куда отправить запись для восстановления денежных средств.</li>
+    </ul>
+    <div class="note"><strong>Возникла проблема?</strong> Все вопросы по донату и возврату решаются через тикет в Discord.</div>
     <a class="back-top" href="#wiki">↑ Наверх</a>
   </div>
 
+  <!-- НАКАЗАНИЯ -->
   <div id="punish" class="wiki-section reveal">
     <h3>Наказания</h3>
+    <p>Ориентировочная таблица наказаний за нарушение правил. Окончательная мера определяется администрацией с учётом тяжести и повторности.</p>
     <table>
-      <tr><th>Нарушение</th><th>Наказание</th></tr>
-      <tr><td>Спам / флуд в чате</td><td>Мут от 30 минут до 24 часов</td></tr>
-      <tr><td>Оскорбление игроков</td><td>Мут от 1 часа до 3 дней</td></tr>
-      <tr><td>Реклама / скам</td><td>Бан навсегда</td></tr>
-      <tr><td>Читы / макросы</td><td>Бан навсегда</td></tr>
-      <tr><td>Эксплойт багов</td><td>Бан от 7 дней до навсегда</td></tr>
-      <tr><td>Обход наказания (твинк)</td><td>Бан основного и твинк-аккаунтов</td></tr>
-      <tr><td>Продажа за реальные деньги</td><td>Бан навсегда</td></tr>
+      <tr><th>Нарушение</th><th>Первое</th><th>Повторное</th></tr>
+      <tr><td>Использование читов</td><td>Бан навсегда</td><td>Бан навсегда</td></tr>
+      <tr><td>Использование багов / эксплойтов</td><td>Бан 7 дней</td><td>Бан навсегда</td></tr>
+      <tr><td>Оскорбления в чате</td><td>Мут 1 час</td><td>Мут 24 часа</td></tr>
+      <tr><td>Спам / реклама</td><td>Предупреждение</td><td>Мут 12 часов</td></tr>
+      <tr><td>Обман администрации</td><td>Бан 3 дня</td><td>Бан навсегда</td></tr>
     </table>
-    <div class="note">Обжалование наказания — через раздел «Жалобы».</div>
+    <div class="note warn"><strong>Сроки ориентировочны.</strong> Конкретная мера остаётся на усмотрение администрации и может быть строже при отягчающих обстоятельствах. Бан за читы обжалованию и возврату доната не подлежит.</div>
     <a class="back-top" href="#wiki">↑ Наверх</a>
   </div>
 
+  <!-- ЖАЛОБЫ -->
   <div id="complaints" class="wiki-section reveal">
-    <h3>Жалобы</h3>
-    <p>Жалоба подаётся на игрока или администратора. Рассматриваются только корректно оформленные жалобы.</p>
-    <h4>Как подать жалобу</h4>
-    <ol>
-      <li>Сделай скриншот или запиши видео нарушения.</li>
-      <li>Укажи ник нарушителя и время.</li>
-      <li>Отправь всё в <a href="https://t.me/BlazeRust_Chat" target="_blank" rel="noopener">чат</a>.</li>
-      <li>Дождись ответа — обычно в течение 24 часов.</li>
-    </ol>
-    <div class="note danger"><strong>Жалобы без доказательств не рассматриваются.</strong></div>
-    <a class="back-top" href="#wiki">↑ Наверх</a>
-  </div>
-
-  <div id="commands" class="wiki-section reveal">
-    <h3>Команды</h3>
-    <table>
-      <tr><th>Команда</th><th>Описание</th></tr>
-      <tr><td><code>/menu</code></td><td>Открыть меню сервера</td></tr>
-      <tr><td><code>/shop</code></td><td>Магазин в игре</td></tr>
-      <tr><td><code>/kit</code></td><td>Получить доступные киты</td></tr>
-      <tr><td><code>/clan</code></td><td>Меню клана</td></tr>
-      <tr><td><code>/home</code>, <code>/sethome</code></td><td>Установить и телепортироваться домой</td></tr>
-      <tr><td><code>/tpr</code>, <code>/tpa</code></td><td>Запрос телепортации и подтверждение</td></tr>
-      <tr><td><code>/trade</code></td><td>Открыть трейд с игроком</td></tr>
-      <tr><td><code>/upgrade</code></td><td>Апгрейд строительных блоков</td></tr>
-      <tr><td><code>/craft</code></td><td>Крафт без верстака</td></tr>
-      <tr><td><code>/copter</code></td><td>Вызвать мини-коптер</td></tr>
-      <tr><td><code>/report</code></td><td>Репорт на игрока</td></tr>
-      <tr><td><code>/help</code></td><td>Список доступных команд</td></tr>
-    </table>
-    <div class="note">Полный список смотри в игре через <code>/help</code>. Часть команд может быть доступна только с привилегией.</div>
-    <a class="back-top" href="#wiki">↑ Наверх</a>
-  </div>
-
-  <div id="clans" class="wiki-section reveal">
-    <h3>Кланы</h3>
-    <p>На сервере включена полноценная система кланов. Лимитов на количество участников нет (NOLIMIT).</p>
+    <h3>Как подать жалобу</h3>
+    <p>Жалобы на читеров и нарушителей рассматриваются через тикет в Discord. Чем полнее доказательства — тем быстрее решение.</p>
+    <h4>Как подать</h4>
+    <div class="steps-num">
+      <div class="stepn"><div class="num">1</div><div class="t">Создайте тикет в Discord</div><p>Зайдите в наш Discord и откройте тикет в канале жалоб: <a href="https://discord.gg/blazerust" target="_blank" rel="noopener">discord.gg/blazerust</a>.</p></div>
+      <div class="stepn"><div class="num">2</div><div class="t">Укажите данные</div><p>Сообщите ник и SteamID нарушителя, сервер и время нарушения.</p></div>
+      <div class="stepn"><div class="num">3</div><div class="t">Приложите доказательства</div><p>Прикрепите видео или скриншоты, где чётко видно нарушение. Дождитесь ответа администрации.</p></div>
+    </div>
+    <h4>Что приложить к жалобе</h4>
     <ul>
-      <li><code>/clan create Название</code> — создать клан</li>
-      <li><code>/clan invite Ник</code> — пригласить игрока</li>
-      <li><code>/clan accept</code> — принять приглашение</li>
-      <li><code>/clan leave</code> — покинуть клан</li>
-      <li><code>/clan info</code> — информация о клане</li>
-      <li><code>/clan tag</code> — установить тег клана</li>
+      <li><strong>Ник и SteamID нарушителя</strong> — точные данные игрока, на которого подаёте жалобу.</li>
+      <li><strong>Видео-доказательство</strong> — цельная, не отредактированная запись, где видно сам факт нарушения (чит, эксплойт, оскорбление).</li>
+      <li><strong>Дата, время и сервер</strong> — когда и на каком из серверов произошло нарушение.</li>
     </ul>
-    <div class="note">Внутриклановые разборки решаются внутри клана. Администрация не возвращает вещи, украденные союзниками по клану.</div>
+    <div class="note danger"><strong>Без доказательств жалоба не рассматривается.</strong> Голословные обвинения без видео или скриншотов администрация не принимает.</div>
     <a class="back-top" href="#wiki">↑ Наверх</a>
   </div>
 
-  <div id="steamid" class="wiki-section reveal">
-    <h3>SteamID</h3>
-    <p>SteamID нужен для подачи жалоб, получения привилегий и восстановления вещей.</p>
-    <h4>Как узнать свой SteamID</h4>
-    <ol>
-      <li>Открой свой профиль Steam в браузере.</li>
-      <li>В конце ссылки будет <code>7656119...</code> — это и есть SteamID64.</li>
-      <li>Если ссылка вида <code>/id/никинейм</code> — найди ID на сайте типа steamid.io.</li>
-    </ol>
-    <div class="note warn"><strong>Не путай SteamID с никнеймом.</strong> Ники можно менять, SteamID — нет.</div>
-    <a class="back-top" href="#wiki">↑ Наверх</a>
-  </div>
+</div>
 
+<!-- ФОН С КАДРОМ RUST -->
+<div class="bg-sec">
+  <div class="bgimg" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPFaw9Qg3g6Hn7uDHK6NSZ9SbUKfsB8DMPHuuQgRz2c8Xp7U4GSBRO8gA&s=10')"></div>
+  <div class="content">
+    <h2>Подключение и инструкции</h2>
+    <p class="sub" style="margin-bottom:16px">Все гайды по подключению и решению проблем — в Wiki ниже</p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <a class="btn" href="#connect">Подключение через connect</a>
+      <a class="btn dark" href="#timeout">Ошибка Timed Out</a>
+      <a class="btn dark" href="#fps">Не запускается / FPS</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ПОДКЛЮЧЕНИЕ -->
   <div id="connect" class="wiki-section reveal">
-    <h3>Подключение</h3>
-    <h4>Способ 1 — через кнопку</h4>
-    <p><a class="btn" href="steam://connect/46.174.48.219:28015">Подключиться</a></p>
-    <h4>Способ 2 — через консоль</h4>
-    <ol>
-      <li>Запусти Rust, открой консоль (<code>F1</code>).</li>
-      <li>Введи: <code>connect 46.174.48.219:28015</code></li>
-      <li>Нажми Enter и жди загрузки.</li>
-    </ol>
-    <h4>Способ 3 — через браузер</h4>
-    <p>Вставь в адресную строку: <code>steam://connect/46.174.48.219:28015</code></p>
-    <div class="note">Сервер также можно найти в списке серверов: «Избранное» → «Добавить сервер» → введи IP и порт.</div>
+    <h3>Подключение через connect</h3>
+    <p>Самый быстрый способ зайти на BLAZE RUST — через игровую консоль командой connect.</p>
+    <h4>Команда нашего сервера</h4>
+    <table>
+      <tr><th>Сервер</th><th>Команда</th></tr>
+      <tr><td>BLAZE RUST #1 — X10/X50</td><td><code>connect 46.174.48.219:28015</code></td></tr>
+    </table>
+    <h4>Пошаговое подключение</h4>
+    <div class="steps-num">
+      <div class="stepn"><div class="num">1</div><div class="t">Запустите Rust</div><p>Запустите игру и дождитесь полной загрузки в главное меню.</p></div>
+      <div class="stepn"><div class="num">2</div><div class="t">Откройте консоль клавишей F1</div><p>В главном меню или в игре нажмите F1 — откроется консоль для ввода команд. Если консоль не открывается на лицензии — включите её в Настройки → Игровой процесс.</p></div>
+      <div class="stepn"><div class="num">3</div><div class="t">Вставьте команду connect и нажмите Enter</div><p>Вставьте команду <code>connect 46.174.48.219:28015</code> и нажмите Enter. Через несколько секунд вы окажетесь на сервере.</p></div>
+    </div>
+    <div class="note warn"><strong>Не подключается?</strong> Проверьте, что команда вставлена целиком (вместе с портом после двоеточия), а сервер онлайн — статус виден на главной странице. Если проблема осталась — напишите в Discord.</div>
+    <a class="back-top" href="#wiki">↑ Наверх</a>
+  </div>
+
+  <!-- ТЕХНИЧЕСКИЕ ГАЙДЫ -->
+  <div id="fps" class="wiki-section reveal">
+    <h3>Не запускается / низкий FPS</h3>
+    <p>Если игра не запускается, вылетает, не подключается к серверу, выдаёт ошибку EAC или низкий FPS — пройдите по решениям ниже. Большинство проблем устраняются за пару минут.</p>
+    <h4>Не запускается / вылетает</h4>
+    <ul>
+      <li><strong>Перезапустите лаунчер и ПК.</strong> Закройте лаунчер (Tirify или Steam) полностью и перезапустите компьютер — это снимает большинство временных сбоев.</li>
+      <li><strong>Проверьте целостность файлов.</strong> На лицензии: Steam → Свойства Rust → «Проверить целостность файлов». На пиратке — переустановите клиент через лаунчер.</li>
+      <li><strong>Обновите драйверы видеокарты.</strong> Скачайте свежие драйверы с сайта NVIDIA / AMD. Устаревшие драйверы — частая причина вылетов.</li>
+      <li><strong>Отключите антивирус/защитник.</strong> Иногда антивирус блокирует запуск пиратского клиента. Добавьте папку с игрой в исключения.</li>
+    </ul>
+    <h4>Низкий FPS</h4>
+    <ul>
+      <li><strong>Снизьте графику в настройках.</strong> В игре: Настройки → Графика. Уменьшите качество теней, травы и дальность прорисовки.</li>
+      <li><strong>Закройте лишние программы.</strong> Браузер и фоновые приложения отнимают память — закройте их перед игрой.</li>
+      <li><strong>Очистите кэш игры.</strong> Удаление временных файлов клиента часто поднимает FPS после долгой игры.</li>
+    </ul>
+    <h4>Ошибки Easy Anti-Cheat (EAC)</h4>
+    <ul>
+      <li><strong>«EAC Disconnected» / «Authentication Timed Out»</strong> — полностью закрой игру и подожди ~10 минут, затем запусти заново и зайди на сервер.</li>
+      <li><strong>Запускай игру только через лаунчер.</strong> EAC корректно загружается лишь при старте из Tirify (пиратка) или Steam (лицензия).</li>
+      <li><strong>Переустанови Easy Anti-Cheat.</strong> Открой папку с игрой → EasyAntiCheat → запусти EasyAntiCheat_Setup.exe от имени администратора → выбери Rust и нажми Repair.</li>
+      <li><strong>Разреши EAC в антивирусе и фаерволе.</strong> Добавь в исключения Rust.exe, RustClient.exe и доступ к client.easyanticheat.net по портам 80/443.</li>
+      <li><strong>«Client Integrity Violation»</strong> — EAC нашёл изменённые файлы. Убери моды и сторонние программы, проверь целостность файлов.</li>
+    </ul>
+    <h4>Не подключается к серверу</h4>
+    <ul>
+      <li><strong>Подключайся через консоль (F1)</strong> — введи <code>connect 46.174.48.219:28015</code>. Прямой коннект обходит браузер серверов.</li>
+      <li><strong>Проверь интернет и роутер.</strong> Перезагрузи роутер, по возможности используй проводное подключение.</li>
+      <li><strong>Смени DNS / сбрось кэш.</strong> Поставь публичный DNS 8.8.8.8 или 1.1.1.1, либо выполни <code>ipconfig /flushdns</code>.</li>
+      <li><strong>Отключи VPN и оверлеи.</strong> VPN, бустеры и наложения (Steam, Discord, GeForce Experience) часто мешают коннекту.</li>
+    </ul>
+    <h4>Зависает на загрузке мира / чёрный экран / DLL</h4>
+    <ul>
+      <li><strong>Застрял на «Spawning World»</strong> — отключи DLSS в настройках графики, зайди на сервер, а после спавна включи обратно.</li>
+      <li><strong>Увеличь файл подкачки</strong> — подними размер виртуальной памяти в настройках Windows.</li>
+      <li><strong>Чёрный экран / Fatal Error</strong> — запусти от имени администратора, отключи оверлеи, при ошибке DirectX 12 добавь параметр запуска <code>-force-d3d11</code>.</li>
+      <li><strong>Ошибки DLL</strong> — установи свежие Visual C++ Redistributable и .NET Framework; проверь целостность файлов в Steam.</li>
+    </ul>
+    <div class="note"><strong>Не помогло?</strong> Опишите проблему (что происходит, текст ошибки, ваше железо) в тикете Discord — поможем разобраться индивидуально.</div>
+    <a class="back-top" href="#wiki">↑ Наверх</a>
+  </div>
+
+  <!-- TIMED OUT -->
+  <div id="timeout" class="wiki-section reveal">
+    <h3>Ошибка «Timed Out» — как исправить</h3>
+    <p>Если Rust пишет Timed Out, Authentication Timed Out или EAC Authentication Timed Out (1/3, 2/3, 3/3), вылетает при заходе на сервер или выдаёт Steam Auth Failed — пройдите по решениям ниже. В большинстве случаев проблема устраняется за пару минут.</p>
+    <h4>Что значит «Timed Out»</h4>
+    <p>Timed Out (тайм-аут) — это разрыв связи по истечении времени ожидания: клиент Rust не получил ответ от сервера или от серверов античита Easy Anti-Cheat (EAC) за отведённый срок и закрыл соединение. Это не «поломка» игры, а сетевая проблема — и почти всегда она решается на стороне игрока.</p>
+    <h4>EAC: Authentication Timed Out (1/3, 2/3, 3/3)</h4>
+    <ul>
+      <li><strong>Закройте игру на 5–10 минут.</strong> Полностью завершите игру и лаунчер — за это время EAC сбросит и обновит кэш авторизации.</li>
+      <li><strong>Запускайте игру только через лаунчер.</strong> EAC корректно стартует лишь при запуске из Tirify (пиратка) или Steam (лицензия).</li>
+      <li><strong>Переустановите Easy Anti-Cheat.</strong> Откройте папку с игрой → EasyAntiCheat → EasyAntiCheat_Setup.exe от имени администратора → Rust → Repair.</li>
+      <li><strong>Разрешите EAC доступ в сеть.</strong> Добавьте в исключения антивируса и фаервола Rust.exe, RustClient.exe и доступ к client.easyanticheat.net по портам 80/443.</li>
+      <li><strong>Проверьте дату и время Windows.</strong> Сбитые системные часы ломают проверку сертификатов EAC. Включите автоматическую установку даты и времени.</li>
+    </ul>
+    <h4>Steam Auth Failed (на пиратке)</h4>
+    <ul>
+      <li><strong>Запускайте через Tirify</strong>, а не ярлыком игры.</li>
+      <li><strong>Обновите клиент через лаунчер</strong> — устаревшая сборка не проходит авторизацию.</li>
+      <li>Заходите на сервер с поддержкой пиратки — BLAZE RUST поддерживает вход через пиратку.</li>
+    </ul>
+    <h4>Не заходит на сервер / вылетает при заходе</h4>
+    <ul>
+      <li><strong>Подключайтесь через консоль (F1)</strong>: <code>connect 46.174.48.219:28015</code>.</li>
+      <li><strong>Проверьте интернет и роутер.</strong> Перезагрузите роутер, проверьте вход через мобильный хот-спот.</li>
+      <li><strong>Смените DNS и сбросьте кэш</strong>: 8.8.8.8 или 1.1.1.1, либо <code>ipconfig /flushdns</code>.</li>
+      <li><strong>Отключите VPN, бустеры и оверлеи.</strong></li>
+      <li><strong>Несовпадение версии после вайпа</strong> — обновите игру (лицензия) или переустановите клиент через лаунчер (пиратка).</li>
+    </ul>
+    <div class="note"><strong>Быстрый чек-лист:</strong> закрыть игру на 10 минут → запустить через лаунчер → переустановить EAC → добавить игру в исключения антивируса/фаервола → отключить VPN → зайти через консоль командой connect. В 9 случаях из 10 тайм-аут уходит.</div>
+    <div class="note"><strong>Не помогло?</strong> Опишите проблему (текст ошибки, что происходит, ваше железо) в тикете Discord — поможем разобраться индивидуально.</div>
+    <a class="back-top" href="#wiki">↑ Наверх</a>
+  </div>
+
+  <!-- ПОВТОРНЫЙ ВХОД -->
+  <div id="reconnect" class="wiki-section reveal">
+    <h3>Повторный вход на сервер</h3>
+    <p>Вылетели из игры или сервер перезагрузился? Вот как быстро вернуться обратно — без поиска в общем списке.</p>
+    <h4>Быстрый реконнект</h4>
+    <div class="steps-num">
+      <div class="stepn"><div class="num">1</div><div class="t">Откройте консоль клавишей F1</div><p>В главном меню или в игре нажмите F1.</p></div>
+      <div class="stepn"><div class="num">2</div><div class="t">Введите команду connect</div><p>Вставьте команду <code>connect 46.174.48.219:28015</code> и нажмите Enter.</p></div>
+    </div>
+    <h4>После вайпа</h4>
+    <p>После вайпа IP и порт сервера не меняются — используйте ту же команду connect. Если сервер ещё перезагружается после обновления Rust, подождите 5–15 минут и подключитесь снова.</p>
+    <div class="note"><strong>Совет:</strong> добавьте сервер в избранное (Favourites) в меню игры — тогда после вылета можно вернуться в один клик, без ввода команды.</div>
     <a class="back-top" href="#wiki">↑ Наверх</a>
   </div>
 
@@ -556,7 +703,7 @@
     <p class="sub">Присоединяйся к игрокам BLAZE RUST</p>
     <div class="socials">
       <a class="social reveal" href="https://discord.gg/blazerust" target="_blank" rel="noopener">
-        <div><div class="t">Discord</div><small>Сервер сообщества</small></div>
+        <div><div class="t">Discord</div><small>Тикеты, жалобы, поддержка</small></div>
         <span>→</span>
       </a>
       <a class="social reveal" href="https://t.me/blazerust_tg" target="_blank" rel="noopener">
@@ -564,23 +711,24 @@
         <span>→</span>
       </a>
       <a class="social reveal" href="https://t.me/BlazeRust_Chat" target="_blank" rel="noopener">
-        <div><div class="t">Чат</div><small>Общение с игроками</small></div>
+        <div><div class="t">Чат</div><small>Общение игроков</small></div>
         <span>→</span>
       </a>
       <a class="social reveal" href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">
-        <div><div class="t">Магазин</div><small>Привилегии и донат</small></div>
+        <div><div class="t">Магазин</div><small>Привилегии и товары</small></div>
         <span>→</span>
       </a>
     </div>
+    <div class="note" style="margin-top:18px"><strong>Важно:</strong> жалобы на читеров, вопросы по донату и возврату средств решаются <strong>только через тикет в Discord</strong>. Чат Telegram — исключительно для общения игроков.</div>
   </section>
 
 </div>
 
 <footer>
   BLAZE RUST © <span id="year"></span> — игровой проект. Не связан с Facepunch Studios.<br>
+  <a href="https://discord.gg/blazerust" target="_blank" rel="noopener">Discord</a> ·
   <a href="https://t.me/blazerust_tg" target="_blank" rel="noopener">Telegram</a> ·
   <a href="https://t.me/BlazeRust_Chat" target="_blank" rel="noopener">Чат</a> ·
-  <a href="https://discord.gg/blazerust" target="_blank" rel="noopener">Discord</a> ·
   <a href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">Магазин</a>
 </footer>
 
@@ -604,8 +752,8 @@
   var heroBg = document.getElementById('heroBg');
   window.addEventListener('scroll', function(){
     var y = window.pageYOffset;
-    if (y < window.innerHeight * 1.2) {
-      heroBg.style.transform = 'translateY(' + (y * 0.25) + 'px) scale(1.06)';
+    if (y < window.innerHeight * 1.3) {
+      heroBg.style.transform = 'translateY(' + (y * 0.25) + 'px) scale(1.07)';
     }
   }, {passive:true});
 
