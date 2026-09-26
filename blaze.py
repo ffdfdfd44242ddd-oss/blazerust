@@ -21,6 +21,14 @@ from flask import Flask, render_template_string, abort
 
 app = Flask(__name__)
 
+# Принудительно отдаём ответ как HTML-страницу,
+# иначе некоторые хостинги шлют text/plain и браузер показывает теги как текст
+@app.after_request
+def force_html(response):
+    if response.content_type.startswith("text/"):
+        response.headers["Content-Type"] = "text/html; charset=utf-8"
+    return response
+
 ONLINE = 6
 SERVER_IP = "46.174.48.219:28015"
 DISCORD = "https://discord.gg/blazerust"
