@@ -1,442 +1,362 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BLAZE RUST — Wiki</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLAZE RUST — X50 | NOLIMIT | CLANS | LOOT+</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg0:#000103;--bg1:#010a12;
-  --card:rgba(3,14,22,.85);
-  --line:rgba(103,232,249,.13);--line2:rgba(103,232,249,.3);
-  --cyan:#22d3ee;--aqua:#7ff0f5;--teal:#2dd4bf;
-  --text:#d2f2fa;--muted:#8fb6c4;
-  --grad:linear-gradient(120deg,#67e8f9,#22d3ee 30%,#2dd4bf 65%,#38bdf8);
-  --radius:18px;
-}
-html{scroll-behavior:smooth}
-body{font-family:'Manrope',sans-serif;background:var(--bg0);color:var(--text);min-height:100vh;overflow-x:hidden;line-height:1.65}
-a{color:var(--cyan);text-decoration:none}
-.bg-fx{position:fixed;inset:0;z-index:-4;background:radial-gradient(1100px 600px at 78% -8%,rgba(6,182,212,.16),transparent 60%),radial-gradient(900px 520px at 2% 28%,rgba(20,184,166,.1),transparent 55%),radial-gradient(1000px 650px at 100% 88%,rgba(2,132,199,.12),transparent 55%),linear-gradient(180deg,#000103,#010a12 45%,#000103)}
-.bg-fx::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(103,232,249,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(103,232,249,.04) 1px,transparent 1px);background-size:46px 46px;-webkit-mask-image:radial-gradient(ellipse at 50% 0%,#000 0%,transparent 78%);mask-image:radial-gradient(ellipse at 50% 0%,#000 0%,transparent 78%)}
-.orb{position:fixed;border-radius:50%;filter:blur(100px);opacity:.42;z-index:-3;animation:float 16s ease-in-out infinite}
-.o1{width:440px;height:440px;background:rgba(6,182,212,.45);top:-130px;right:-90px}
-.o2{width:360px;height:360px;background:rgba(20,184,166,.36);bottom:-110px;left:-100px;animation-delay:-6s}
-.o3{width:280px;height:280px;background:rgba(2,132,199,.34);top:42%;left:58%;animation-delay:-11s}
-@keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(34px,-44px) scale(1.09)}66%{transform:translate(-28px,26px) scale(.93)}}
-.stars{position:fixed;inset:0;z-index:-2;pointer-events:none}
-.stars i{position:absolute;border-radius:50%;background:#8ff0ff;box-shadow:0 0 6px rgba(127,240,245,.9);opacity:0;animation:twinkle 3s ease-in-out infinite}
-@keyframes twinkle{0%,100%{opacity:0;transform:scale(.6)}50%{opacity:1;transform:scale(1.15)}}
-.vignette{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 50%,rgba(0,0,0,.6))}
-.topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:14px;padding:13px 22px;background:rgba(1,7,12,.8);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
-.burger{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;border:1px solid var(--line2);background:rgba(6,26,36,.5);color:var(--aqua);font-size:18px;cursor:pointer;transition:.25s}
-@media(min-width:1024px){.burger{display:none}}
-.logo{display:flex;align-items:center;gap:10px;color:var(--text);font-family:'Unbounded',sans-serif}
-.logo-mark{width:40px;height:40px;display:grid;place-items:center;border-radius:13px;background:var(--grad);color:#02121a;font-weight:800;font-size:21px;box-shadow:0 0 24px rgba(34,211,238,.5);animation:pulseGlow 2.6s ease-in-out infinite}
-@keyframes pulseGlow{0%,100%{box-shadow:0 0 14px rgba(34,211,238,.35)}50%{box-shadow:0 0 34px rgba(34,211,238,.7)}}
-.logo-text{font-size:17px;letter-spacing:1px}
-.logo-text span{color:var(--cyan);margin-left:4px}
-.top-actions{margin-left:auto;display:flex;align-items:center;gap:12px}
-.online-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;border:1px solid var(--line2);background:rgba(6,26,36,.55);font-size:13px;font-weight:700;color:var(--aqua);white-space:nowrap}
-.online-badge i{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.7);animation:ping 1.6s infinite}
-@keyframes ping{0%{box-shadow:0 0 0 0 rgba(52,211,153,.7)}70%{box-shadow:0 0 0 9px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
-.sidebar{position:fixed;top:0;left:0;bottom:0;width:274px;padding:86px 16px 24px;background:rgba(1,7,12,.95);backdrop-filter:blur(20px);border-right:1px solid var(--line);transform:translateX(-100%);transition:transform .38s cubic-bezier(.22,1,.36,1);z-index:60;overflow-y:auto}
-body.nav-open .sidebar{transform:translateX(0)}
-@media(min-width:1024px){.sidebar{transform:none}}
-.overlay{position:fixed;inset:0;background:rgba(0,4,6,.72);opacity:0;pointer-events:none;transition:opacity .3s;z-index:55}
-body.nav-open .overlay{opacity:1;pointer-events:auto}
-@media(min-width:1024px){.overlay{display:none}}
-.sidebar-head{font-family:'Unbounded',sans-serif;font-size:12px;letter-spacing:3px;color:var(--cyan);padding:6px 12px 10px;text-transform:uppercase}
-.nav-cat{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin:18px 12px 6px;opacity:.75}
-.nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;margin:2px 0;border-radius:12px;color:var(--muted);font-size:14px;font-weight:600;border:1px solid transparent;transition:.25s;cursor:pointer}
-.nav-item::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--cyan);opacity:0;transform:scale(0);transition:.25s}
-.nav-item:hover{color:var(--text);background:rgba(34,211,238,.07);border-color:var(--line);transform:translateX(4px)}
-.nav-item:hover::before{opacity:1;transform:scale(1)}
-.nav-item.active{color:#02121a;background:var(--grad);border-color:transparent;box-shadow:0 8px 26px rgba(34,211,238,.35)}
-.nav-item.active::before{opacity:0}
-.content{margin-left:0;padding:34px 20px 60px;max-width:1120px;width:100%}
-@media(min-width:1024px){.content{margin-left:274px;padding:46px 54px 84px}}
-.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 26px;border-radius:14px;font-weight:800;font-size:14px;cursor:pointer;border:none;transition:transform .25s,box-shadow .25s;font-family:inherit}
-.btn-primary{background:var(--grad);color:#02121a;box-shadow:0 10px 32px rgba(34,211,238,.35)}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(34,211,238,.55)}
-.btn-ghost{background:rgba(6,26,36,.55);color:var(--aqua);border:1px solid var(--line2)}
-.btn-ghost:hover{transform:translateY(-3px);background:rgba(34,211,238,.12);border-color:var(--cyan)}
-.btn-sm{padding:9px 16px;font-size:13px;border-radius:11px}
-.hero{text-align:center;padding:56px 10px 30px;animation:fadeUp .8s ease both}
-.hero-badge{display:inline-flex;align-items:center;gap:9px;padding:8px 18px;border-radius:999px;border:1px solid var(--line2);background:rgba(6,26,36,.55);font-size:13px;font-weight:700;color:var(--aqua);margin-bottom:24px}
-.pulse-dot{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.7);animation:ping 1.6s infinite}
-.hero-title{font-family:'Unbounded',sans-serif;font-size:clamp(42px,8vw,92px);font-weight:800;line-height:1.04;background:linear-gradient(120deg,#a5f3fc,#22d3ee 30%,#2dd4bf 60%,#7dd3fc);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:220% auto;animation:gradShift 5s linear infinite;filter:drop-shadow(0 12px 36px rgba(6,182,212,.4))}
-@keyframes gradShift{to{background-position:220% center}}
-.hero-tags{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:24px 0 16px}
-.hero-tags span{padding:7px 16px;border-radius:999px;border:1px solid var(--line2);background:rgba(34,211,238,.07);color:var(--aqua);font-size:13px;font-weight:800;letter-spacing:1px}
-.hero-sub{max-width:660px;margin:0 auto 32px;color:var(--muted);font-size:17px}
-.hero-cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:44px}
-.hero-stats{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
-.stat{min-width:150px;padding:20px 24px;border-radius:var(--radius);border:1px solid var(--line);background:linear-gradient(160deg,rgba(5,18,26,.85),rgba(2,9,14,.9));transition:.3s}
-.stat:hover{transform:translateY(-6px);border-color:var(--line2)}
-.stat b{display:block;font-family:'Unbounded',sans-serif;font-size:30px;color:var(--aqua)}
-.stat small{color:var(--muted);font-size:12px;letter-spacing:1px;text-transform:uppercase}
-.telegram-block{max-width:780px;margin:0 auto}
-.tg-card{display:flex;gap:18px;align-items:flex-start;padding:28px;border-radius:24px;border:1px solid rgba(34,197,94,.3);background:linear-gradient(135deg,rgba(4,18,14,.9),rgba(6,30,22,.75));transition:.3s;animation:fadeUp .7s ease both}
-.tg-emoji{font-size:42px;line-height:1;animation:bob 2.6s ease-in-out infinite}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-.tg-body{flex:1}
-.tg-text{color:var(--muted);font-size:15px;margin-bottom:8px}
-.tg-link{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:14px;color:#4ade80;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.32);padding:8px 14px;border-radius:12px;margin:6px 0 12px}
-.section{padding:34px 0}
-.section-title{font-family:'Unbounded',sans-serif;font-size:clamp(22px,3.4vw,34px);margin-bottom:8px;background:linear-gradient(120deg,#cff8fe,#7ff0f5);-webkit-background-clip:text;background-clip:text;color:transparent}
-.section-sub{color:var(--muted);margin-bottom:26px}
-.grid{display:grid;gap:18px}
-.grid-2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
-.grid-3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.grid-4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.card{padding:26px;border-radius:var(--radius);border:1px solid var(--line);background:linear-gradient(160deg,rgba(5,18,26,.85),rgba(2,9,14,.9));transition:transform .35s,box-shadow .35s,border-color .35s}
-.card:hover{transform:translateY(-8px);border-color:var(--line2);box-shadow:0 24px 52px rgba(0,0,0,.7)}
-.card-ico{width:54px;height:54px;border-radius:15px;display:grid;place-items:center;font-size:25px;background:rgba(34,211,238,.1);border:1px solid var(--line2);margin-bottom:16px;transition:.35s}
-.card:hover .card-ico{transform:scale(1.12) rotate(-8deg);background:var(--grad)}
-.card h3{font-size:18px;margin-bottom:8px}
-.card p{color:var(--muted);font-size:14px}
-.steps{display:grid;gap:16px}
-.step{display:flex;gap:18px;padding:22px;border-radius:var(--radius);border:1px solid var(--line);background:linear-gradient(160deg,rgba(5,18,26,.85),rgba(2,9,14,.9));transition:.3s}
-.step:hover{border-color:var(--line2);transform:translateX(8px)}
-.step-num{flex:0 0 auto;width:48px;height:48px;border-radius:15px;display:grid;place-items:center;font-family:'Unbounded',sans-serif;font-weight:800;font-size:18px;background:var(--grad);color:#02121a}
-.step h3{font-size:17px;margin-bottom:4px}
-.step p{color:var(--muted);font-size:14px}
-.callout{padding:18px 22px;border-radius:14px;border:1px solid;margin:24px 0;background:rgba(3,14,22,.7)}
-.callout b{display:block;margin-bottom:2px}
-.callout p{font-size:14px;opacity:.92;margin:0}
-.callout.tip{border-color:rgba(45,212,191,.35)}.callout.tip b{color:#5eead4}
-.callout.note{border-color:rgba(56,189,248,.35)}.callout.note b{color:#7dd3fc}
-.callout.warn{border-color:rgba(251,191,36,.35)}.callout.warn b{color:#fcd34d}
-.callout.danger{border-color:rgba(248,113,113,.4)}.callout.danger b{color:#fca5a5}
-.page{display:none;animation:fadeUp .7s ease both}
-.page.active{display:block}
-.crumbs{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;color:var(--muted);margin-bottom:14px}
-.page-title{font-family:'Unbounded',sans-serif;font-size:clamp(26px,4.6vw,44px);margin-bottom:10px;background:linear-gradient(120deg,#cff8fe,#7ff0f5);-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{color:var(--muted);font-size:16px;max-width:760px;margin-bottom:24px}
-.page h2{font-family:'Unbounded',sans-serif;font-size:clamp(19px,2.6vw,26px);margin:34px 0 16px;display:flex;align-items:center;gap:12px}
-.page h2::before{content:"";width:8px;height:28px;border-radius:99px;background:var(--grad)}
-.page h3{font-size:18px;margin:20px 0 10px;color:var(--aqua)}
-.page p{color:#bde4ee;margin-bottom:12px}
-.list{display:grid;gap:14px;margin:18px 0}
-.li{display:flex;gap:16px;padding:18px 20px;border-radius:14px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(5,18,26,.8),rgba(2,9,14,.88));transition:.3s}
-.li:hover{border-color:var(--line2);transform:translateX(7px)}
-.li-num{flex:0 0 auto;font-family:'Unbounded',sans-serif;color:var(--cyan);font-size:14px;padding-top:3px}
-.li strong{display:block;margin-bottom:2px}
-.li p{color:var(--muted);font-size:14px;margin:0}
-.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:linear-gradient(160deg,rgba(5,18,26,.8),rgba(2,9,14,.88));margin:20px 0}
-table{width:100%;border-collapse:collapse;min-width:520px}
-th{font-family:'Unbounded',sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;text-align:left;padding:16px 20px;color:var(--aqua);background:rgba(34,211,238,.07);border-bottom:1px solid var(--line2)}
-td{padding:15px 20px;font-size:14px;border-bottom:1px solid var(--line);color:#bde4ee}
-tbody tr:hover{background:rgba(34,211,238,.07)}
-.tag{display:inline-block;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:800}
-.tag.bad{background:rgba(248,113,113,.13);color:#fca5a5;border:1px solid rgba(248,113,113,.35)}
-.tag.mid{background:rgba(251,191,36,.1);color:#fcd34d;border:1px solid rgba(251,191,36,.3)}
-.tag.ok{background:rgba(45,212,191,.1);color:#5eead4;border:1px solid rgba(45,212,191,.3)}
-.cmd-mini{display:inline-block;padding:3px 10px;border-radius:8px;background:rgba(34,211,238,.08);border:1px solid var(--line2);font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--aqua)}
-.codeblock{background:rgba(1,8,13,.92);border:1px solid var(--line2);border-radius:14px;padding:16px 18px;font-family:'JetBrains Mono',monospace;font-size:14px;color:#67e8f9;margin:14px 0;overflow-x:auto}
-.price-card{padding:28px 24px;border-radius:20px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(5,18,26,.85),rgba(2,9,14,.9));text-align:center;transition:.35s}
-.price-card:hover{transform:translateY(-10px);border-color:var(--line2)}
-.price-card.hot{border-color:rgba(34,211,238,.5);box-shadow:0 0 44px rgba(34,211,238,.18)}
-.price-card .price{font-family:'Unbounded',sans-serif;font-size:32px;color:var(--aqua);margin:14px 0}
-.price-card ul{list-style:none;text-align:left;margin:14px 0 20px;display:grid;gap:8px}
-.price-card li{font-size:13.5px;color:var(--muted);display:flex;gap:8px;align-items:flex-start}
-.price-card li::before{content:"✔";color:var(--teal);font-weight:800}
-.pager{display:flex;justify-content:space-between;gap:14px;margin-top:40px;flex-wrap:wrap}
-.pager-btn{flex:1;min-width:200px;padding:16px 20px;border-radius:16px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(5,18,26,.85),rgba(2,9,14,.9));color:var(--muted);cursor:pointer;transition:.3s;display:block;text-align:left}
-.pager-btn:hover{border-color:var(--cyan);transform:translateY(-4px);color:var(--text)}
-.pager-btn span{font-size:12px;letter-spacing:1px;text-transform:uppercase;opacity:.8;display:block;margin-bottom:4px}
-.pager-btn strong{color:var(--aqua);font-size:15px}
-.faq details{background:linear-gradient(160deg,rgba(5,18,26,.85),rgba(2,9,14,.9));border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin-bottom:12px}
-.faq details[open]{border-color:var(--cyan)}
-.faq summary{cursor:pointer;font-weight:800;font-size:15.5px;display:flex;justify-content:space-between;align-items:center;gap:12px;list-style:none}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-size:22px;color:var(--cyan);transition:transform .3s}
-.faq details[open] summary::after{transform:rotate(45deg)}
-.faq p{color:var(--muted);font-size:14px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
-.footer{margin-left:0;padding:30px 24px 40px;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line);background:rgba(0,5,9,.8)}
-@media(min-width:1024px){.footer{margin-left:274px}}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
-.reveal.visible{opacity:1;transform:none}
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-::-webkit-scrollbar{width:10px}
-::-webkit-scrollbar-track{background:#010a12}
-::-webkit-scrollbar-thumb{background:linear-gradient(#06b6d4,#14b8a6);border-radius:99px}
-::selection{background:rgba(34,211,238,.35)}
+  :root{
+    --bg:#141414;
+    --bg2:#191919;
+    --card:#1e1e1e;
+    --border:#2c2c2c;
+    --text:#e8e6e3;
+    --muted:#9a968f;
+    --accent:#ff7a2f;
+    --accent-hover:#d95f1e;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    line-height:1.55;
+    font-size:16px;
+  }
+  a{color:var(--accent);text-decoration:none}
+  a:hover{color:var(--accent-hover)}
+
+  /* Шапка */
+  header{
+    background:var(--bg2);
+    border-bottom:1px solid var(--border);
+    position:sticky;top:0;z-index:100;
+  }
+  .nav{
+    max-width:1100px;margin:0 auto;padding:0 20px;
+    display:flex;align-items:center;justify-content:space-between;
+    height:60px;
+  }
+  .logo{font-weight:700;font-size:20px;letter-spacing:.5px;color:var(--text)}
+  .logo span{color:var(--accent)}
+  .menu{display:flex;gap:4px;flex-wrap:wrap}
+  .menu a{
+    color:var(--muted);padding:8px 12px;font-size:14px;border-radius:4px;
+  }
+  .menu a:hover{color:var(--text);background:var(--card)}
+  .burger{display:none;background:none;border:1px solid var(--border);color:var(--text);font-size:20px;padding:4px 12px;border-radius:4px;cursor:pointer}
+
+  /* Контейнер */
+  .wrap{max-width:1100px;margin:0 auto;padding:30px 20px 60px}
+
+  /* Герой */
+  .hero{
+    background:var(--bg2);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:48px 32px;
+    text-align:center;
+    margin-bottom:32px;
+  }
+  .hero h1{font-size:34px;font-weight:800;letter-spacing:1px;margin-bottom:8px}
+  .hero h1 span{color:var(--accent)}
+  .hero p{color:var(--muted);font-size:16px;margin-bottom:6px}
+  .hero .ip{
+    font-size:20px;font-weight:700;color:var(--text);
+    background:var(--card);border:1px dashed var(--border);
+    display:inline-block;padding:10px 18px;border-radius:6px;margin:18px 0 6px;
+    cursor:pointer;user-select:all;
+  }
+  .btn{
+    display:inline-block;background:var(--accent);color:#141414;
+    font-weight:700;font-size:15px;padding:12px 26px;border-radius:5px;
+    border:none;cursor:pointer;margin:10px 4px 0;
+  }
+  .btn:hover{background:var(--accent-hover);color:#141414}
+  .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* Разделы */
+  section{margin-bottom:44px}
+  h2{
+    font-size:24px;font-weight:700;margin-bottom:16px;
+    padding-bottom:10px;border-bottom:2px solid var(--border);
+  }
+  h2 span{color:var(--accent)}
+  h3{font-size:17px;margin:18px 0 8px;color:var(--text)}
+  p{color:var(--muted);margin-bottom:10px}
+  ul{padding-left:22px;color:var(--muted);margin-bottom:10px}
+  li{margin-bottom:4px}
+  strong{color:var(--text)}
+
+  /* Карточки */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:18px 0}
+  .card{
+    background:var(--card);border:1px solid var(--border);border-radius:6px;
+    padding:16px 18px;
+  }
+  .card .t{font-weight:700;color:var(--text);margin-bottom:4px}
+  .card .d{color:var(--muted);font-size:14px}
+
+  /* Бейджи */
+  .badges{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px}
+  .badge{
+    background:var(--card);border:1px solid var(--border);color:var(--accent);
+    font-weight:700;font-size:13px;padding:6px 14px;border-radius:20px;letter-spacing:.5px;
+  }
+
+  /* Таблицы */
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--border);border-radius:6px;overflow:hidden;font-size:15px}
+  th{background:var(--bg2);color:var(--text);text-align:left;padding:10px 14px;border-bottom:1px solid var(--border);font-weight:700}
+  td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--muted);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:var(--bg2)}
+  td code, p code{background:var(--card);border:1px solid var(--border);padding:2px 7px;border-radius:4px;font-size:14px;color:var(--accent);font-family:Consolas,Monaco,monospace}
+
+  /* Инфо-блоки */
+  .note{border-left:3px solid var(--accent);background:var(--card);padding:12px 16px;border-radius:0 6px 6px 0;margin:14px 0;color:var(--muted)}
+  .warn{border-left-color:#e5a13a}
+  .danger{border-left-color:#d64545}
+
+  /* Футер */
+  footer{border-top:1px solid var(--border);padding:24px 20px;text-align:center;color:var(--muted);font-size:13px}
+  footer a{color:var(--muted);text-decoration:underline}
+
+  /* Мобилка */
+  @media(max-width:760px){
+    .menu{display:none;width:100%;flex-direction:column;background:var(--bg2);padding:10px 0;border-top:1px solid var(--border)}
+    .menu.open{display:flex}
+    .nav{flex-wrap:wrap;height:auto;padding:10px 20px}
+    .burger{display:block}
+    .hero h1{font-size:26px}
+    .hero{padding:32px 18px}
+  }
 </style>
 </head>
 <body>
-<div class="bg-fx"></div>
-<div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
-<div class="vignette"></div>
 
-<header class="topbar">
-  <button class="burger" onclick="toggleSidebar()">☰</button>
-  <a class="logo" href="#home"><span class="logo-mark">B</span><span class="logo-text">BLAZE<span>RUST</span></span></a>
-  <div class="top-actions">
-    <span class="online-badge"><i></i>6 online</span>
-    <a class="btn btn-primary btn-sm" href="#donate">🛒 Магазин</a>
+<header>
+  <div class="nav">
+    <div class="logo">BLAZE<span>RUST</span></div>
+    <button class="burger" onclick="document.querySelector('.menu').classList.toggle('open')">☰</button>
+    <nav class="menu">
+      <a href="#main">Главная</a>
+      <a href="#rules">Правила</a>
+      <a href="#donate">Донат</a>
+      <a href="#punish">Наказания</a>
+      <a href="#complaints">Жалобы</a>
+      <a href="#commands">Команды</a>
+      <a href="#clans">Кланы</a>
+      <a href="#steamid">SteamID</a>
+      <a href="#connect">Подключение</a>
+    </nav>
   </div>
 </header>
 
-<aside class="sidebar">
-  <div class="sidebar-head">Разделы Wiki</div>
-  <nav id="menu"></nav>
-</aside>
-<div class="overlay" onclick="toggleSidebar()"></div>
+<div class="wrap">
 
-<main class="content" id="content"></main>
+  <!-- ГЛАВНАЯ -->
+  <section id="main">
+    <div class="hero">
+      <h1>BLAZE <span>RUST</span></h1>
+      <p>X50 | NOLIMIT | CLANS | LOOT+</p>
+      <div class="badges">
+        <span class="badge">X50</span>
+        <span class="badge">NOLIMIT</span>
+        <span class="badge">CLANS</span>
+        <span class="badge">LOOT+</span>
+      </div>
+      <div class="ip" onclick="copyIp()" title="Нажми, чтобы скопировать">46.174.48.219:28015</div>
+      <div style="font-size:13px;color:var(--muted)">нажми на IP, чтобы скопировать</div>
+      <a class="btn" href="steam://connect/46.174.48.219:28015">Подключиться</a>
+      <a class="btn ghost" href="#connect">Как подключиться</a>
+    </div>
 
-<footer class="footer">© 2026 BLAZE RUST. Все права защищены. · <a href="#rules-intro">Правила</a> · <a href="#donate">Магазин</a></footer>
+    <h2>О сервере <span>//</span></h2>
+    <p>BLAZE RUST — проект с рейтами X50, без лимитов, с кланами и улучшенным лутом. Сервер работает на актуальной версии игры, плагины обновляются, администрация на связи.</p>
+    <div class="cards">
+      <div class="card"><div class="t">Рейты X50</div><div class="d">Быстрая добыча ресурсов — качаешься за вечер, а не за месяц.</div></div>
+      <div class="card"><div class="t">NOLIMIT</div><div class="d">Нет лимитов на строительство и количество игроков в клане.</div></div>
+      <div class="card"><div class="t">CLANS</div><div class="d">Полноценная система кланов с тегами, союзниками и врагами.</div></div>
+      <div class="card"><div class="t">LOOT+</div><div class="d">Улучшенный лут в ящиках, зданиях и на событиях.</div></div>
+    </div>
+
+    <h3>Плагины на сервере</h3>
+    <ul>
+      <li>Меню сервера и магазин</li>
+      <li>Улучшенный чат (окраска, приват, админ-команды)</li>
+      <li>Система кланов</li>
+      <li>Ивенты и события</li>
+      <li>Крафт без верстака</li>
+      <li>Коптер (полёт на мини-коптере)</li>
+      <li>ТП / трейд / апгрейд</li>
+      <li>Оптимизация FPS+</li>
+    </ul>
+
+    <h3>Мы на связи</h3>
+    <p>Телеграм-канал: <a href="https://t.me/blazerust_tg" target="_blank" rel="noopener">t.me/blazerust_tg</a><br>
+    Чат: <a href="https://t.me/BlazeRust_Chat" target="_blank" rel="noopener">t.me/BlazeRust_Chat</a><br>
+    Дискорд: <a href="https://discord.gg/blazerust" target="_blank" rel="noopener">discord.gg/blazerust</a></p>
+  </section>
+
+  <!-- ПРАВИЛА -->
+  <section id="rules">
+    <h2>Правила <span>//</span></h2>
+    <p>Играя на сервере, ты автоматически соглашаешься с правилами. Незнание правил не освобождает от ответственности.</p>
+
+    <h3>1. Общие правила</h3>
+    <ul>
+      <li>Запрещено использование читов, макросов и стороннего ПО, дающего преимущество.</li>
+      <li>Запрещена эксплуатация багов сервера. Найденный баг — сразу сообщи администрации.</li>
+      <li>Запрещено оскорбление игроков и администрации, спам, флуд, реклама.</li>
+      <li>Запрещено выдавать себя за администрацию сервера.</li>
+      <li>Запрещена продажа игровых ценностей за реальные деньги (RMT).</li>
+      <li>Аккаунты с VAC-баном могут быть ограничены в игре.</li>
+    </ul>
+
+    <h3>2. Игровой процесс</h3>
+    <ul>
+      <li>Запрещён абуз привилегий и возможностей плагинов.</li>
+      <li>Запрещено гриферство намеренное (рейд-базы с оффлайн-таймером — по ситуации, решает админ).</li>
+      <li>Запрещено блокировать спавн, точки возрождения и ключевые объекты.</li>
+      <li>Запрещено строить в зонах событий с целью помешать их проведению.</li>
+    </ul>
+
+    <div class="note danger"><strong>Важно:</strong> решение администрации по спорным ситуациям является окончательным. Спорь спокойно и аргументированно — адекватные вопросы всегда рассматриваются.</div>
+  </section>
+
+  <!-- ДОНАТ -->
+  <section id="donate">
+    <h2>Донат <span>//</span></h2>
+    <p>Донат — поддержка сервера. Все собранные средства идут на оплату хостинга и развитие проекта. Привилегии не дают неуязвимости и не заменяют навык игры.</p>
+    <div class="cards">
+      <div class="card"><div class="t">VIP</div><div class="d">Кит VIP, приоритетная очередь, цветной ник.</div></div>
+      <div class="card"><div class="t">PREMIUM</div><div class="d">Всё из VIP + расширенный кит, личные варпы.</div></div>
+      <div class="card"><div class="t">LEGEND</div><div class="d">Всё из PREMIUM + макси-кит, особый префикс, приоритет в тикетах.</div></div>
+    </div>
+    <div class="note">Цены и условия покупки уточняй у администрации в <a href="https://t.me/blazerust_tg" target="_blank" rel="noopener">телеграм-канале</a>. Прайс может меняться.</div>
+    <div class="note warn"><strong>Внимание:</strong> донат — добровольное пожертвование. Возврат средств не производится, если привилегия не была использована с нарушениями правил.</div>
+  </section>
+
+  <!-- НАКАЗАНИЯ -->
+  <section id="punish">
+    <h2>Наказания <span>//</span></h2>
+    <p>Система наказаний зависит от тяжести нарушения и повторности.</p>
+    <table>
+      <tr><th>Нарушение</th><th>Наказание</th></tr>
+      <tr><td>Спам / флуд в чате</td><td>Мут от 30 минут до 24 часов</td></tr>
+      <tr><td>Оскорбление игроков</td><td>Мут от 1 часа до 3 дней</td></tr>
+      <tr><td>Реклама / скам</td><td>Бан навсегда</td></tr>
+      <tr><td>Читы / макросы</td><td>Бан навсегда (без разбора)</td></tr>
+      <tr><td>Эксплойт багов</td><td>Бан от 7 дней до навсегда</td></tr>
+      <tr><td>Обход наказания (твинк)</td><td>Бан основного и твинк-аккаунтов</td></tr>
+      <tr><td>Продажа за реальные деньги</td><td>Бан навсегда</td></tr>
+    </table>
+    <div class="note">Обжалование наказания — через <a href="#complaints">Жалобы</a>. Не пиши админам в личку с требованием разбанить — так быстрее не станет.</div>
+  </section>
+
+  <!-- ЖАЛОБЫ -->
+  <section id="complaints">
+    <h2>Жалобы <span>//</span></h2>
+    <p>Жалоба подаётся на игрока или администратора. Рассматриваются только корректно оформленные жалобы.</p>
+    <h3>Как подать жалобу</h3>
+    <ol style="padding-left:22px;color:var(--muted)">
+      <li>Сделай скриншот или запиши видео нарушения.</li>
+      <li>Укажи ник нарушителя и время (примерно).</li>
+      <li>Отправь всё в <a href="https://t.me/BlazeRust_Chat" target="_blank" rel="noopener">чат</a> или на почту администрации.</li>
+      <li>Дождись ответа. Обычно — в течение 24 часов.</li>
+    </ol>
+    <div class="note danger"><strong>Жалобы без доказательств не рассматриваются.</strong> Если жалоба ложная — заявитель сам получает наказание.</div>
+  </section>
+
+  <!-- КОМАНДЫ -->
+  <section id="commands">
+    <h2>Команды <span>//</span></h2>
+    <table>
+      <tr><th>Команда</th><th>Описание</th></tr>
+      <tr><td><code>/menu</code></td><td>Открыть меню сервера</td></tr>
+      <tr><td><code>/shop</code></td><td>Магазин</td></tr>
+      <tr><td><code>/kit</code></td><td>Получить доступные киты</td></tr>
+      <tr><td><code>/clan</code></td><td>Меню клана (создать, пригласить, покинуть)</td></tr>
+      <tr><td><code>/home</code>, <code>/sethome</code></td><td>Установить и телепортироваться домой</td></tr>
+      <tr><td><code>/tpr</code>, <code>/tpa</code></td><td>Запрос телепортации и подтверждение</td></tr>
+      <tr><td><code>/trade</code></td><td>Открыть трейд с игроком</td></tr>
+      <tr><td><code>/upgrade</code></td><td>Апгрейд строительных блоков</td></tr>
+      <tr><td><code>/craft</code></td><td>Крафт без верстака</td></tr>
+      <tr><td><code>/copter</code></td><td>Вызвать мини-коптер</td></tr>
+      <tr><td><code>/report</code></td><td>Репорт на игрока</td></tr>
+      <tr><td><code>/help</code></td><td>Список доступных команд</td></tr>
+    </table>
+    <div class="note">Полный список команд смотри в игре через <code>/help</code>. Часть команд может быть доступна только с привилегией.</div>
+  </section>
+
+  <!-- КЛАНЫ -->
+  <section id="clans">
+    <h2>Кланы <span>//</span></h2>
+    <p>На сервере включена полноценная система кланов. Лимитов на количество участников нет (NOLIMIT).</p>
+    <ul>
+      <li><code>/clan create Название</code> — создать клан</li>
+      <li><code>/clan invite Ник</code> — пригласить игрока</li>
+      <li><code>/clan accept</code> — принять приглашение</li>
+      <li><code>/clan leave</code> — покинуть клан</li>
+      <li><code>/clan info</code> — информация о клане</li>
+      <li><code>/clan tag</code> — установить тег клана</li>
+    </ul>
+    <div class="note">Внутриклановые разборки решаются внутри клана. Администрация не возвращает вещи, украденные союзниками по клану.</div>
+  </section>
+
+  <!-- STEAMID -->
+  <section id="steamid">
+    <h2>SteamID <span>//</span></h2>
+    <p>SteamID нужен для подачи жалоб, получения привилегий и восстановления вещей.</p>
+    <h3>Как узнать свой SteamID</h3>
+    <ol style="padding-left:22px;color:var(--muted)">
+      <li>Открой свой профиль Steam (в браузере, не в клиенте).</li>
+      <li>Посмотри ссылку профиля — в конце будет <code>7656119...</code> (это и есть SteamID64).</li>
+      <li>Если ссылка вида <code>/id/никинейм</code> — скопируй ник, а ID найди на сайте типа steamid.io.</li>
+    </ol>
+    <div class="note warn"><strong>Не путай SteamID с никнеймом.</strong> По одному нику мы не сможем найти тебя в списках — ники можно менять.</div>
+  </section>
+
+  <!-- ПОДКЛЮЧЕНИЕ -->
+  <section id="connect">
+    <h2>Подключение <span>//</span></h2>
+    <h3>Способ 1 — через кнопку</h3>
+    <p>Нажми <a class="btn" style="margin:0" href="steam://connect/46.174.48.219:28015">Подключиться</a> — игра запустится и подключится сама.</p>
+    <h3>Способ 2 — вручную через консоль</h3>
+    <ol style="padding-left:22px;color:var(--muted)">
+      <li>Запусти Rust, открой консоль (клавиша <code>F1</code>).</li>
+      <li>Введи команду: <code>connect 46.174.48.219:28015</code></li>
+      <li>Нажми Enter и жди загрузки.</li>
+    </ol>
+    <h3>Способ 3 — через браузер</h3>
+    <p>Используй ссылку: <code>steam://connect/46.174.48.219:28015</code> — вставь её в адресную строку браузера.</p>
+    <div class="note">Сервер виден в списке серверов: закладка «Избранное» → «Добавить сервер» → введи IP и порт.</div>
+  </section>
+
+</div>
+
+<footer>
+  BLAZE RUST © <span id="year"></span> — неофициальный игровой проект. Не связан с Facepunch Studios.<br>
+  <a href="https://t.me/blazerust_tg" target="_blank" rel="noopener">Telegram</a> · 
+  <a href="https://t.me/BlazeRust_Chat" target="_blank" rel="noopener">Чат</a> · 
+  <a href="https://discord.gg/blazerust" target="_blank" rel="noopener">Discord</a>
+</footer>
 
 <script>
-// ================== КОНТЕНТ ==================
-var SERVER_IP = "46.174.48.219:28015";
-var SECTIONS = [
-  ["Правила", [["rules-intro","Вводные правила"],["rules-main","Основные правила"],["donate","Соглашение на донат"]]],
-  ["Для новичков", [["info-start","Как начать"],["info-privileges","Привилегии и VIP"],["info-commands","Команды чата"],["info-clans","Как создать клан"]]],
-  ["Поддержка", [["support-complaint","Как подать жалобу"],["support-punishments","Наказания"]]],
-  ["Инструкции", [["info-steamid","Как узнать SteamID"],["info-connect","Подключение connect"]]]
-];
-var FLAT=[].concat.apply([],SECTIONS.map(function(s){return s[1]}));
-var PAGES={};
-
-PAGES.home={title:"Главная",cat:"",html:
-'<section class="hero">'+
-'<div class="hero-badge"><span class="pulse-dot"></span>Пиратский сервер Rust · Без лицензии</div>'+
-'<h1 class="hero-title">BLAZE RUST</h1>'+
-'<div class="hero-tags"><span>X50</span><span>NOLIMIT</span><span>CLANS</span><span>LOOT+</span></div>'+
-'<p class="hero-sub">BLAZE RUST X50 — создан для интенсивной, динамичной игры. Сделан с упором в комфорт для игроков, с максимальной производительностью и использованием передового железа.</p>'+
-'<div class="hero-cta"><a class="btn btn-primary" href="#info-start">🚀 Начать играть</a><a class="btn btn-ghost" href="#rules-intro">📜 Правила</a><a class="btn btn-ghost" href="#donate">🛒 Магазин</a></div>'+
-'<div class="hero-stats">'+
-'<div class="stat"><b class="count" data-count="6">0</b><small>онлайн</small></div>'+
-'<div class="stat"><b class="count" data-count="250">0</b><small>макс. игроков</small></div>'+
-'<div class="stat"><b class="count" data-count="24">0</b><small>поддержка 24/7</small></div>'+
-'<div class="stat"><b class="count" data-count="50">0</b><small>рейты сервера</small></div>'+
-'</div></section>'+
-'<section class="section telegram-block"><div class="tg-card">'+
-'<div class="tg-emoji">📢</div><div class="tg-body">'+
-'<h2 class="section-title">BLAZE RUST в Telegram!</h2>'+
-'<p class="tg-text">🔥 Не упусти шанс получить эксклюзивные промокоды в нашем Telegram-канале!</p>'+
-'<a class="tg-link" href="https://t.me/blazerust_tg" target="_blank">https://t.me/blazerust_tg</a>'+
-'<p class="tg-text">💬 Также вы можете общаться в нашем Telegram-чате: <a href="https://t.me/BlazeRust_Chat" target="_blank">@BlazeRust_Chat</a></p>'+
-'<p class="tg-text">Присоединяйтесь к нам, чтобы быть в курсе всех новостей и бонусов! 🎉</p>'+
-'</div></div></section>'+
-'<section class="section"><h2 class="section-title reveal">Проект</h2>'+
-'<p class="section-sub reveal">BlazeRust — для комфортной игры. Это не просто сервер. Здесь прислушиваются к мнению игроков. И только вы решаете, что будет на сервере.</p>'+
-'<div class="grid grid-2">'+
-'<div class="card reveal"><div class="card-ico">⚡</div><h3>BlazeRust — Reborn</h3><p>Сервер перезапущен и развивается каждый день. Работа над ним идёт постоянно — контент добавляется с каждым обновлением.</p></div>'+
-'<div class="card reveal"><div class="card-ico">🖥️</div><h3>Как зайти?</h3><p>Скопируй адрес и вставь в игровую консоль (F1):</p><div class="codeblock">connect '+SERVER_IP+'</div></div>'+
-'</div></section>'+
-'<section class="section"><h2 class="section-title reveal">Основные плагины</h2>'+
-'<div class="grid grid-4">'+
-'<div class="card reveal"><div class="card-ico">📋</div><h3>Меню сервера</h3><p>Информация о сервере, система китов и вайпблок. Отображение убийств и автозакрытие дверей.</p></div>'+
-'<div class="card reveal"><div class="card-ico">🛒</div><h3>Магазин предметов</h3><p>Полноценный внутриигровой магазин с удобной выдачей.</p></div>'+
-'<div class="card reveal"><div class="card-ico">💬</div><h3>Чат-система</h3><p>Удобный чат с поддержкой личных сообщений и команд.</p></div>'+
-'<div class="card reveal"><div class="card-ico">⚔️</div><h3>Клановая система</h3><p>Создавай клан, зови друзей и захватывай карту.</p></div>'+
-'<div class="card reveal"><div class="card-ico">🎉</div><h3>Ивент-системы</h3><p>Различные ивенты и повышенный дроп с танка.</p></div>'+
-'<div class="card reveal"><div class="card-ico">🔧</div><h3>Крафт без верстака</h3><p>Всё изучено, вещи не ломаются, авто-сортировка в ящиках.</p></div>'+
-'<div class="card reveal"><div class="card-ico">🚁</div><h3>Коптер по кнопке</h3><p>Вызов коптера одной кнопкой. Бесконечный день.</p></div>'+
-'<div class="card reveal"><div class="card-ico">🔁</div><h3>ТП, трейд, upgrade</h3><p>Метаболизм, трейд, телепорт и upgrade-системы.</p></div>'+
-'</div></section>'+
-'<section class="section"><h2 class="section-title reveal">Оптимизация</h2>'+
-'<div class="grid grid-3">'+
-'<div class="card reveal"><div class="card-ico">⚡</div><h3>FPS+</h3><p>Все плагины делались с упором на оптимизацию. Вырезаны все лишние объекты с карты.</p></div>'+
-'<div class="card reveal"><div class="card-ico">🔥</div><h3>Огонь вырезан</h3><p>Огонь и трупы полностью вырезаны с сервера — ещё больше FPS.</p></div>'+
-'<div class="card reveal"><div class="card-ico">📈</div><h3>Комфортный геймплей</h3><p>Как для кланов, так и для небольших команд. Это не конечный результат — работа идёт каждый день.</p></div>'+
-'</div></section>'+
-'<section class="section"><h2 class="section-title reveal">Частые вопросы</h2><div class="faq">'+
-'<details><summary>Это пиратский сервер? Нужна лицензия?</summary><p>Да, сервер полностью пиратский. Лицензия не нужна — достаточно скачать пиратскую версию Rust и подключиться по адресу сервера.</p></details>'+
-'<details><summary>Какие вайпы и когда?</summary><p>Вайпы проходят по расписанию, которое публикуется в нашем Telegram и Discord. Следи за обновлениями.</p></details>'+
-'<details><summary>Как создать клан?</summary><p>Используй команду /clan create Название. Полная инструкция — в разделе «Как создать клан».</p></details>'+
-'<details><summary>Где купить привилегию?</summary><p>В магазине через /store на сервере. Выдача происходит мгновенно после оплаты.</p></details>'+
-'<details><summary>Что делать, если заметил читера?</summary><p>Оставь жалобу в Discord через тикет с видео-доказательствами. Инструкция — в разделе «Как подать жалобу».</p></details>'+
-'</div></section>'};
-
-PAGES["rules-intro"]={title:"Вводные правила",cat:"Правила",html:
-'<p class="lead">Базовые положения проекта BLAZE RUST. Прочитай их до первого захода — это поможет избежать недопониманий и спорных ситуаций.</p>'+
-'<h2>Общие положения</h2><div class="list">'+
-'<div class="li reveal"><span class="li-num">01</span><div><strong>Незнание правил не освобождает от ответственности</strong><p>Заходя на сервер BLAZE RUST, вы автоматически соглашаетесь с правилами проекта в полном объёме.</p></div></div>'+
-'<div class="li reveal"><span class="li-num">02</span><div><strong>Решение администрации окончательно</strong><p>В спорных ситуациях окончательное решение остаётся за администрацией проекта.</p></div></div>'+
-'<div class="li reveal"><span class="li-num">03</span><div><strong>Правила могут изменяться</strong><p>Администрация вправе дополнять и изменять правила без отдельного оповещения.</p></div></div>'+
-'<div class="li reveal"><span class="li-num">04</span><div><strong>Все обращения — через Discord</strong><p>Жалобы, споры и вопросы решаются через создание тикета в нашем Discord.</p></div></div>'+
-'</div><div class="callout tip"><b>Совет</b><p>После вводных правил обязательно прочитайте основные правила — именно за их нарушение выдаются блокировки.</p></div>'};
-
-PAGES["rules-main"]={title:"Основные правила",cat:"Правила",html:
-'<p class="lead">Свод правил поведения на сервере BLAZE RUST. За их нарушение администрация вправе выдать предупреждение, мут или блокировку без возврата средств.</p>'+
-'<h2>Поведение и честная игра</h2><div class="list">'+
-'<div class="li reveal"><span class="li-num">01</span><div><strong>Читы и стороннее ПО запрещены</strong><p>Использование читов, макросов, скриптов — перманентный бан без возможности обжалования.</p></div></div>'+
-'<div class="li reveal"><span class="li-num">02</span><div><strong>Эксплойты и баги</strong><p>Использование игровых багов и эксплойтов запрещено. О найденных багах сообщайте администрации.</p></div></div>'+
-'<div class="li reveal"><span class="li-num">03</span><div><strong>Обман администрации</strong><p>Поддельные доказательства и обман при разборе жалоб караются блокировкой.</p></div></div>'+
-'</div><h2>Общение и чат</h2><div class="list">'+
-'<div class="li reveal"><span class="li-num">04</span><div><strong>Уважение к игрокам</strong><p>Оскорбления, разжигание розни, угрозы и травля в чате и голосовых каналах запрещены.</p></div></div>'+
-'<div class="li reveal"><span class="li-num">05</span><div><strong>Спам и реклама</strong><p>Флуд, спам, капс и реклама сторонних проектов в чате запрещены.</p></div></div>'+
-'<div class="li reveal"><span class="li-num">06</span><div><strong>Никнейм</strong><p>Запрещены оскорбительные, провокационные и вводящие в заблуждение никнеймы.</p></div></div>'+
-'</div><div class="callout danger"><b>Важно</b><p>Игровые действия (рейды, обманы внутри игры, союзы) — это часть Rust и не являются нарушением.</p></div>'};
-
-PAGES.donate={title:"Соглашение на донат",cat:"Правила",html:
-'<p class="lead">Условия пополнения донат-счёта и возврата средств в магазине BLAZE RUST. Принимаются автоматически при пополнении баланса.</p>'+
-'<div class="callout note"><b>Автоматическое соглашение</b><p>Пополняя свой баланс в магазине, вы автоматически принимаете условия этого раздела в полном объёме.</p></div>'+
-'<h2>Глава 1 · Пополнение счёта</h2><div class="list">'+
-'<div class="li reveal"><span class="li-num">01</span><div><strong>Полное согласие</strong><p>Вы принимаете все правила проекта и соглашаетесь с ними в полном объёме.</p></div></div>'+
-'<div class="li reveal"><span class="li-num">02</span><div><strong>Проблемы с товаром</strong><p>Мы обязаны решить все проблемы с купленными предметами. Компенсация по усмотрению администратора.</p></div></div>'+
-'<div class="li reveal"><span class="li-num">03</span><div><strong>Утеря данных</strong><p>При утере данных от аккаунта гарантия восстановления средств не предоставляется.</p></div></div>'+
-'<div class="li reveal"><span class="li-num">04</span><div><strong>Обман администрации</strong><p>При попытке обмануть администрацию счёт будет заморожен и аннулирован.</p></div></div>'+
-'<div class="li reveal"><span class="li-num">05</span><div><strong>Нарушение правил</strong><p>За нарушение правил проекта администрация вправе лишить вас купленного доната.</p></div></div>'+
-'<div class="li reveal"><span class="li-num">06</span><div><strong>Ошибочная покупка</strong><p>Если купили по ошибке и не забрали из корзины (/store) — поможем восстановить баланс через тикет в Discord.</p></div></div>'+
-'</div><h2>Глава 2 · Возврат средств</h2>'+
-'<p>Средства возвращаются по усмотрению администратора. Для возврата нужна цельная видео-фиксация: момент пополнения, покупки, взятия из корзины и сам «брак» товара.</p>'+
-'<div class="callout warn"><b>Возникла проблема?</b><p>Все вопросы по донату и возврату решаются через тикет в Discord.</p></div>'};
-
-PAGES["support-complaint"]={title:"Как подать жалобу",cat:"Поддержка",html:
-'<p class="lead">Жалобы на читеров и нарушителей рассматриваются через тикет в Discord. Чем полнее доказательства — тем быстрее решение.</p>'+
-'<h2>Как подать</h2><div class="steps">'+
-'<div class="step reveal"><div class="step-num">1</div><div><h3>Создайте тикет в Discord</h3><p>Зайдите в наш Discord и откройте тикет в канале жалоб.</p></div></div>'+
-'<div class="step reveal"><div class="step-num">2</div><div><h3>Укажите данные</h3><p>Сообщите ник и SteamID нарушителя, сервер и время нарушения.</p></div></div>'+
-'<div class="step reveal"><div class="step-num">3</div><div><h3>Приложите доказательства</h3><p>Прикрепите видео или скриншоты, где чётко видно нарушение.</p></div></div>'+
-'</div><div class="callout warn"><b>Без доказательств жалоба не рассматривается</b><p>Голословные обвинения без видео или скриншотов администрация не принимает.</p></div>'};
-
-PAGES["support-punishments"]={title:"Наказания",cat:"Поддержка",html:
-'<p class="lead">Ориентировочная таблица наказаний за нарушение правил. Окончательная мера определяется администрацией с учётом тяжести и повторности.</p>'+
-'<h2>Таблица наказаний</h2><div class="table-wrap"><table><thead><tr><th>Нарушение</th><th>Первое</th><th>Повторное</th></tr></thead><tbody>'+
-'<tr><td>Использование читов</td><td><span class="tag bad">Бан навсегда</span></td><td><span class="tag bad">Бан навсегда</span></td></tr>'+
-'<tr><td>Использование багов / эксплойтов</td><td><span class="tag mid">Бан 7 дней</span></td><td><span class="tag bad">Бан навсегда</span></td></tr>'+
-'<tr><td>Оскорбления в чате</td><td><span class="tag ok">Мут 1 час</span></td><td><span class="tag mid">Мут 24 часа</span></td></tr>'+
-'<tr><td>Спам / реклама</td><td><span class="tag ok">Предупреждение</span></td><td><span class="tag mid">Мут 12 часов</span></td></tr>'+
-'<tr><td>Обман администрации</td><td><span class="tag mid">Бан 3 дня</span></td><td><span class="tag bad">Бан навсегда</span></td></tr>'+
-'</tbody></table></div><div class="callout note"><b>Сроки ориентировочны</b><p>Конкретная мера остаётся на усмотрение администрации. Бан за читы обжалованию и возврату доната не подлежит.</p></div>'};
-
-PAGES["info-start"]={title:"Как начать",cat:"Для новичков",html:
-'<p class="lead">Пошаговый гайд для новичков: как скачать пиратку Rust, подключиться к BLAZE RUST и сделать первые шаги.</p>'+
-'<h2>Шаг 1. Скачай пиратку Rust</h2><p>Сервер полностью пиратский — лицензия не нужна. Скачай пиратскую версию Rust и запусти лаунчер.</p>'+
-'<h2>Шаг 2. Подключись к серверу</h2><p>Скопируй адрес и вставь в игровую консоль (клавиша F1):</p><div class="codeblock">connect '+SERVER_IP+'</div>'+
-'<h2>Шаг 3. Начни выживать</h2><div class="steps">'+
-'<div class="step reveal"><div class="step-num">1</div><div><h3>Собери базу</h3><p>Скорость добычи x50 — фундамент и стены появятся за считанные минуты.</p></div></div>'+
-'<div class="step reveal"><div class="step-num">2</div><div><h3>Забери киты</h3><p>Введи /kit в чате и получи стартовый набор.</p></div></div>'+
-'<div class="step reveal"><div class="step-num">3</div><div><h3>Объединяйся</h3><p>Создай клан через /clan create Название и зови друзей.</p></div></div>'+
-'</div><div class="callout tip"><b>Совет</b><p>Перед первым заходом прочитай вводные и основные правила.</p></div>'};
-
-PAGES["info-privileges"]={title:"Привилегии и VIP",cat:"Для новичков",html:
-'<p class="lead">Привилегии дают доступ к уникальным возможностям: киты, телепорты, свои зоны и многое другое. Все покупки — через /store.</p>'+
-'<div class="grid grid-3">'+
-'<div class="price-card reveal"><h3>VIP</h3><div class="price">149 ₽</div><ul><li>Кит VIP каждые 24 часа</li><li>/sethome ×3</li><li>Приоритет в очереди</li><li>Цветной ник</li></ul><a class="btn btn-ghost btn-sm" href="#donate">Купить</a></div>'+
-'<div class="price-card hot reveal"><h3>PREMIUM</h3><div class="price">349 ₽</div><ul><li>Всё из VIP</li><li>Кит PREMIUM каждые 12 часов</li><li>/sethome ×6, /tpa без кулдауна</li><li>Своя зона 2×2</li></ul><a class="btn btn-primary btn-sm" href="#donate">Купить</a></div>'+
-'<div class="price-card reveal"><h3>LEGENDARY</h3><div class="price">699 ₽</div><ul><li>Всё из PREMIUM</li><li>Кит LEGENDARY каждые 6 часов</li><li>/sethome ×10</li><li>Особый скин и эффекты</li></ul><a class="btn btn-ghost btn-sm" href="#donate">Купить</a></div>'+
-'</div><div class="callout note"><b>Выдача</b><p>Все привилегии выдаются мгновенно через /store.</p></div>'};
-
-PAGES["info-commands"]={title:"Команды чата",cat:"Для новичков",html:
-'<p class="lead">Основные команды чата на BLAZE RUST. Пиши их в игровом чате (Enter) или в консоли (F1).</p>'+
-'<h2>Основные команды</h2><div class="table-wrap"><table><thead><tr><th>Команда</th><th>Описание</th></tr></thead><tbody>'+
-'<tr><td><span class="cmd-mini">/store</span></td><td>Открыть магазин и забрать покупки</td></tr>'+
-'<tr><td><span class="cmd-mini">/kit</span></td><td>Забрать доступные киты</td></tr>'+
-'<tr><td><span class="cmd-mini">/sethome</span></td><td>Установить точку дома</td></tr>'+
-'<tr><td><span class="cmd-mini">/home</span></td><td>Телепортироваться домой</td></tr>'+
-'<tr><td><span class="cmd-mini">/tpa &lt;ник&gt;</span></td><td>Запросить телепорт к игроку</td></tr>'+
-'<tr><td><span class="cmd-mini">/clan</span></td><td>Управление кланом</td></tr>'+
-'<tr><td><span class="cmd-mini">/report &lt;ник&gt;</span></td><td>Пожаловаться на игрока</td></tr>'+
-'<tr><td><span class="cmd-mini">/top</span></td><td>Топ игроков</td></tr>'+
-'</tbody></table></div><div class="callout tip"><b>Подсказка</b><p>Полный список команд смотри в игре через /help.</p></div>'};
-
-PAGES["info-clans"]={title:"Как создать клан",cat:"Для новичков",html:
-'<p class="lead">Клановая система на BLAZE RUST позволяет объединяться в группы, иметь общий дом и захватывать карту вместе.</p>'+
-'<h2>Как создать клан</h2><div class="steps">'+
-'<div class="step reveal"><div class="step-num">1</div><div><h3>Создай клан</h3><p>Введи команду:</p><div class="codeblock">/clan create Название</div></div></div>'+
-'<div class="step reveal"><div class="step-num">2</div><div><h3>Пригласи друзей</h3><p>Отправь приглашение игроку:</p><div class="codeblock">/clan invite Ник</div></div></div>'+
-'<div class="step reveal"><div class="step-num">3</div><div><h3>Прими заявку</h3><p>Игрок принимает приглашение:</p><div class="codeblock">/clan accept</div></div></div>'+
-'</div><h2>Основные команды клана</h2><div class="table-wrap"><table><thead><tr><th>Команда</th><th>Описание</th></tr></thead><tbody>'+
-'<tr><td><span class="cmd-mini">/clan create &lt;название&gt;</span></td><td>Создать клан</td></tr>'+
-'<tr><td><span class="cmd-mini">/clan invite &lt;ник&gt;</span></td><td>Пригласить игрока</td></tr>'+
-'<tr><td><span class="cmd-mini">/clan kick &lt;ник&gt;</span></td><td>Исключить игрока</td></tr>'+
-'<tr><td><span class="cmd-mini">/clan leave</span></td><td>Покинуть клан</td></tr>'+
-'<tr><td><span class="cmd-mini">/clan base</span></td><td>Телепорт на базу клана</td></tr>'+
-'</tbody></table></div>'};
-
-PAGES["info-steamid"]={title:"Как узнать SteamID",cat:"Инструкции",html:
-'<p class="lead">SteamID нужен для жалоб, покупок и обращения в поддержку. Узнать его можно прямо в игре за 10 секунд.</p>'+
-'<h2>Способ 1. Игровая консоль</h2><div class="steps">'+
-'<div class="step reveal"><div class="step-num">1</div><div><h3>Открой консоль</h3><p>Нажми клавишу F1 в игре.</p></div></div>'+
-'<div class="step reveal"><div class="step-num">2</div><div><h3>Введи команду</h3><p>Напиши в консоли:</p><div class="codeblock">status</div></div></div>'+
-'<div class="step reveal"><div class="step-num">3</div><div><h3>Скопируй SteamID</h3><p>Найди себя в списке и скопируй ID вида STEAM_0:1:12345678.</p></div></div>'+
-'</div><h2>Способ 2. Сторонние сервисы</h2><p>Зайди на steamidfinder.com, вставь ссылку на профиль Steam и получи SteamID64 / SteamID.</p>'};
-
-PAGES["info-connect"]={title:"Подключение connect",cat:"Инструкции",html:
-'<p class="lead">Подключение к BLAZE RUST занимает меньше минуты. Используй игровую консоль или добавь сервер в избранное.</p>'+
-'<h2>Адрес сервера</h2><div class="codeblock">connect '+SERVER_IP+'</div>'+
-'<h2>Как подключиться</h2><div class="steps">'+
-'<div class="step reveal"><div class="step-num">1</div><div><h3>Запусти Rust</h3><p>Открой пиратскую версию Rust и нажми F1.</p></div></div>'+
-'<div class="step reveal"><div class="step-num">2</div><div><h3>Вставь команду</h3><p>Вставь connect '+SERVER_IP+' и нажми Enter.</p></div></div>'+
-'<div class="step reveal"><div class="step-num">3</div><div><h3>Начинай выживать</h3><p>Дождись загрузки и отправляйся на пустошь!</p></div></div>'+
-'</div><div class="callout warn"><b>Ошибка Timed Out (EAC)?</b><p>Отключи EAC/античит в лаунчере или перезапусти игру.</p></div>'};
-
-// ================== РОУТЕР ==================
-function catOf(slug){for(var i=0;i<SECTIONS.length;i++){for(var j=0;j<SECTIONS[i][1].length;j++){if(SECTIONS[i][1][j][0]===slug)return SECTIONS[i][0];}}return "";}
-function navHtml(){
-  var h='<a class="nav-item" data-page="home" href="#home">🏠 Главная</a>';
-  for(var i=0;i<SECTIONS.length;i++){
-    h+='<div class="nav-cat">'+SECTIONS[i][0]+'</div>';
-    for(var j=0;j<SECTIONS[i][1].length;j++){
-      var s=SECTIONS[i][1][j];
-      h+='<a class="nav-item" data-page="'+s[0]+'" href="#'+s[0]+'">'+s[1]+'</a>';
+  document.getElementById('year').textContent = new Date().getFullYear();
+  function copyIp(){
+    var ip = '46.174.48.219:28015';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(ip).then(function(){ alert('IP скопирован: ' + ip); });
+    } else {
+      var t = document.createElement('textarea');
+      t.value = ip; document.body.appendChild(t); t.select();
+      document.execCommand('copy'); document.body.removeChild(t);
+      alert('IP скопирован: ' + ip);
     }
   }
-  return h;
-}
-function render(){
-  var hash=(location.hash||"#home").replace("#","");
-  if(!PAGES[hash])hash="home";
-  var p=PAGES[hash],cat=catOf(hash),idx=FLAT.indexOf(hash);
-  var crumbs='<nav class="crumbs"><a href="#home">Главная</a>';
-  if(cat)crumbs+='<span>/</span><span>'+cat+'</span>';
-  crumbs+='<span>/</span><span>'+p.title+'</span></nav>';
-  var pager='';
-  if(idx>=0){
-    var prev=FLAT[idx-1],next=FLAT[idx+1];
-    pager='<div class="pager">';
-    if(prev)pager+='<div class="pager-btn" onclick="go(\''+prev+'\')"><span>← Назад</span><strong>'+PAGES[prev].title+'</strong></div>';
-    if(next)pager+='<div class="pager-btn" style="text-align:right" onclick="go(\''+next+'\')"><span>Далее →</span><strong>'+PAGES[next].title+'</strong></div>';
-    pager+='</div>';
-  }
-  document.getElementById("content").innerHTML='<h1 class="page-title">'+p.title+'</h1>'+p.html+pager;
-  if(hash==="home")document.getElementById("content").innerHTML=p.html;
-  else document.getElementById("content").innerHTML=crumbs+'<h1 class="page-title">'+p.title+'</h1>'+p.html+pager;
-  document.querySelectorAll(".nav-item").forEach(function(el){el.classList.toggle("active",el.dataset.page===hash);});
-  document.body.classList.remove("nav-open");
-  window.scrollTo({top:0,behavior:"smooth"});
-  initFx();
-}
-function go(slug){location.hash=slug;}
-window.addEventListener("hashchange",render);
-
-// ================== ЭФФЕКТЫ ==================
-function initFx(){
-  document.querySelectorAll(".reveal").forEach(function(el){
-    if(el.classList.contains("visible"))return;
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("visible");io.unobserve(e.target);}});},{threshold:.12});
-    io.observe(el);
-  });
-  document.querySelectorAll(".count").forEach(function(c){
-    if(c.dataset.done)return;c.dataset.done=1;
-    var cio=new IntersectionObserver(function(es){es.forEach(function(e){
-      if(!e.isIntersecting)return;
-      var el=e.target,t=+el.dataset.count,cur=0,st=Math.max(1,Math.round(t/50));
-      var x=setInterval(function(){cur+=st;if(cur>=t){cur=t;clearInterval(x);}el.textContent=cur;},28);
-      cio.unobserve(el);
-    });},{threshold:.5});
-    cio.observe(c);
-  });
-}
-(function(){
-  var wrap=document.createElement("div");wrap.className="stars";
-  for(var i=0;i<70;i++){var s=document.createElement("i");s.style.left=(Math.random()*100)+"%";s.style.top=(Math.random()*100)+"%";s.style.animationDelay=(Math.random()*4)+"s";s.style.animationDuration=(2+Math.random()*3)+"s";s.style.width=s.style.height=(Math.random()*2+1)+"px";wrap.appendChild(s);}
-  document.body.appendChild(wrap);
-})();
-function toggleSidebar(){document.body.classList.toggle("nav-open");}
-document.getElementById("menu").innerHTML=navHtml();
-render();
 </script>
 </body>
 </html>
