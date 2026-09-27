@@ -1,0 +1,21 @@
+{
+  "name": "BLAZE RUST",
+  "short_name": "BlazeRust",
+  "description": "Сервер Rust X10/X50 | NOLIMIT | CLANS | LOOT+",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0e0f11",
+  "theme_color": "#ffc53d",
+  "icons": [
+    {
+      "src": "https://i.ibb.co/Rk9mM7Y7/image.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://i.ibb.co/Rk9mM7Y7/image.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
