@@ -31,11 +31,35 @@
     font-size:16px;line-height:1.6;
     overflow-x:hidden;
     -webkit-font-smoothing:antialiased;
+    opacity:0;
+    transition:opacity .5s ease;
   }
+  body.loaded{opacity:1}
   a{color:var(--accent);text-decoration:none;transition:color .15s}
   a:hover{color:var(--accent-h)}
 
-  /* ===== Анимированный фон: кадры Rust, случайный порядок ===== */
+  /* ===== Прелоадер ===== */
+  #loader{
+    position:fixed;inset:0;z-index:1000;
+    background:#0b0c0e;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;
+    transition:opacity .6s ease,visibility .6s ease;
+  }
+  #loader.hide{opacity:0;visibility:hidden}
+  #loader img{width:72px;height:72px;border-radius:18px;animation:loaderPulse 1.6s ease-in-out infinite}
+  @keyframes loaderPulse{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.08);opacity:1}}
+  #loader .bar{
+    width:180px;height:5px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden;
+  }
+  #loader .bar i{
+    display:block;height:100%;width:40%;
+    background:linear-gradient(90deg,var(--accent),#ffb066);
+    border-radius:99px;animation:loadSlide 1.1s ease-in-out infinite;
+  }
+  @keyframes loadSlide{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+  #loader .label{font-family:"Russo One",sans-serif;font-size:13px;letter-spacing:2px;color:var(--muted);text-transform:uppercase}
+
+  /* ===== Анимированный фон ===== */
   .bg-slideshow{position:fixed;inset:0;z-index:-3;overflow:hidden}
   .bg-slideshow .slide{
     position:absolute;inset:0;
@@ -59,6 +83,23 @@
   }
   .grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
+  /* ===== Пепел / угли на фоне ===== */
+  .embers{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+  .ember{
+    position:absolute;bottom:-12px;
+    width:5px;height:5px;border-radius:50%;
+    background:radial-gradient(circle,#ff9a5a,#d1661c 70%,transparent);
+    opacity:0;
+    animation:rise linear infinite;
+  }
+  @keyframes rise{
+    0%{transform:translateY(0) translateX(0);opacity:0}
+    8%{opacity:.8}
+    50%{opacity:.55}
+    92%{opacity:.15}
+    100%{transform:translateY(-105vh) translateX(var(--drift,30px));opacity:0}
+  }
+
   /* ===== Шапка ===== */
   header{
     position:sticky;top:0;z-index:100;
@@ -66,8 +107,10 @@
     backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
     border-bottom:1px solid var(--line);
   }
-  .nav{max-width:1180px;margin:0 auto;padding:0 20px;height:66px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-  .logo{font-family:"Russo One",sans-serif;font-size:22px;letter-spacing:1px;color:var(--text);white-space:nowrap;text-transform:uppercase}
+  .nav{max-width:1180px;margin:0 auto;padding:0 20px;height:66px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .logo-wrap{display:flex;align-items:center;gap:10px;white-space:nowrap}
+  .logo-wrap img{width:34px;height:34px;border-radius:10px;object-fit:cover;flex-shrink:0}
+  .logo{font-family:"Russo One",sans-serif;font-size:21px;letter-spacing:1px;color:var(--text);text-transform:uppercase}
   .logo span{color:var(--accent)}
   .menu{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
   .menu a{
@@ -87,7 +130,7 @@
   .burger{display:none;background:none;border:1px solid var(--line);color:var(--text);font-size:20px;padding:4px 12px;border-radius:12px;cursor:pointer}
 
   /* ===== Герой ===== */
-  .hero{position:relative;min-height:90vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:110px 20px 80px}
+  .hero{position:relative;min-height:92vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:110px 20px 110px}
   .hero-inner{max-width:860px;position:relative;z-index:2}
   .hero h1{
     font-family:"Russo One",sans-serif;font-size:60px;letter-spacing:2px;line-height:1.03;
@@ -133,6 +176,25 @@
   .btn.dark{background:rgba(255,255,255,.08);color:var(--text);border:1px solid var(--line);box-shadow:none;backdrop-filter:blur(8px)}
   .btn.dark:hover{background:rgba(255,255,255,.15);color:var(--text);box-shadow:none}
   .hero-note{margin-top:24px;font-size:13px;color:#c4bfb3;letter-spacing:.5px;text-transform:uppercase;text-shadow:0 1px 8px rgba(0,0,0,.8);animation:floatIn .8s .5s ease both}
+
+  /* Стрелка "Листай ниже" */
+  .scroll-hint{
+    position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+    z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;
+    color:var(--muted);font-family:"Russo One",sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;
+    animation:hintFloat 2.2s ease-in-out infinite;
+  }
+  .scroll-hint .mouse{
+    width:26px;height:42px;border:2px solid rgba(255,255,255,.35);border-radius:99px;
+    position:relative;
+  }
+  .scroll-hint .mouse::after{
+    content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);
+    width:4px;height:8px;border-radius:99px;background:var(--accent);
+    animation:wheel 1.6s ease-in-out infinite;
+  }
+  @keyframes wheel{0%{opacity:0;transform:translate(-50%,0)}30%{opacity:1}100%{opacity:0;transform:translate(-50%,12px)}}
+  @keyframes hintFloat{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-7px)}}
 
   /* ===== Контейнер ===== */
   .wrap{max-width:1180px;margin:0 auto;padding:36px 20px 80px;position:relative;z-index:2}
@@ -224,6 +286,28 @@
   .shop-more p{color:var(--muted);font-size:14px;margin:0}
   .shop-more .btn{padding:13px 26px;font-size:13px;border-radius:14px}
 
+  /* Промокод */
+  .promo{
+    display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+    background:linear-gradient(135deg,rgba(255,122,51,.12),rgba(255,255,255,.02));
+    border:1px dashed rgba(255,122,51,.4);border-radius:var(--radius);
+    padding:26px 28px;margin-bottom:26px;
+  }
+  .promo .t{font-weight:800;font-size:17px;margin-bottom:4px}
+  .promo p{color:var(--muted);font-size:14px;margin:0}
+  .promo-form{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .promo-form input{
+    background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:12px;
+    color:var(--text);font-family:"Manrope",sans-serif;font-size:14px;font-weight:600;
+    padding:12px 16px;width:220px;outline:none;transition:border-color .2s;
+  }
+  .promo-form input::placeholder{color:var(--muted)}
+  .promo-form input:focus{border-color:var(--accent)}
+  .promo-form .btn{padding:12px 24px;font-size:13px;border-radius:12px;border:none;cursor:pointer}
+  .promo-msg{margin-top:14px;font-size:14px;font-weight:600;color:var(--green);opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s}
+  .promo-msg.show{opacity:1;transform:none}
+  .promo-msg.err{color:#e05656}
+
   /* Таблицы */
   .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--radius);border:1px solid var(--line);background:rgba(255,255,255,.03)}
   table{width:100%;border-collapse:collapse;font-size:14px;min-width:520px}
@@ -293,6 +377,24 @@
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
   .reveal.visible{opacity:1;transform:none}
 
+  /* ===== Тост ===== */
+  #toast{
+    position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);
+    z-index:200;display:flex;align-items:center;gap:10px;
+    background:rgba(20,22,26,.92);border:1px solid rgba(255,122,51,.4);
+    backdrop-filter:blur(14px);border-radius:14px;
+    padding:14px 22px;color:var(--text);font-weight:700;font-size:14px;
+    box-shadow:0 14px 40px rgba(0,0,0,.5);
+    opacity:0;visibility:hidden;transition:opacity .3s ease,transform .3s ease,visibility .3s;
+  }
+  #toast.show{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  #toast .tick{
+    width:22px;height:22px;border-radius:50%;flex-shrink:0;
+    background:var(--green);color:#0b0c0e;
+    display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:900;
+  }
+
   footer{padding:38px 20px;text-align:center;color:var(--muted);font-size:13px;position:relative;z-index:2;border-top:1px solid var(--line);letter-spacing:.3px}
   footer a{color:var(--muted);text-decoration:underline}
   footer a:hover{color:var(--accent)}
@@ -308,13 +410,15 @@
     .nav{flex-wrap:wrap;height:auto;padding:12px 16px;gap:8px}
     .burger{display:block}
     .hero h1{font-size:36px}
-    .hero{min-height:auto;padding:84px 20px 60px}
+    .hero{min-height:auto;padding:84px 20px 90px}
     .connect-block{text-align:left;min-width:100%}
     .connect-btns{justify-content:flex-start}
     .panel{padding:24px}
     .server-card{flex-direction:column;align-items:flex-start}
     .ip-row{flex-wrap:wrap;justify-content:center}
-    .shop-more{flex-direction:column;align-items:flex-start}
+    .shop-more,.promo{flex-direction:column;align-items:flex-start}
+    .promo-form{width:100%}
+    .promo-form input{flex:1;min-width:0;width:auto}
   }
   @media(max-width:480px){
     .hero h1{font-size:30px;letter-spacing:1px}
@@ -325,10 +429,22 @@
     .panel{padding:20px}
     h2{font-size:21px}
     .btn{padding:13px 24px;font-size:13px}
+    .logo{font-size:18px}
+    .logo-wrap img{width:30px;height:30px}
+    .promo-form{flex-direction:column}
+    .promo-form input{width:100%}
+    .promo-form .btn{width:100%}
   }
 </style>
 </head>
 <body>
+
+<!-- Прелоадер -->
+<div id="loader">
+  <img src="https://i.ibb.co/Rk9mM7Y7/image.png" alt="BLAZE RUST">
+  <div class="bar"><i></i></div>
+  <div class="label">BLAZE RUST</div>
+</div>
 
 <!-- Фон: кадры Rust (заполняются скриптом в случайном порядке) -->
 <div class="bg-slideshow" id="bgSlideshow">
@@ -340,9 +456,18 @@
 <div class="bg-overlay"></div>
 <div class="grain"></div>
 
+<!-- Пепел и угли -->
+<div class="embers" id="embers"></div>
+
+<!-- Тост -->
+<div id="toast"><span class="tick">✓</span><span id="toastText">Скопировано!</span></div>
+
 <header>
   <div class="nav">
-    <div class="logo">Blaze<span>Rust</span></div>
+    <div class="logo-wrap">
+      <img src="https://i.ibb.co/Rk9mM7Y7/image.png" alt="BLAZE RUST">
+      <div class="logo">Blaze<span>Rust</span></div>
+    </div>
     <button class="burger" onclick="document.querySelector('.menu').classList.toggle('open')" aria-label="Меню">☰</button>
     <nav class="menu">
       <a href="#servers">Сервера</a>
@@ -380,6 +505,10 @@
       <a class="btn dark" href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">Магазин</a>
     </div>
     <div class="hero-note">Скопируй коннект и заходи в игру через консоль (F1)</div>
+  </div>
+  <div class="scroll-hint">
+    <div class="mouse"></div>
+    Листай ниже
   </div>
 </div>
 
@@ -471,6 +600,19 @@
         <p>Наборы, ресурсы, оружие, разбан, сканы и другие товары доступны в официальном магазине.</p>
       </div>
       <a class="btn" href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">Перейти в магазин</a>
+    </div>
+
+    <!-- Промокод -->
+    <div class="promo">
+      <div>
+        <div class="t">Активируй промокод</div>
+        <p>Введи промокод и получи приятный бонус!</p>
+        <div class="promo-msg" id="promoMsg"></div>
+      </div>
+      <form class="promo-form" onsubmit="activatePromo(event)">
+        <input type="text" id="promoInput" placeholder="Твой промокод" autocomplete="off">
+        <button class="btn" type="submit">Start</button>
+      </form>
     </div>
 
     <div class="note warn"><strong>Внимание:</strong> все вопросы по донату, покупкам и возврату средств решаются <strong>только через тикет в Discord</strong>. Чат Telegram — исключительно для общения игроков.</div>
@@ -773,11 +915,39 @@
 </footer>
 
 <script>
+  // Год в футере
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  // Прелоадер: прячем после загрузки
+  window.addEventListener('load', function(){
+    setTimeout(function(){
+      document.getElementById('loader').classList.add('hide');
+      document.body.classList.add('loaded');
+    }, 500);
+  });
+  // Фолбэк: если load уже прошёл
+  setTimeout(function(){
+    var l = document.getElementById('loader');
+    if (!l.classList.contains('hide')) {
+      l.classList.add('hide');
+      document.body.classList.add('loaded');
+    }
+  }, 3500);
+
+  // Тост вместо alert
+  var toastTimer = null;
+  function showToast(msg){
+    var t = document.getElementById('toast');
+    document.getElementById('toastText').textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 2200);
+  }
+
+  // Копирование IP
   function copyIp(){
     var ip = 'connect 46.174.48.219:28015';
-    function done(){ alert('Скопировано: ' + ip); }
+    function done(){ showToast('IP скопирован!'); }
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(ip).then(done);
     } else {
@@ -786,6 +956,23 @@
       document.execCommand('copy'); document.body.removeChild(t);
       done();
     }
+  }
+
+  // Промокод
+  function activatePromo(e){
+    e.preventDefault();
+    var input = document.getElementById('promoInput');
+    var msg = document.getElementById('promoMsg');
+    var code = input.value.trim().toUpperCase();
+    if (!code) {
+      msg.textContent = 'Введи промокод';
+      msg.className = 'promo-msg err show';
+      return;
+    }
+    // Демо: любой непустой код показывает бонус
+    msg.textContent = '🎉 Промокод «' + code + '» принят! Бонус активирован. Подробности — в Discord.';
+    msg.className = 'promo-msg show';
+    input.value = '';
   }
 
   // Кадры Rust на фоне — случайный порядок
@@ -818,6 +1005,22 @@
       s.style.animationDelay = (idx * 7) + 's';
     }
   });
+
+  // Пепел и угли
+  var embersBox = document.getElementById('embers');
+  var emberCount = window.innerWidth < 600 ? 14 : 24;
+  for (var e = 0; e < emberCount; e++) {
+    var em = document.createElement('div');
+    em.className = 'ember';
+    var size = 3 + Math.random() * 5;
+    em.style.width = size + 'px';
+    em.style.height = size + 'px';
+    em.style.left = (Math.random() * 100) + '%';
+    em.style.setProperty('--drift', ((Math.random() * 120) - 60) + 'px');
+    em.style.animationDuration = (7 + Math.random() * 10) + 's';
+    em.style.animationDelay = (Math.random() * 14) + 's';
+    embersBox.appendChild(em);
+  }
 
   // Появление при скролле
   var items = document.querySelectorAll('.reveal');
