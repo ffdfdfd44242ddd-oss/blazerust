@@ -112,7 +112,8 @@
   }
   .nav{max-width:1160px;margin:0 auto;padding:0 20px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:14px}
   .logo-wrap{display:flex;align-items:center;gap:10px;white-space:nowrap}
-  .logo-wrap img{width:34px;height:34px;border-radius:10px;object-fit:cover;flex-shrink:0}
+  .logo-wrap img{width:34px;height:34px;border-radius:10px;object-fit:cover;flex-shrink:0;transition:box-shadow .3s,transform .3s}
+  .logo-wrap:hover img{box-shadow:0 0 22px rgba(255,197,61,.45);transform:scale(1.05)}
   .logo{font-family:"Russo One",sans-serif;font-size:20px;letter-spacing:.5px;color:var(--text);text-transform:uppercase}
   .logo span{color:var(--accent)}
   .menu{display:flex;align-items:center;gap:2px;flex-wrap:wrap}
@@ -120,6 +121,7 @@
   .menu a:hover{color:var(--text);background:rgba(255,255,255,.06)}
   .nav-right{display:flex;align-items:center;gap:10px}
   .btn-shop{
+    position:relative;overflow:hidden;
     font-family:"Russo One",sans-serif;font-size:13px;letter-spacing:.5px;text-transform:uppercase;
     background:var(--accent);color:#141414;
     padding:10px 20px;border-radius:12px;white-space:nowrap;
@@ -128,6 +130,14 @@
   }
   .btn-shop:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(255,197,61,.32);color:#141414}
   .burger{display:none;background:none;border:1px solid var(--line);color:var(--text);font-size:20px;padding:4px 12px;border-radius:10px;cursor:pointer}
+
+  /* Блик на кнопках */
+  .btn::after,.btn-shop::after{
+    content:"";position:absolute;top:0;left:-80%;width:45%;height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);
+    transform:skewX(-20deg);pointer-events:none;transition:left .5s ease;
+  }
+  .btn:hover::after,.btn-shop:hover::after{left:135%}
 
   /* ===== Герой ===== */
   .hero{position:relative;min-height:92vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:110px 20px 110px}
@@ -162,6 +172,7 @@
   .copy-btn:hover{color:var(--text);border-color:var(--accent);background:rgba(255,197,61,.12)}
   .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:floatIn .8s .4s ease both}
   .btn{
+    position:relative;overflow:hidden;
     display:inline-block;font-family:"Russo One",sans-serif;font-size:14px;letter-spacing:.5px;text-transform:uppercase;
     background:var(--accent);color:#141414;
     padding:14px 30px;border-radius:13px;
@@ -171,6 +182,13 @@
   .btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(255,197,61,.35);color:#141414}
   .btn.dark{background:rgba(255,255,255,.08);color:var(--text);border:1px solid var(--line);box-shadow:none}
   .btn.dark:hover{background:rgba(255,255,255,.14);color:var(--text);box-shadow:none}
+  /* Мягкое "дыхание" у главной кнопки */
+  .hero-btns .btn:first-child{animation:btnBreath 3.4s ease-in-out infinite}
+  .hero-btns .btn:first-child:hover{animation-play-state:paused}
+  @keyframes btnBreath{
+    0%,100%{box-shadow:0 8px 24px rgba(255,197,61,.25)}
+    50%{box-shadow:0 8px 36px rgba(255,197,61,.48)}
+  }
   .hero-note{margin-top:22px;font-size:13px;color:#c2bdb2;letter-spacing:.4px;text-transform:uppercase;text-shadow:0 1px 8px rgba(0,0,0,.8);animation:floatIn .8s .5s ease both}
 
   /* Стрелка "Листай ниже" */
@@ -189,11 +207,18 @@
   .wrap{max-width:1160px;margin:0 auto;padding:34px 20px 80px;position:relative;z-index:2}
   section{margin-bottom:24px}
   .panel{
+    position:relative;
     background:var(--panel);
     backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
     border:1px solid var(--line);border-radius:var(--radius);
     padding:34px;margin-bottom:24px;
     box-shadow:0 10px 40px rgba(0,0,0,.35);
+  }
+  /* Тонкая светлая кромка сверху панелей */
+  .panel::before{
+    content:"";position:absolute;top:0;left:26px;right:26px;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.16),transparent);
+    pointer-events:none;
   }
   .sec-head{margin-bottom:26px}
   h2{font-family:"Russo One",sans-serif;font-size:25px;font-weight:400;letter-spacing:.6px;text-transform:uppercase;margin-bottom:8px}
@@ -216,24 +241,25 @@
 
   /* Сетки */
   .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
-  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:transform .25s,border-color .25s}
-  .step:hover{transform:translateY(-4px);border-color:rgba(255,197,61,.4)}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:transform .25s,border-color .25s,box-shadow .25s}
+  .step:hover{transform:translateY(-4px);border-color:rgba(255,197,61,.45);box-shadow:0 10px 30px rgba(0,0,0,.25),0 0 24px rgba(255,197,61,.1)}
   .step .num{font-family:"Russo One",sans-serif;font-size:28px;color:var(--accent);line-height:1;margin-bottom:13px}
   .step .t{font-weight:800;font-size:16px;margin-bottom:8px}
   .step p{color:var(--muted);font-size:14px}
   .step code.cmd{display:block;margin-top:10px;background:rgba(255,255,255,.07);border:1px solid var(--line);padding:9px 12px;border-radius:9px;font-size:13px;color:var(--accent);font-family:Consolas,Monaco,monospace;word-break:break-all}
 
   .feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-  .feat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;transition:transform .25s,border-color .25s}
-  .feat:hover{transform:translateY(-4px);border-color:rgba(255,197,61,.4)}
+  .feat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;transition:transform .25s,border-color .25s,box-shadow .25s}
+  .feat:hover{transform:translateY(-4px);border-color:rgba(255,197,61,.45);box-shadow:0 10px 30px rgba(0,0,0,.25),0 0 24px rgba(255,197,61,.1)}
   .feat .t{font-weight:800;font-size:16px;margin-bottom:8px}
   .feat p{color:var(--muted);font-size:14px;margin:0}
 
   /* Привилегии */
   .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:26px}
-  .plan{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;transition:transform .25s,border-color .25s}
-  .plan:hover{transform:translateY(-4px);border-color:rgba(255,197,61,.45)}
-  .plan.hot{border-color:var(--accent);background:linear-gradient(180deg,rgba(255,197,61,.12),var(--card))}
+  .plan{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;transition:transform .25s,border-color .25s,box-shadow .25s}
+  .plan:hover{transform:translateY(-4px);border-color:rgba(255,197,61,.55);box-shadow:0 10px 30px rgba(0,0,0,.25),0 0 26px rgba(255,197,61,.12)}
+  .plan.hot{border-color:var(--accent);background:linear-gradient(180deg,rgba(255,197,61,.12),var(--card));animation:hotGlow 3s ease-in-out infinite}
+  @keyframes hotGlow{0%,100%{box-shadow:0 0 0 rgba(255,197,61,0)}50%{box-shadow:0 0 28px rgba(255,197,61,.3)}}
   .plan .t{font-family:"Russo One",sans-serif;font-size:18px;letter-spacing:.3px;text-transform:uppercase;margin-bottom:4px}
   .plan .price{color:var(--accent);font-weight:800;font-size:16px;margin-bottom:16px}
   .plan .buy{margin-top:auto;display:block;background:var(--accent);color:#141414;font-family:"Russo One",sans-serif;font-size:12px;letter-spacing:.5px;text-transform:uppercase;padding:12px 16px;border-radius:11px;text-align:center;box-shadow:0 6px 18px rgba(255,197,61,.22);transition:transform .2s,box-shadow .2s}
@@ -255,8 +281,8 @@
   code{background:rgba(255,255,255,.07);border:1px solid var(--line);padding:2px 8px;border-radius:7px;font-size:13px;color:var(--accent);font-family:Consolas,Monaco,monospace}
 
   /* FAQ */
-  details{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:10px;overflow:hidden;transition:border-color .2s}
-  details[open]{border-color:rgba(255,197,61,.4)}
+  details{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:10px;overflow:hidden;transition:border-color .2s,box-shadow .2s}
+  details[open]{border-color:rgba(255,197,61,.4);box-shadow:0 0 24px rgba(255,197,61,.08)}
   summary{cursor:pointer;padding:17px 22px;font-weight:700;font-size:15px;list-style:none;position:relative;padding-right:46px;transition:background .15s}
   summary:hover{background:rgba(255,255,255,.04)}
   summary::-webkit-details-marker{display:none}
@@ -266,8 +292,8 @@
 
   /* Wiki */
   .wiki-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
-  .wiki-item{display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;color:var(--text);transition:transform .25s,border-color .25s}
-  .wiki-item:hover{transform:translateY(-4px);border-color:rgba(255,197,61,.45);color:var(--text)}
+  .wiki-item{display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;color:var(--text);transition:transform .25s,border-color .25s,box-shadow .25s}
+  .wiki-item:hover{transform:translateY(-4px);border-color:rgba(255,197,61,.5);box-shadow:0 10px 30px rgba(0,0,0,.25),0 0 26px rgba(255,197,61,.12);color:var(--text)}
   .wiki-item .num{font-family:"Russo One",sans-serif;font-size:11px;color:var(--accent);letter-spacing:1px;text-transform:uppercase}
   .wiki-item .t{font-weight:800;font-size:16px;margin:8px 0 6px}
   .wiki-item p{color:var(--muted);font-size:13px;margin:0}
@@ -291,12 +317,32 @@
   .warn{border-left-color:#e5a13a}
   .danger{border-left-color:#e05656}
 
-  /* Сообщество */
+  /* Сообщество — карточки со жёлтым свечением */
   .socials{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-  .social{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;color:var(--text);transition:transform .25s,border-color .25s}
-  .social:hover{transform:translateY(-4px);border-color:rgba(255,197,61,.45);color:var(--text)}
+  .social{
+    position:relative;overflow:hidden;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px 22px;color:var(--text);
+    transition:transform .25s,border-color .25s,box-shadow .25s;
+  }
+  .social::after{
+    content:"";position:absolute;top:-70%;right:-40%;width:200px;height:200px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,197,61,.16),transparent 70%);
+    opacity:0;transition:opacity .35s;pointer-events:none;
+  }
+  .social:hover{
+    transform:translateY(-5px);
+    border-color:rgba(255,197,61,.7);
+    box-shadow:0 14px 40px rgba(0,0,0,.3),0 0 30px rgba(255,197,61,.16),0 0 0 1px rgba(255,197,61,.2);
+    color:var(--text);
+  }
+  .social:hover::after{opacity:1}
   .social .t{font-weight:800;font-size:15px;letter-spacing:.2px}
-  .social small{color:var(--muted);display:block;font-size:13px}
+  .social small{color:var(--muted);display:block;font-size:13px;transition:color .25s}
+  .social:hover small{color:#d5d0c4}
+  .social .arrow{margin-left:auto;font-size:18px;color:var(--muted);transition:transform .25s,color .25s}
+  .social:hover .arrow{transform:translateX(5px);color:var(--accent)}
 
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
   .reveal.visible{opacity:1;transform:none}
@@ -359,7 +405,7 @@
 </head>
 <body>
 
-<!-- Фон: кадры Rust (заполняются скриптом, битые отсеиваются) -->
+<!-- Фон: кадры Rust в высоком разрешении (заполняются скриптом) -->
 <div class="bg-slideshow" id="bgSlideshow">
   <div class="slide"></div><div class="slide"></div><div class="slide"></div>
   <div class="slide"></div><div class="slide"></div><div class="slide"></div>
@@ -847,19 +893,19 @@
     <div class="socials">
       <a class="social" href="https://discord.gg/blazerust" target="_blank" rel="noopener">
         <div><div class="t">Discord</div><small>Тикеты, жалобы, поддержка</small></div>
-        <span>→</span>
+        <span class="arrow">→</span>
       </a>
-      <a class="social" href="https://t.me/blazerust_tg" target="_blank" rel="noopener">
+      <a class="social" href="https://t.me/BlazeRust_tg" target="_blank" rel="noopener">
         <div><div class="t">Telegram</div><small>Канал и новости</small></div>
-        <span>→</span>
+        <span class="arrow">→</span>
       </a>
       <a class="social" href="https://t.me/BlazeRust_Chat" target="_blank" rel="noopener">
         <div><div class="t">Чат</div><small>Общение игроков</small></div>
-        <span>→</span>
+        <span class="arrow">→</span>
       </a>
       <a class="social" href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">
         <div><div class="t">Магазин</div><small>Привилегии и услуги</small></div>
-        <span>→</span>
+        <span class="arrow">→</span>
       </a>
     </div>
     <div class="note" style="margin-top:18px"><strong>Важно:</strong> жалобы на читеров, вопросы по донату и возврату средств решаются <strong>только через тикет в Discord</strong>. Чат Telegram — исключительно для общения игроков.</div>
@@ -870,7 +916,7 @@
 <footer>
   BLAZE RUST © <span id="year"></span> — игровой проект. Не связан с Facepunch Studios.<br>
   <a href="https://discord.gg/blazerust" target="_blank" rel="noopener">Discord</a> ·
-  <a href="https://t.me/blazerust_tg" target="_blank" rel="noopener">Telegram</a> ·
+  <a href="https://t.me/BlazeRust_tg" target="_blank" rel="noopener">Telegram</a> ·
   <a href="https://t.me/BlazeRust_Chat" target="_blank" rel="noopener">Чат</a> ·
   <a href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">Магазин</a>
 </footer>
@@ -908,7 +954,7 @@
     }
   }
 
-  // Фоновые картинки — только твои новые, в высоком качестве
+  // Фоновые картинки — только твои, в высоком разрешении, без фильтра битых
   var bgImages = [
     'https://sun9-57.vkuserphoto.ru/s/v1/ig2/cvJm9YMn0tSSTIKcSTXC9opFj93QN4SKqs2ooonemq5aQyrafO5_o3e-EvksT28TqrNLBZ0XQ8_s69bWyTrxX3XY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0',
     'https://sun9-23.vkuserphoto.ru/s/v1/ig2/ddDQ7fr6bdez_n-UpSjqBBj0SPKujxuWPyA-5lwTTuoHLZc7rRCpMxbTZACIlRzXRC5Du5QtdIMeXIBKhUB3_ADs.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0',
@@ -923,34 +969,22 @@
     'https://sun9-16.vkuserphoto.ru/s/v1/ig2/x7m_osPIQtVWHzCYidpXQ63NPl6CLa5TIK6cf9LdvvPtmKVk8GnLEByXG_Q94w6XF3TxmNvHJUfKJVUoOV8BKJbz.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,2560x1440&from=bu&cs=2560x0'
   ];
 
-  // Автофильтр битых картинок
-  var good = [];
-  var checked = 0;
-  bgImages.forEach(function(url){
-    var img = new Image();
-    img.onload = function(){ good.push(url); finished(); };
-    img.onerror = function(){ finished(); };
-    img.src = url;
-  });
-  function finished(){
-    checked++;
-    if (checked === bgImages.length) buildBg();
-  }
-  function buildBg(){
-    for (var i = good.length - 1; i > 0; i--) {
+  // Перемешивание и установка всех фото — без проверки битых
+  (function(){
+    for (var i = bgImages.length - 1; i > 0; i--) {
       var j = Math.floor(Math.random() * (i + 1));
-      var t = good[i]; good[i] = good[j]; good[j] = t;
+      var t = bgImages[i]; bgImages[i] = bgImages[j]; bgImages[j] = t;
     }
     var slides = document.querySelectorAll('#bgSlideshow .slide');
-    var dur = Math.max(good.length, 1) * 7;
+    var dur = Math.max(bgImages.length, 1) * 7;
     slides.forEach(function(s, idx){
-      if (good[idx]) {
-        s.style.backgroundImage = "url('" + good[idx] + "')";
+      if (bgImages[idx]) {
+        s.style.backgroundImage = "url('" + bgImages[idx] + "')";
         s.style.animationDuration = dur + 's';
         s.style.animationDelay = (idx * 7) + 's';
       }
     });
-  }
+  })();
 
   // Кнопка наверх
   var toTop = document.getElementById('toTop');
