@@ -246,7 +246,7 @@
   .step .num{font-family:"Russo One",sans-serif;font-size:28px;color:var(--accent);line-height:1;margin-bottom:13px}
   .step .t{font-weight:800;font-size:16px;margin-bottom:8px}
   .step p{color:var(--muted);font-size:14px}
-  .step code.cmd{display:block;margin-top:10px;background:rgba(255,255,255,.07);border:1px solid var(--line);padding:9px 12px;border-radius:9px;font-size:13px;color:var(--accent);font-family:Consolas,Monaco,monospace;word-break:break-all}
+  .step code.cmd{display:block;margin-top:10px;background:rgba(255,255,255,.07);border:1px solid var(--line);padding:9px 12px;border-radius:9px;font-size:13px;color:var(--accent);font-family:Consolas,Monaco,monospace;white-space:nowrap;overflow-x:auto;word-break:keep-all}
 
   .feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
   .feat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;transition:transform .25s,border-color .25s,box-shadow .25s}
@@ -278,7 +278,7 @@
   td{padding:13px 16px;border-bottom:1px solid var(--line);color:var(--muted);vertical-align:top}
   tr:last-child td{border-bottom:none}
   tr:hover td{background:rgba(255,255,255,.03)}
-  code{background:rgba(255,255,255,.07);border:1px solid var(--line);padding:2px 8px;border-radius:7px;font-size:13px;color:var(--accent);font-family:Consolas,Monaco,monospace}
+  code{background:rgba(255,255,255,.07);border:1px solid var(--line);padding:2px 8px;border-radius:7px;font-size:13px;color:var(--accent);font-family:Consolas,Monaco,monospace;white-space:nowrap}
 
   /* FAQ */
   details{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:10px;overflow:hidden;transition:border-color .2s,box-shadow .2s}
@@ -731,9 +731,9 @@
     <p>Будьте в курсе всех новостей, обновлений, вайпов и розыгрышей нашего проекта! Подписывайтесь на наши официальные ресурсы.</p>
     <h4>Наши официальные ресурсы</h4>
     <ul>
-      <li><strong>Discord</strong> — новости, конкурсы и анонсы вайпов.</li>
-      <li><strong>Telegram</strong> — оперативные уведомления о рейдах и событиях.</li>
-      <li><strong>Магазин</strong> — приобрести привилегию.</li>
+      <li><a href="https://discord.gg/blazerust" target="_blank" rel="noopener"><strong>Discord</strong> — новости, конкурсы и анонсы вайпов</a></li>
+      <li><a href="https://t.me/BlazeRust_tg" target="_blank" rel="noopener"><strong>Telegram</strong> — оперативные уведомления о рейдах и событиях</a></li>
+      <li><a href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener"><strong>Магазин</strong> — приобрести привилегию</a></li>
     </ul>
     <div class="note danger"><strong>Остерегайтесь мошенников!</strong> Администрация проекта <strong>НИКОГДА</strong> не пишет первой в личные сообщения с просьбой передать аккаунт, пароль или данные карты. Все официальные ссылки указаны только на этой странице и на главном сайте проекта.</div>
     <a class="back-top" href="#wiki">↑ Наверх</a>
