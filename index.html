@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BLAZE RUST — X10/X50 | NOLIMIT | CLANS | LOOT+</title>
+<link rel="icon" type="image/png" href="https://i.ibb.co/Rk9mM7Y7/image.png">
+<link rel="apple-touch-icon" href="https://i.ibb.co/Rk9mM7Y7/image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -33,7 +35,7 @@
   a{color:var(--accent);text-decoration:none;transition:color .15s}
   a:hover{color:var(--accent-h)}
 
-  /* ===== Анимированный фон на весь сайт ===== */
+  /* ===== Анимированный фон: кадры Rust, случайный порядок ===== */
   .bg-slideshow{position:fixed;inset:0;z-index:-3;overflow:hidden}
   .bg-slideshow .slide{
     position:absolute;inset:0;
@@ -41,12 +43,6 @@
     opacity:0;filter:brightness(.4) saturate(.95);
     animation:bgFade 42s infinite;
   }
-  .bg-slideshow .slide:nth-child(1){background-image:url('https://i.ibb.co/Wvrfjy4x/image.png');animation-delay:0s}
-  .bg-slideshow .slide:nth-child(2){background-image:url('https://www.goha.ru/s/A:BC/4S/uV8Z0XBuvZ.jpg');animation-delay:7s}
-  .bg-slideshow .slide:nth-child(3){background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwq97KaMwKSNNtLdXz6LzGLwDdry1fz_Mysnlokir1HzktIVeh9eNKIZc&s=10');animation-delay:14s}
-  .bg-slideshow .slide:nth-child(4){background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA4t9Dzqk7NMafZUzft4ud3QuGaRVoxDcHiy1TGSSN9cXXD9ydhOXwqA0o&s=10');animation-delay:21s}
-  .bg-slideshow .slide:nth-child(5){background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPFaw9Qg3g6Hn7uDHK6NSZ9SbUKfsB8DMPHuuQgRz2c8Xp7U4GSBRO8gA&s=10');animation-delay:28s}
-  .bg-slideshow .slide:nth-child(6){background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwOn00tWY9Y6ERPESg90DdWipuneePRNvDN_3B1cXPjK5pxKHGshx0QGo&s=10');animation-delay:35s}
   @keyframes bgFade{
     0%{opacity:0}
     4%{opacity:1}
@@ -181,6 +177,11 @@
   .step .num{font-family:"Russo One",sans-serif;font-size:30px;color:var(--accent);line-height:1;margin-bottom:14px}
   .step .t{font-weight:800;font-size:16px;margin-bottom:8px}
   .step p{color:var(--muted);font-size:14px}
+  .step code.cmd{
+    display:block;margin-top:10px;background:rgba(255,255,255,.07);border:1px solid var(--line);
+    padding:9px 12px;border-radius:10px;font-size:13px;color:var(--accent);
+    font-family:Consolas,Monaco,monospace;word-break:break-all;
+  }
 
   .feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
   .feat{
@@ -329,10 +330,12 @@
 </head>
 <body>
 
-<!-- Фон: кадры Rust на весь сайт -->
-<div class="bg-slideshow">
+<!-- Фон: кадры Rust (заполняются скриптом в случайном порядке) -->
+<div class="bg-slideshow" id="bgSlideshow">
   <div class="slide"></div><div class="slide"></div><div class="slide"></div>
   <div class="slide"></div><div class="slide"></div><div class="slide"></div>
+  <div class="slide"></div><div class="slide"></div><div class="slide"></div>
+  <div class="slide"></div><div class="slide"></div>
 </div>
 <div class="bg-overlay"></div>
 <div class="grain"></div>
@@ -423,7 +426,7 @@
     </div>
     <div class="steps">
       <div class="step"><div class="num">01</div><div class="t">Скопируй IP</div><p>Нажми кнопку копирования рядом с сервером выше.</p></div>
-      <div class="step"><div class="num">02</div><div class="t">Открой консоль</div><p>В Rust нажми F1, вставь команду <code>connect 46.174.48.219:28015</code> и нажми Enter.</p></div>
+      <div class="step"><div class="num">02</div><div class="t">Открой консоль</div><p>В Rust нажми F1, вставь команду:</p><code class="cmd">connect 46.174.48.219:28015</code></div>
       <div class="step"><div class="num">03</div><div class="t">Заходи и играй</div><p>Вступай в Discord и Telegram, чтобы не пропустить вайпы и акции.</p></div>
     </div>
   </section>
@@ -521,7 +524,7 @@
       <a class="wiki-item" href="#complaints"><div class="num">05</div><div class="t">Как подать жалобу</div><p>Жалобы на читеров — через тикет в Discord.</p></a>
       <a class="wiki-item" href="#connect"><div class="num">06</div><div class="t">Подключение connect</div><p>Быстрый способ зайти на сервер через консоль F1.</p></a>
       <a class="wiki-item" href="#fps"><div class="num">07</div><div class="t">Не запускается / FPS</div><p>Вылеты, ошибки EAC, чёрный экран, DLL и низкий FPS.</p></a>
-      <a class="wiki-item" href="#timeout"><div class="num">08</div><div class="t">Ошибка Timed Out</div><p>Как исправить Authentication Timed Out и Steam Auth Failed.</p></a>
+      <a class="wiki-item" href="#timeout"><div class="num">08</div><div class="t">Ошибка Timed Out</div><p>Как исправить Authentication Timed Out.</p></a>
       <a class="wiki-item" href="#reconnect"><div class="num">09</div><div class="t">Повторный вход</div><p>Как быстро вернуться после вылета или вайпа.</p></a>
     </div>
   </section>
@@ -639,7 +642,7 @@
     <h4>Пошаговое подключение</h4>
     <div class="steps-num">
       <div class="stepn"><div class="num">1</div><div class="t">Запустите Rust</div><p>Запустите игру и дождитесь полной загрузки в главное меню.</p></div>
-      <div class="stepn"><div class="num">2</div><div class="t">Откройте консоль клавишей F1</div><p>В главном меню или в игре нажмите F1 — откроется консоль для ввода команд. Если консоль не открывается на лицензии — включите её в Настройки → Игровой процесс.</p></div>
+      <div class="stepn"><div class="num">2</div><div class="t">Откройте консоль клавишей F1</div><p>В главном меню или в игре нажмите F1 — откроется консоль для ввода команд. Если консоль не открывается — включите её в Настройки → Игровой процесс.</p></div>
       <div class="stepn"><div class="num">3</div><div class="t">Вставьте команду connect и нажмите Enter</div><p>Вставьте команду <code>connect 46.174.48.219:28015</code> и нажмите Enter. Через несколько секунд вы окажетесь на сервере.</p></div>
     </div>
     <div class="note warn"><strong>Не подключается?</strong> Проверьте, что команда вставлена целиком (вместе с портом после двоеточия), а сервер онлайн — статус виден на главной странице. Если проблема осталась — напишите в Discord.</div>
@@ -652,10 +655,10 @@
     <p>Если игра не запускается, вылетает, не подключается к серверу, выдаёт ошибку EAC или низкий FPS — пройдите по решениям ниже. Большинство проблем устраняются за пару минут.</p>
     <h4>Не запускается / вылетает</h4>
     <ul>
-      <li><strong>Перезапустите лаунчер и ПК.</strong> Закройте лаунчер (Tirify или Steam) полностью и перезапустите компьютер — это снимает большинство временных сбоев.</li>
-      <li><strong>Проверьте целостность файлов.</strong> На лицензии: Steam → Свойства Rust → «Проверить целостность файлов». На пиратке — переустановите клиент через лаунчер.</li>
+      <li><strong>Перезапустите Steam и ПК.</strong> Закройте Steam полностью и перезапустите компьютер — это снимает большинство временных сбоев.</li>
+      <li><strong>Проверьте целостность файлов.</strong> Steam → Свойства Rust → «Проверить целостность файлов».</li>
       <li><strong>Обновите драйверы видеокарты.</strong> Скачайте свежие драйверы с сайта NVIDIA / AMD. Устаревшие драйверы — частая причина вылетов.</li>
-      <li><strong>Отключите антивирус/защитник.</strong> Иногда антивирус блокирует запуск пиратского клиента. Добавьте папку с игрой в исключения.</li>
+      <li><strong>Отключите антивирус/защитник.</strong> Иногда антивирус блокирует запуск клиента игры. Добавьте папку с игрой в исключения.</li>
     </ul>
     <h4>Низкий FPS</h4>
     <ul>
@@ -666,7 +669,7 @@
     <h4>Ошибки Easy Anti-Cheat (EAC)</h4>
     <ul>
       <li><strong>«EAC Disconnected» / «Authentication Timed Out»</strong> — полностью закрой игру и подожди ~10 минут, затем запусти заново и зайди на сервер.</li>
-      <li><strong>Запускай игру только через лаунчер.</strong> EAC корректно загружается лишь при старте из Tirify (пиратка) или Steam (лицензия).</li>
+      <li><strong>Запускай игру только через Steam.</strong> EAC корректно загружается только при запуске игры через Steam.</li>
       <li><strong>Переустанови Easy Anti-Cheat.</strong> Открой папку с игрой → EasyAntiCheat → запусти EasyAntiCheat_Setup.exe от имени администратора → выбери Rust и нажми Repair.</li>
       <li><strong>Разреши EAC в антивирусе и фаерволе.</strong> Добавь в исключения Rust.exe, RustClient.exe и доступ к client.easyanticheat.net по портам 80/443.</li>
       <li><strong>«Client Integrity Violation»</strong> — EAC нашёл изменённые файлы. Убери моды и сторонние программы, проверь целостность файлов.</li>
@@ -692,22 +695,16 @@
   <!-- TIMED OUT -->
   <div id="timeout" class="panel wiki-section reveal">
     <h3>Ошибка «Timed Out» — как исправить</h3>
-    <p>Если Rust пишет Timed Out, Authentication Timed Out или EAC Authentication Timed Out (1/3, 2/3, 3/3), вылетает при заходе на сервер или выдаёт Steam Auth Failed — пройдите по решениям ниже. В большинстве случаев проблема устраняется за пару минут.</p>
+    <p>Если Rust пишет Timed Out, Authentication Timed Out или EAC Authentication Timed Out (1/3, 2/3, 3/3), вылетает при заходе на сервер — пройдите по решениям ниже. В большинстве случаев проблема устраняется за пару минут.</p>
     <h4>Что значит «Timed Out»</h4>
     <p>Timed Out (тайм-аут) — это разрыв связи по истечении времени ожидания: клиент Rust не получил ответ от сервера или от серверов античита Easy Anti-Cheat (EAC) за отведённый срок и закрыл соединение. Это не «поломка» игры, а сетевая проблема — и почти всегда она решается на стороне игрока.</p>
     <h4>EAC: Authentication Timed Out (1/3, 2/3, 3/3)</h4>
     <ul>
-      <li><strong>Закройте игру на 5–10 минут.</strong> Полностью завершите игру и лаунчер — за это время EAC сбросит и обновит кэш авторизации.</li>
-      <li><strong>Запускайте игру только через лаунчер.</strong> EAC корректно стартует лишь при запуске из Tirify (пиратка) или Steam (лицензия).</li>
+      <li><strong>Закройте игру на 5–10 минут.</strong> Полностью завершите игру и Steam — за это время EAC сбросит и обновит кэш авторизации.</li>
+      <li><strong>Запускайте игру только через Steam.</strong> EAC корректно стартует только при запуске игры через Steam.</li>
       <li><strong>Переустановите Easy Anti-Cheat.</strong> Откройте папку с игрой → EasyAntiCheat → EasyAntiCheat_Setup.exe от имени администратора → Rust → Repair.</li>
       <li><strong>Разрешите EAC доступ в сеть.</strong> Добавьте в исключения антивируса и фаервола Rust.exe, RustClient.exe и доступ к client.easyanticheat.net по портам 80/443.</li>
       <li><strong>Проверьте дату и время Windows.</strong> Сбитые системные часы ломают проверку сертификатов EAC. Включите автоматическую установку даты и времени.</li>
-    </ul>
-    <h4>Steam Auth Failed (на пиратке)</h4>
-    <ul>
-      <li><strong>Запускайте через Tirify</strong>, а не ярлыком игры.</li>
-      <li><strong>Обновите клиент через лаунчер</strong> — устаревшая сборка не проходит авторизацию.</li>
-      <li>Заходите на сервер с поддержкой пиратки — BLAZE RUST поддерживает вход через пиратку.</li>
     </ul>
     <h4>Не заходит на сервер / вылетает при заходе</h4>
     <ul>
@@ -715,9 +712,9 @@
       <li><strong>Проверьте интернет и роутер.</strong> Перезагрузите роутер, проверьте вход через мобильный хот-спот.</li>
       <li><strong>Смените DNS и сбросьте кэш</strong>: 8.8.8.8 или 1.1.1.1, либо <code>ipconfig /flushdns</code>.</li>
       <li><strong>Отключите VPN, бустеры и оверлеи.</strong></li>
-      <li><strong>Несовпадение версии после вайпа</strong> — обновите игру (лицензия) или переустановите клиент через лаунчер (пиратка).</li>
+      <li><strong>Несовпадение версии после вайпа</strong> — обновите игру в Steam.</li>
     </ul>
-    <div class="note"><strong>Быстрый чек-лист:</strong> закрыть игру на 10 минут → запустить через лаунчер → переустановить EAC → добавить игру в исключения антивируса/фаервола → отключить VPN → зайти через консоль командой connect. В 9 случаях из 10 тайм-аут уходит.</div>
+    <div class="note"><strong>Быстрый чек-лист:</strong> закрыть игру на 10 минут → запустить через Steam → переустановить EAC → добавить игру в исключения антивируса/фаервола → отключить VPN → зайти через консоль командой connect. В 9 случаях из 10 тайм-аут уходит.</div>
     <div class="note"><strong>Не помогло?</strong> Опишите проблему (текст ошибки, что происходит, ваше железо) в тикете Discord — поможем разобраться индивидуально.</div>
     <a class="back-top" href="#wiki">↑ Наверх</a>
   </div>
@@ -790,6 +787,37 @@
       done();
     }
   }
+
+  // Кадры Rust на фоне — случайный порядок
+  var bgImages = [
+    'https://images.steamusercontent.com/ugc/108482634784000711/1746CF525E8477321DB2A85BEC71C53CBD7DFDCA/?imw=512&imh=288&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true',
+    'https://i.ytimg.com/vi/TDPenqcyW48/maxresdefault.jpg',
+    'https://abrakadabra.fun/uploads/posts/2022-02/1644688053_44-abrakadabra-fun-p-anime-rast-55.jpg',
+    'https://mrwallpaper.com/images/high/a-rust-player-strongholds-in-fort-mye565056cz3xgku-mye565056cz3xgku.webp',
+    'https://mrwallpaper.com/images/high/rust-player-war-art-4bbampbf2vxpc9ai.webp',
+    'https://sun9-57.vkuserphoto.ru/s/v1/ig2/cvJm9YMn0tSSTIKcSTXC9opFj93QN4SKqs2ooonemq5aQyrafO5_o3e-EvksT28TqrNLBZ0XQ8_s69bWyTrxX3XY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0',
+    'https://sun9-74.vkuserphoto.ru/s/v1/ig2/gr70hzWpE8WDViiU8j2qIYgFfQS1jBv4zMUjyAZsmMhVyBKbyEPujQCc1wkzBmidAFmPB1y7qtWDyLRIMrryBdau.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0',
+    'https://sun9-88.vkuserphoto.ru/s/v1/ig2/G_UWhVyKUEQilnTZFM_BtsuBhco2D2aVnV0PyCNH716GidHM9Hbn0syGs_8dQstw29axSCxZm6ewEHcsdSXAyDB4.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0',
+    'https://sun9-23.vkuserphoto.ru/s/v1/ig2/ddDQ7fr6bdez_n-UpSjqBBj0SPKujxuWPyA-5lwTTuoHLZc7rRCpMxbTZACIlRzXRC5Du5QtdIMeXIBKhUB3_ADs.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0',
+    'https://sun9-7.vkuserphoto.ru/s/v1/ig2/rMFHkPrN07QyUw1dtCpAYzalBVCIzc6luYYSiBb5txUhm59JlTmdVQ7azl50yVQZRuG5joSATy5WoMb5i3jd5EE4.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0',
+    'https://sun9-26.vkuserphoto.ru/s/v1/ig2/bOtZjoqpvXvGpPSmJY32rIJeLsb_l2ZCprQI9EIF9-_blCR1YGUG0AkHieM7ZfoAbLzL0ezez8xbKqzxB0JGf6l5.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0'
+  ];
+
+  // Перемешиваем случайно
+  for (var i = bgImages.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = bgImages[i]; bgImages[i] = bgImages[j]; bgImages[j] = tmp;
+  }
+
+  var slides = document.querySelectorAll('#bgSlideshow .slide');
+  var dur = bgImages.length * 7;
+  slides.forEach(function(s, idx){
+    if (bgImages[idx]) {
+      s.style.backgroundImage = "url('" + bgImages[idx] + "')";
+      s.style.animationDuration = dur + 's';
+      s.style.animationDelay = (idx * 7) + 's';
+    }
+  });
 
   // Появление при скролле
   var items = document.querySelectorAll('.reveal');
