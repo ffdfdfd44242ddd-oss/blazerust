@@ -6,14 +6,14 @@
 
 <!-- ===== SEO ===== -->
 <title>BLAZE RUST — X10/X50 | NOLIMIT | CLANS | LOOT+ | Сервер Rust</title>
-<meta name="description" content="BLAZE RUST — сервер Rust с рейтами X10/X50, без лимитов (NOLIMIT), кланами и улучшенным лутов (LOOT+). Подключайся: connect 46.174.48.219:28015">
+<meta name="description" content="BLAZE RUST — сервер Rust с рейтами X10/X50, без лимитов (NOLIMIT), кланами и улучшенным лутом (LOOT+). Подключайся: connect 46.174.48.219:28015">
 <meta name="keywords" content="blaze rust, раст сервер, rust x50, nolimit, clans, loot+, играть в раст, сервер раста, блейз раст">
 <meta name="author" content="BLAZE RUST">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#ffc53d">
 <link rel="canonical" href="https://blazerust.relaxdev.ru/">
 
-<!-- ===== Open Graph (Telegram, Discord, VK) ===== -->
+<!-- ===== Open Graph ===== -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BLAZE RUST">
 <meta property="og:title" content="BLAZE RUST — X10/X50 | NOLIMIT | CLANS | LOOT+">
@@ -38,23 +38,18 @@
   "genre": "Survival",
   "gamePlatform": "PC",
   "url": "https://blazerust.relaxdev.ru/",
-  "image": "https://i.ibb.co/Rk9mM7Y7/image.png",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "ratingCount": "120"
-  }
+  "image": "https://i.ibb.co/Rk9mM7Y7/image.png"
 }
 </script>
 
-<!-- ===== Favicon pack ===== -->
+<!-- ===== Favicon ===== -->
 <link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co/Rk9mM7Y7/image.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://i.ibb.co/Rk9mM7Y7/image.png">
 <link rel="icon" type="image/png" sizes="192x192" href="https://i.ibb.co/Rk9mM7Y7/image.png">
 <link rel="apple-touch-icon" sizes="180x180" href="https://i.ibb.co/Rk9mM7Y7/image.png">
 <link rel="manifest" href="/manifest.json">
 
-<!-- ===== Preload + скорость ===== -->
+<!-- ===== Preload ===== -->
 <link rel="preload" as="image" href="https://sun9-57.vkuserphoto.ru/s/v1/ig2/cvJm9YMn0tSSTIKcSTXC9opFj93QN4SKqs2ooonemq5aQyrafO5_o3e-EvksT28TqrNLBZ0XQ8_s69bWyTrxX3XY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -86,7 +81,7 @@
   a{color:var(--accent);text-decoration:none;transition:color .15s}
   a:hover{color:var(--accent-h)}
 
-  /* ===== Фон: кадры Rust ===== */
+  /* ===== Фон ===== */
   .bg-slideshow{position:fixed;inset:0;z-index:-3;overflow:hidden}
   .bg-slideshow .slide{
     position:absolute;inset:0;
@@ -244,7 +239,7 @@
   .plan .buy{margin-top:auto;display:block;background:var(--accent);color:#141414;font-family:"Russo One",sans-serif;font-size:12px;letter-spacing:.5px;text-transform:uppercase;padding:12px 16px;border-radius:11px;text-align:center;box-shadow:0 6px 18px rgba(255,197,61,.22);transition:transform .2s,box-shadow .2s}
   .plan .buy:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(255,197,61,.32);color:#141414}
 
-  /* CTA к остальным услугам */
+  /* CTA */
   .shop-more{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;background:linear-gradient(135deg,rgba(255,197,61,.12),rgba(255,255,255,.02));border:1px solid rgba(255,197,61,.3);border-radius:var(--radius);padding:24px 26px}
   .shop-more .t{font-weight:800;font-size:17px;margin-bottom:4px}
   .shop-more p{color:var(--muted);font-size:14px;margin:0}
@@ -306,12 +301,12 @@
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
   .reveal.visible{opacity:1;transform:none}
 
-  /* ===== Тост ===== */
+  /* Тост */
   #toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);z-index:200;display:flex;align-items:center;gap:10px;background:rgba(20,22,26,.94);border:1px solid rgba(255,197,61,.4);backdrop-filter:blur(14px);border-radius:13px;padding:13px 21px;color:var(--text);font-weight:700;font-size:14px;box-shadow:0 14px 40px rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:opacity .3s ease,transform .3s ease,visibility .3s}
   #toast.show{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
   #toast .tick{width:22px;height:22px;border-radius:50%;flex-shrink:0;background:var(--green);color:#0b0c0e;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900}
 
-  /* ===== Кнопка наверх ===== */
+  /* Кнопка наверх */
   #toTop{
     position:fixed;right:22px;bottom:22px;z-index:150;
     width:46px;height:46px;border-radius:14px;
@@ -345,9 +340,7 @@
     .panel{padding:22px}
     .server-card{flex-direction:column;align-items:flex-start}
     .ip-row{flex-wrap:wrap;justify-content:center}
-    .shop-more,.promo{flex-direction:column;align-items:flex-start}
-    .promo-form{width:100%}
-    .promo-form input{flex:1;min-width:0;width:auto}
+    .shop-more{flex-direction:column;align-items:flex-start}
   }
   @media(max-width:480px){
     .hero h1{font-size:28px;letter-spacing:.8px}
@@ -360,9 +353,6 @@
     .btn{padding:13px 24px;font-size:13px}
     .logo{font-size:17px}
     .logo-wrap img{width:30px;height:30px}
-    .promo-form{flex-direction:column}
-    .promo-form input{width:100%}
-    .promo-form .btn{width:100%}
     #toTop{right:16px;bottom:16px;width:42px;height:42px}
   }
 </style>
@@ -395,7 +385,7 @@
       <a href="#servers">Сервера</a>
       <a href="#start">Как начать</a>
       <a href="#why">О нас</a>
-      <a href="#intro">Правила</a>
+      <a href="#rules">Правила</a>
       <a href="#shop">Магазин</a>
       <a href="#faq">Вопросы</a>
       <a href="#wiki">Wiki</a>
@@ -524,19 +514,6 @@
       <a class="btn" href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">Перейти в магазин</a>
     </div>
 
-    <!-- Промокод -->
-    <div class="promo">
-      <div>
-        <div class="t">Активируй промокод</div>
-        <p>Введи промокод и получи приятный бонус!</p>
-        <div class="promo-msg" id="promoMsg" role="status"></div>
-      </div>
-      <form class="promo-form" onsubmit="activatePromo(event)">
-        <input type="text" id="promoInput" placeholder="Твой промокод" autocomplete="off" aria-label="Промокод">
-        <button class="btn" type="submit">Start</button>
-      </form>
-    </div>
-
     <div class="note warn"><strong>Внимание:</strong> все вопросы по донату, покупкам и возврату средств решаются <strong>только через тикет в Discord</strong>. Чат Telegram — исключительно для общения игроков.</div>
   </section>
 
@@ -578,79 +555,141 @@
     <div class="sec-head">
       <h2>Wiki Blaze Rust</h2>
       <div class="bar"></div>
-      <div class="sub">Всё о проекте в одном месте: правила, наказания, донат и инструкции</div>
+      <div class="sub">Всё о проекте в одном месте: правила, партнёрство и инструкции</div>
     </div>
     <div class="wiki-grid">
-      <a class="wiki-item" href="#intro"><div class="num">01</div><div class="t">Вводные правила</div><p>Базовые положения проекта — прочитай до первого захода.</p></a>
-      <a class="wiki-item" href="#main-rules"><div class="num">02</div><div class="t">Основные правила</div><p>Свод правил поведения на сервере.</p></a>
-      <a class="wiki-item" href="#donate"><div class="num">03</div><div class="t">Соглашение на донат</div><p>Условия пополнения счёта и возврата средств.</p></a>
-      <a class="wiki-item" href="#punish"><div class="num">04</div><div class="t">Наказания</div><p>Таблица наказаний за нарушение правил.</p></a>
-      <a class="wiki-item" href="#complaints"><div class="num">05</div><div class="t">Как подать жалобу</div><p>Жалобы на читеров — через тикет в Discord.</p></a>
-      <a class="wiki-item" href="#connect"><div class="num">06</div><div class="t">Подключение connect</div><p>Быстрый способ зайти на сервер через консоль F1.</p></a>
-      <a class="wiki-item" href="#fps"><div class="num">07</div><div class="t">Не запускается / FPS</div><p>Вылеты, ошибки EAC, чёрный экран, DLL и низкий FPS.</p></a>
-      <a class="wiki-item" href="#timeout"><div class="num">08</div><div class="t">Ошибка Timed Out</div><p>Как исправить Authentication Timed Out.</p></a>
-      <a class="wiki-item" href="#reconnect"><div class="num">09</div><div class="t">Повторный вход</div><p>Как быстро вернуться после вылета или вайпа.</p></a>
+      <a class="wiki-item" href="#rules"><div class="num">01</div><div class="t">Правила проекта</div><p>Чат, общение, ПО, баги, аккаунты — полный свод.</p></a>
+      <a class="wiki-item" href="#check"><div class="num">02</div><div class="t">Проверка игроков</div><p>Регламент и требования при проверке на читы.</p></a>
+      <a class="wiki-item" href="#partner"><div class="num">03</div><div class="t">Медиа-партнёрство</div><p>Продвигай сервер и зарабатывай до 15%.</p></a>
+      <a class="wiki-item" href="#socnet"><div class="num">04</div><div class="t">Социальные сети</div><p>Наши официальные ресурсы и предупреждение о мошенниках.</p></a>
+      <a class="wiki-item" href="#punish"><div class="num">05</div><div class="t">Наказания</div><p>Таблица наказаний за нарушение правил.</p></a>
+      <a class="wiki-item" href="#complaints"><div class="num">06</div><div class="t">Как подать жалобу</div><p>Жалобы на читеров — через тикет в Discord.</p></a>
+      <a class="wiki-item" href="#connect"><div class="num">07</div><div class="t">Подключение connect</div><p>Быстрый способ зайти на сервер через консоль F1.</p></a>
+      <a class="wiki-item" href="#fps"><div class="num">08</div><div class="t">Не запускается / FPS</div><p>Вылеты, ошибки EAC, чёрный экран, DLL и низкий FPS.</p></a>
+      <a class="wiki-item" href="#timeout"><div class="num">09</div><div class="t">Ошибка Timed Out</div><p>Как исправить Authentication Timed Out.</p></a>
+      <a class="wiki-item" href="#reconnect"><div class="num">10</div><div class="t">Повторный вход</div><p>Как быстро вернуться после вылета или вайпа.</p></a>
     </div>
   </section>
 
-  <!-- ВВОДНЫЕ ПРАВИЛА -->
-  <div id="intro" class="panel wiki-section reveal">
-    <h3>Вводные правила</h3>
-    <p>Базовые положения проекта BLAZE RUST. Прочитай их до первого захода — это поможет избежать недопониманий и спорных ситуаций.</p>
-    <h4>Общие положения</h4>
-    <ul>
-      <li><strong>Незнание правил не освобождает от ответственности.</strong> Заходя на сервер BLAZE RUST, вы автоматически соглашаетесь с правилами проекта в полном объёме.</li>
-      <li><strong>Решение администрации окончательно.</strong> В спорных ситуациях окончательное решение остаётся за администрацией проекта.</li>
-      <li><strong>Правила могут изменяться.</strong> Администрация вправе дополнять и изменять правила без отдельного оповещения.</li>
-      <li><strong>Все обращения — через Discord.</strong> Жалобы, споры и вопросы решаются через создание тикета в Discord. Чат Telegram предназначен только для общения игроков.</li>
-    </ul>
-    <div class="note">После вводных правил обязательно прочитай основные правила — именно за их нарушение выдаются блокировки.</div>
+  <!-- ПРАВИЛА ПРОЕКТА -->
+  <div id="rules" class="panel wiki-section reveal">
+    <h3>Правила проекта</h3>
+    <p>Здесь собраны правила взаимодействия с игроками и программной частью проекта.</p>
+
+    <h4>Чат и общение</h4>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Нарушение</th><th>Наказание</th></tr>
+        <tr><td>Агрессия, хейт, неадекват</td><td>Мут 30 минут</td></tr>
+        <tr><td>Реклама других проектов</td><td>Мут 1 час / Бан</td></tr>
+        <tr><td>Флуд / спам</td><td>Мут 30 мин</td></tr>
+        <tr><td>Оскорбление родных</td><td>Предупреждение (повторно — мут 3 часа)</td></tr>
+        <tr><td>Распространение личных данных</td><td>Мут 7 дней (повторно — бан)</td></tr>
+        <tr><td>Поиск/распространение читов</td><td>Перманентный бан</td></tr>
+      </table>
+    </div>
+
+    <h4>Запрещённое ПО</h4>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Нарушение</th><th>Наказание</th></tr>
+        <tr><td>Читы, макросы, инжекторы</td><td>Перманентный бан</td></tr>
+        <tr><td>Игра с читером в команде</td><td>Бан от 1 до 30 дней</td></tr>
+        <tr><td>Модификация файлов игры</td><td>Перманентный бан</td></tr>
+      </table>
+    </div>
+
+    <h4>Баги</h4>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Нарушение</th><th>Наказание</th></tr>
+        <tr><td>Использование багов для выгоды</td><td>Бан от 1 до 30 дней</td></tr>
+        <tr><td>Строительство внутри объектов / под картой</td><td>Бан от 1 до 30 дней</td></tr>
+      </table>
+    </div>
+
+    <h4>Аккаунты</h4>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Нарушение</th><th>Наказание</th></tr>
+        <tr><td>Больше 2 аккаунтов</td><td>Перманентный бан одного из двух аккаунтов</td></tr>
+        <tr><td>Передача аккаунта другим</td><td>Перманентный бан</td></tr>
+        <tr><td>Ник, похожий на админа</td><td>Бан до смены ника</td></tr>
+      </table>
+    </div>
+
+    <h4>Лимит команд</h4>
+    <p><strong>Без лимита игроков в команде.</strong></p>
     <a class="back-top" href="#wiki">↑ Наверх</a>
   </div>
 
-  <!-- ОСНОВНЫЕ ПРАВИЛА -->
-  <div id="main-rules" class="panel wiki-section reveal">
-    <h3>Основные правила</h3>
-    <p>Свод правил поведения на сервере BLAZE RUST. За их нарушение администрация вправе выдать предупреждение, мут или блокировку без возврата средств.</p>
-    <h4>Поведение и честная игра</h4>
+  <!-- ПРОВЕРКА ИГРОКОВ -->
+  <div id="check" class="panel wiki-section reveal">
+    <h3>Проверка игроков</h3>
+    <p>Если вас вызвали на проверку — не паникуйте. Это стандартная процедура.</p>
+    <h4>Регламент</h4>
     <ul>
-      <li><strong>Читы и стороннее ПО запрещены.</strong> Использование читов, макросов, скриптов и любого ПО, дающего преимущество, — перманентный бан без возможности обжалования и возврата доната.</li>
-      <li><strong>Эксплойты и баги.</strong> Использование игровых багов и эксплойтов (дюп, проход сквозь текстуры и т.п.) запрещено. О найденных багах сообщайте администрации через Discord.</li>
-      <li><strong>Обман администрации.</strong> Попытка ввести администрацию в заблуждение, поддельные доказательства и обман при разборе жалоб караются блокировкой.</li>
+      <li>У вас есть <strong>3 минуты</strong>, чтобы написать Discord проверяющему.</li>
+      <li>Нужно зайти в голосовой канал и включить <strong>демонстрацию экрана</strong>.</li>
+      <li>Можно использовать камеру телефона или AnyDesk.</li>
     </ul>
-    <h4>Общение и чат</h4>
-    <ul>
-      <li><strong>Уважение к игрокам.</strong> Оскорбления, разжигание межнациональной розни, угрозы и травля в чате и голосовых каналах запрещены.</li>
-      <li><strong>Спам и реклама.</strong> Флуд, спам, капс и реклама сторонних проектов и услуг в чате запрещены.</li>
-      <li><strong>Никнейм.</strong> Запрещены оскорбительные, провокационные и вводящие в заблуждение никнеймы (в т.ч. имитация администрации).</li>
-    </ul>
-    <div class="note"><strong>Важно:</strong> игровые действия (рейды, обманы внутри игры, союзы и предательства) — это часть Rust и не являются нарушением. Правила выше касаются поведения вне игровой механики.</div>
+    <h4>Категорически запрещено</h4>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Действие</th><th>Наказание</th></tr>
+        <tr><td>Выход из игры или Discord во время проверки</td><td>Перманентный бан</td></tr>
+        <tr><td>Игнорирование требований модератора</td><td>Перманентный бан</td></tr>
+        <tr><td>Очистка файлов / корзины после вызова</td><td>Перманентный бан</td></tr>
+        <tr><td>Отказ показывать историю браузера или покупки</td><td>Перманентный бан</td></tr>
+      </table>
+    </div>
+    <div class="note">Чистосердечное признание до начала проверки может сократить срок бана.</div>
     <a class="back-top" href="#wiki">↑ Наверх</a>
   </div>
 
-  <!-- СОГЛАШЕНИЕ НА ДОНАТ -->
-  <div id="donate" class="panel wiki-section reveal">
-    <h3>Соглашение на донат</h3>
-    <p>Условия пополнения донат-счёта и возврата средств в магазине BLAZE RUST. Принимаются автоматически при пополнении баланса.</p>
-    <div class="note"><strong>Автоматическое соглашение.</strong> Пополняя свой баланс в магазине <a href="https://shopblaze.gamestores.app/" target="_blank" rel="noopener">shopblaze.gamestores.app</a>, вы автоматически принимаете условия этого раздела в полном объёме.</div>
-    <h4>Глава 1. Пополнение счёта</h4>
+  <!-- МЕДИА-ПАРТНЁРСТВО -->
+  <div id="partner" class="panel wiki-section reveal">
+    <h3>Медиа-партнёрство</h3>
+    <p>Станьте официальным медиа-партнёром нашего проекта и получайте бонусы за продвижение сервера!</p>
+    <h4>Что вы получаете</h4>
     <ul>
-      <li>Пополняя донат-счёт в нашем магазине, вы принимаете все правила проекта и соглашаетесь с ними в полном объёме.</li>
-      <li>В случае возникновения проблем с купленными предметами мы обязаны решить все ваши проблемы, связанные с ними. Компенсация выдаётся по усмотрению администратора.</li>
-      <li>При утере данных от аккаунта гарантия восстановления средств не предоставляется.</li>
-      <li>При попытке обмануть администрацию ваш счёт будет заморожен и аннулирован.</li>
-      <li>За нарушение правил проекта администрация вправе лишить вас купленного доната.</li>
-      <li>Если вы купили что-то по ошибке, но ещё не забрали из корзины (/store) — мы поможем восстановить баланс и заберём товар. Для этого достаточно создать тикет в Discord.</li>
+      <li>Уникальный промокод для ваших зрителей/подписчиков.</li>
+      <li>Процент от пополнений по вашему промокоду.</li>
+      <li>Упоминание в нашем Discord-сервере и на сайте.</li>
+      <li>Ранний доступ к новостям и обновлениям проекта.</li>
+      <li>Приоритетная поддержка от администрации.</li>
     </ul>
-    <h4>Глава 2. Возврат средств</h4>
+    <h4>Требования</h4>
     <ul>
-      <li>Средства возвращаются на банковский счёт по усмотрению администратора. В основном же их можно вернуть на донат-счёт и воспользоваться повторно для покупки товаров.</li>
-      <li><strong>Что считается браком:</strong> брак — это дефект, из-за которого продукция не может быть использована по своему назначению. Вы можете потребовать возврат, если у товара имеется брак.</li>
-      <li>Если у купленного товара возникает брак с новой функцией, добавленной на сервера в течение недели, — возврат не оформляется, а мы занимаемся исправлением. Если по истечении времени проблема осталась, возврат возможен.</li>
-      <li>Чтобы получить возврат на счёт, нужна видео-фиксация, на которой по порядку видно: момент пополнения счёта; момент покупки товара; момент взятия товара из корзины; сам «брак» товара. Видео должно быть цельным и не отредактированным.</li>
-      <li>Если видео-фиксация есть — создайте тикет в Discord, обратитесь к администратору и договоритесь, куда отправить запись для восстановления денежных средств.</li>
+      <li>Активный YouTube/Twitch/TikTok канал от 1000 подписчиков.</li>
+      <li>Регулярный контент по тематике Rust.</li>
+      <li>Отсутствие негативного контента в отношении проекта.</li>
+      <li>Возраст канала от 3 месяцев.</li>
     </ul>
-    <div class="note"><strong>Возникла проблема?</strong> Все вопросы по донату и возврату решаются через тикет в Discord.</div>
+    <h4>Условия сотрудничества</h4>
+    <ul>
+      <li>5–15% от всех пополнений по вашему промокоду.</li>
+      <li>Выплаты производятся ежемесячно.</li>
+      <li>Минимальная сумма для вывода: 500 ₽.</li>
+    </ul>
+    <h4>Как стать партнёром</h4>
+    <p>Напишите администратору в тикет-дискорд и расскажите о своём канале: ссылка на канал/профиль, количество подписчиков, среднее количество просмотров, почему вы хотите стать партнёром.</p>
+    <p><a class="btn" style="font-size:13px;padding:12px 24px" href="https://discord.gg/blazerust" target="_blank" rel="noopener">Присоединиться к серверу</a></p>
+    <div class="note">Мы рассматриваем каждую заявку индивидуально. Ответ в течение 24 часов.</div>
+    <a class="back-top" href="#wiki">↑ Наверх</a>
+  </div>
+
+  <!-- СОЦИАЛЬНЫЕ СЕТИ -->
+  <div id="socnet" class="panel wiki-section reveal">
+    <h3>Социальные сети</h3>
+    <p>Будьте в курсе всех новостей, обновлений, вайпов и розыгрышей нашего проекта! Подписывайтесь на наши официальные ресурсы.</p>
+    <h4>Наши официальные ресурсы</h4>
+    <ul>
+      <li><strong>Discord</strong> — новости, конкурсы и анонсы вайпов.</li>
+      <li><strong>Telegram</strong> — оперативные уведомления о рейдах и событиях.</li>
+      <li><strong>Магазин</strong> — приобрести привилегию.</li>
+    </ul>
+    <div class="note danger"><strong>Остерегайтесь мошенников!</strong> Администрация проекта <strong>НИКОГДА</strong> не пишет первой в личные сообщения с просьбой передать аккаунт, пароль или данные карты. Все официальные ссылки указаны только на этой странице и на главном сайте проекта.</div>
     <a class="back-top" href="#wiki">↑ Наверх</a>
   </div>
 
@@ -840,7 +879,7 @@
   // Год
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Редирект www → без www (вариант 44)
+  // Редирект www → без www
   if (window.location.hostname.indexOf('www.') === 0) {
     window.location.replace('https://' + window.location.hostname.slice(4) + window.location.pathname + window.location.search);
   }
@@ -869,38 +908,22 @@
     }
   }
 
-  // Промокод
-  function activatePromo(e){
-    e.preventDefault();
-    var input = document.getElementById('promoInput');
-    var msg = document.getElementById('promoMsg');
-    var code = input.value.trim().toUpperCase();
-    if (!code) {
-      msg.textContent = 'Введи промокод';
-      msg.className = 'promo-msg err show';
-      return;
-    }
-    msg.textContent = 'Промокод «' + code + '» принят! Бонус активирован. Подробности — в Discord.';
-    msg.className = 'promo-msg show';
-    input.value = '';
-  }
-
-  // Фоновые картинки (битая YouTube-ссылка убрана, добавлена новая)
+  // Фоновые картинки — только твои новые, в высоком качестве
   var bgImages = [
     'https://sun9-57.vkuserphoto.ru/s/v1/ig2/cvJm9YMn0tSSTIKcSTXC9opFj93QN4SKqs2ooonemq5aQyrafO5_o3e-EvksT28TqrNLBZ0XQ8_s69bWyTrxX3XY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0',
-    'https://sun9-74.vkuserphoto.ru/s/v1/ig2/gr70hzWpE8WDViiU8j2qIYgFfQS1jBv4zMUjyAZsmMhVyBKbyEPujQCc1wkzBmidAFmPB1y7qtWDyLRIMrryBdau.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0',
-    'https://sun9-88.vkuserphoto.ru/s/v1/ig2/G_UWhVyKUEQilnTZFM_BtsuBhco2D2aVnV0PyCNH716GidHM9Hbn0syGs_8dQstw29axSCxZm6ewEHcsdSXAyDB4.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0',
     'https://sun9-23.vkuserphoto.ru/s/v1/ig2/ddDQ7fr6bdez_n-UpSjqBBj0SPKujxuWPyA-5lwTTuoHLZc7rRCpMxbTZACIlRzXRC5Du5QtdIMeXIBKhUB3_ADs.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0',
+    'https://sun9-57.vkuserphoto.ru/s/v1/ig2/z9A8H1SjyjVxXbAo011Betay6huVKmSjOBYoUNYL_X8-SEjXDzcJSSEPwYSeMRPIdH_QFUozOKYJ3VDZ9w568Z6s.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0',
+    'https://sun9-4.vkuserphoto.ru/s/v1/ig2/Bw30z9UYPDIUCbvMJc2YqUoLNQbuvAeP6wWXfIO44TFG1ErZegzUuDqTHdmy0rAQzxUHxmRnY5LP60XCwqtWGPAa.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0',
+    'https://sun9-31.vkuserphoto.ru/s/v1/ig2/mlr3SEFgwl2bdjd-m4zgis23ApkbqO0BpfdQ4Ze9i1ebvG6r3uP-ATW4KPuWwKzHgP4sA302ycfHMHrzXBiapGAx.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0',
     'https://sun9-7.vkuserphoto.ru/s/v1/ig2/rMFHkPrN07QyUw1dtCpAYzalBVCIzc6luYYSiBb5txUhm59JlTmdVQ7azl50yVQZRuG5joSATy5WoMb5i3jd5EE4.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0',
-    'https://sun9-26.vkuserphoto.ru/s/v1/ig2/bOtZjoqpvXvGpPSmJY32rIJeLsb_l2ZCprQI9EIF9-_blCR1YGUG0AkHieM7ZfoAbLzL0ezez8xbKqzxB0JGf6l5.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0',
-    'https://images.steamusercontent.com/ugc/108482634784000711/1746CF525E8477321DB2A85BEC71C53CBD7DFDCA/?imw=512&imh=288&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true',
-    'https://mrwallpaper.com/images/high/a-rust-player-strongholds-in-fort-mye565056cz3xgku-mye565056cz3xgku.webp',
-    'https://mrwallpaper.com/images/high/rust-player-war-art-4bbampbf2vxpc9ai.webp',
-    'https://abrakadabra.fun/uploads/posts/2022-02/1644688053_44-abrakadabra-fun-p-anime-rast-55.jpg',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaP3cX6xqnGjbnwRbuVdTaLiTvq2eDffnR-xcr2DLy2GmWF1OeIblJjNk&s=10'
+    'https://sun9-55.vkuserphoto.ru/s/v1/ig2/tqe-X2GIaR-DzpNPL-ju0N7rgUXSp6KwA3HZxyzwxDSrButEElC8xpxzxnAGIivtbLkfmJ7KKBStAqo0IN3rQS5-.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0',
+    'https://sun9-39.vkuserphoto.ru/s/v1/ig2/PY0JBVbNIYRZTTqaKKCzKlk39Hm1CGJ2qcv8-VVoDtQ6zbQa5ZcjJsf55X-dRRN3lKioJLnTLDyHER7GzYPjIaxu.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&u=CYHCdJu7ZfdS8-Q8S2JFP6066M5LCg8FshsAPAAAXLk&cs=1920x0',
+    'https://sun9-51.vkuserphoto.ru/s/v1/ig2/MUMJqN2y6MQOEDuaPLzL9pdKGpozrIN1bytzTFl58f8qlFMZauYlvy69o3FUmtHQWgJYZv03USuOJiMAhnTzA5ed.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,2560x1440&from=bu&cs=2560x0',
+    'https://sun9-6.vkuserphoto.ru/s/v1/ig2/qK6rR5TK6QWr2WxDdthBzazK4USCgI7vJWX6_r0zutmIyeOhjw0hiLTzk_AV1vZ4dQTUhukCbj3rpY2-0ud56HGO.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0',
+    'https://sun9-16.vkuserphoto.ru/s/v1/ig2/x7m_osPIQtVWHzCYidpXQ63NPl6CLa5TIK6cf9LdvvPtmKVk8GnLEByXG_Q94w6XF3TxmNvHJUfKJVUoOV8BKJbz.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,2560x1440&from=bu&cs=2560x0'
   ];
 
-  // Автофильтр битых картинок (вариант 39)
+  // Автофильтр битых картинок
   var good = [];
   var checked = 0;
   bgImages.forEach(function(url){
@@ -914,7 +937,6 @@
     if (checked === bgImages.length) buildBg();
   }
   function buildBg(){
-    // перемешиваем
     for (var i = good.length - 1; i > 0; i--) {
       var j = Math.floor(Math.random() * (i + 1));
       var t = good[i]; good[i] = good[j]; good[j] = t;
@@ -930,14 +952,14 @@
     });
   }
 
-  // Кнопка наверх (вариант 45)
+  // Кнопка наверх
   var toTop = document.getElementById('toTop');
   window.addEventListener('scroll', function(){
     if (window.pageYOffset > 500) { toTop.classList.add('show'); }
     else { toTop.classList.remove('show'); }
   }, {passive:true});
 
-  // Появление при скролле (вариант 41 — анимации с учетом prefers-reduced-motion)
+  // Появление при скролле
   var items = document.querySelectorAll('.reveal');
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     items.forEach(function(el){ el.classList.add('visible'); });
